@@ -1,23 +1,20 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
+import DButton from './components/DButton.vue';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div>
+    <header class="mx-auto max-w-screen-xl px-4 py-8">
+      <h1 class="mb-4 text-2xl font-bold">Deez Components Sandbox</h1>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <main class="mx-auto grid w-full max-w-screen-lg gap-16 p-4">
+      <div class="">
+        <h2 class="mb-4 text-xl font-bold">Button</h2>
+        <DButton>Click Me</DButton>
+      </div>
+    </main>
+  </div>
 </template>
 
 <style scoped></style>
