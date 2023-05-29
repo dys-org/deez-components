@@ -1,10 +1,22 @@
 {
   "name": "deez-components",
   "version": "0.0.0",
-  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "module": "dist/deez-components.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/deez-components.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "run-p build:types build-only",
+    "build:types": "vue-tsc --project tsconfig.build-types.json --declaration --emitDeclarationOnly --outDir dist/types",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -19,8 +31,7 @@
     "@headlessui/vue": "^1.7.13",
     "@heroicons/vue": "^2.0.18",
     "pinia": "^2.0.36",
-    "vue": "^3.3.2",
-    "vue-router": "^4.2.0"
+    "vue": "^3.3.2"
   },
   "devDependencies": {
     "@histoire/plugin-vue": "^0.16.1",

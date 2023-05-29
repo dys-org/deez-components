@@ -1,0 +1,8 @@
+{
+  "include": ["src/**/*"],
+  "exclude": ["**/*.spec.ts", "**/__tests__/**/*", "**/*.story.vue"]
+  // "compilerOptions": {
+  //   "lib": ["ES2022", "DOM", "DOM.Iterable"],
+  //   "types": ["unplugin-icons/types/vue"]
+  // }
+}

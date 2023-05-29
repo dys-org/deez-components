@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DButton from './components/DButton.vue';
+import { DButton } from '../src/components/DButton';
 </script>
 
 <template>

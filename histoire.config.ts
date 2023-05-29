@@ -3,5 +3,5 @@ import { HstVue } from '@histoire/plugin-vue';
 
 export default defineConfig({
   plugins: [HstVue()],
-  setupFile: '/src/histoire.setup.ts',
+  setupFile: '/sandbox/histoire.setup.ts',
 });

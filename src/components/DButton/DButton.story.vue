@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DButton from '@/components/DButton.vue';
+import DButton from './DButton.vue';
 import { logEvent } from 'histoire/client';
 </script>
 
