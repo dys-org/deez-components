@@ -8,5 +8,8 @@ import { logEvent } from 'histoire/client';
     <Variant title="Primary">
       <DButton @click="logEvent('Clicked Primary', $event)"> Click Me </DButton>
     </Variant>
+    <Variant title="Danger">
+      <DButton @click="logEvent('Clicked Danger', $event)" danger> Click Me </DButton>
+    </Variant>
   </Story>
 </template>
