@@ -29,5 +29,3 @@ const isDanger = computed(() => props.danger === true);
     <slot>Button text</slot>
   </button>
 </template>
-
-<style scoped></style>

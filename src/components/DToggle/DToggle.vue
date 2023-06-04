@@ -1,0 +1,62 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue';
+
+const props = withDefaults(
+  defineProps<{
+    modelValue?: boolean;
+    label: string;
+    description?: string;
+    labelSide?: 'right' | 'left';
+  }>(),
+  { modelValue: false },
+);
+
+const emit = defineEmits(['update:modelValue']);
+
+const enabled = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(val) {
+    emit('update:modelValue', val);
+  },
+});
+</script>
+
+<template>
+  <SwitchGroup
+    as="div"
+    class="jus flex items-center"
+    :class="{ 'justify-between': props.labelSide === 'left' }"
+  >
+    <span v-if="props.labelSide === 'left'" class="flex flex-grow flex-col">
+      <SwitchLabel as="span" class="text-sm font-medium leading-6 text-gray-900" passive>
+        {{ props.label }}
+      </SwitchLabel>
+      <SwitchDescription as="span" class="text-sm text-gray-500">
+        {{ props.description }}
+      </SwitchDescription>
+    </span>
+    <Switch
+      v-model="enabled"
+      :class="[
+        enabled ? 'bg-indigo-600' : 'bg-gray-200',
+        'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2',
+      ]"
+    >
+      <span v-if="!props.labelSide" class="sr-only">{{ props.label }}</span>
+      <span
+        aria-hidden="true"
+        :class="[
+          enabled ? 'translate-x-5' : 'translate-x-0',
+          'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+        ]"
+      />
+    </Switch>
+    <SwitchLabel v-if="props.labelSide === 'right'" as="span" class="ml-3 text-sm">
+      <span class="font-medium text-gray-900">{{ props.label }}</span>
+      <span class="ml-2 text-gray-500">({{ props.description }})</span>
+    </SwitchLabel>
+  </SwitchGroup>
+</template>

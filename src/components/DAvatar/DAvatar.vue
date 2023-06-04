@@ -31,5 +31,3 @@ const hasNotif = computed(() => props.notifications > 0);
     />
   </span>
 </template>
-
-<style scoped></style>
