@@ -27,7 +27,7 @@ const enabled = computed({
 <template>
   <SwitchGroup
     as="div"
-    class="jus flex items-center"
+    class="flex items-center"
     :class="{ 'justify-between': props.labelSide === 'left' }"
   >
     <span v-if="props.labelSide === 'left'" class="flex flex-grow flex-col">
