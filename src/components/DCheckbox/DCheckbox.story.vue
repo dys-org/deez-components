@@ -14,6 +14,7 @@ const checkedNames = ref([]);
         v-model="cb1"
         label="Candidates"
         name="box1"
+        id="box1"
         @update:modelValue="logEvent('Clicked CB1', { cb1 })"
       />
     </Variant>
@@ -23,6 +24,7 @@ const checkedNames = ref([]);
         v-model="cb2"
         label="Comments"
         name="box2"
+        id="box2"
         description="Get notified when someones posts a comment on a posting."
         @update:modelValue="logEvent('Clicked CB2', { cb2 })"
       />
@@ -33,21 +35,24 @@ const checkedNames = ref([]);
         <DCheckbox
           v-model="checkedNames"
           label="David"
-          name="david"
+          name="checkedNames"
+          id="david"
           value="david"
           @update:modelValue="logEvent('Clicked David', checkedNames)"
         />
         <DCheckbox
           v-model="checkedNames"
           label="Gretel"
-          name="gretel"
+          name="checkedNames"
+          id="gretel"
           value="gretel"
           @update:modelValue="logEvent('Clicked Gretel', checkedNames)"
         />
         <DCheckbox
           v-model="checkedNames"
           label="Sebastian"
-          name="sebastian"
+          name="checkedNames"
+          id="sebastian"
           value="sebastian"
           @update:modelValue="logEvent('Clicked Sebastian', checkedNames)"
         />
