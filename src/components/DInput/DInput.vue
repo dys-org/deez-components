@@ -37,11 +37,11 @@ const isError = computed(() => props.status === 'error');
       :class="{ 'sr-only': props.hideLabel }"
       :for="$attrs.id as string || props.name"
     >
-      <span class="font-medium text-gray-900">{{ props.label }}</span>
-      <span v-if="isError" class="block text-red-600">
+      <span class="font-medium">{{ props.label }}</span>
+      <span v-if="isError" class="block text-red-600 dark:text-red-500">
         {{ props.errorMessage || 'This field is invalid.' }}
       </span>
-      <span v-else-if="props.description" class="block text-gray-500">
+      <span v-else-if="props.description" class="block text-black/60 dark:text-white/60">
         {{ props.description }}
       </span>
     </label>
@@ -51,11 +51,11 @@ const isError = computed(() => props.status === 'error');
         :type="props.type"
         :name="props.name"
         :id="props.name"
-        class="disabled:ring-gray-200s block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500 sm:text-sm sm:leading-6"
+        class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6"
         :class="[
           isError
-            ? 'pr-10 text-red-800 ring-red-300 placeholder:text-red-300 focus:ring-red-500'
-            : 'text-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-blue-500',
+            ? 'pr-10 text-red-600 ring-red-500 focus:ring-red-500 dark:text-red-500'
+            : 'ring-gray-300 focus:ring-indigo-500 dark:ring-white/10 dark:focus:ring-indigo-500',
         ]"
         @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         :value="props.modelValue"

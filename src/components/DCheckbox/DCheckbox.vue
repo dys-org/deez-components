@@ -38,13 +38,13 @@ const checked = computed({
         type="checkbox"
         :value="props.value"
         v-model="checked"
-        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 dark:border-gray-500 dark:bg-transparent"
+        class="h-4 w-4 rounded border-black/40 text-indigo-600 focus:ring-indigo-600 dark:border-white/30 dark:bg-white/5"
         v-bind="$attrs"
       />
     </div>
     <label :for="props.id" class="ml-3 select-none text-sm leading-6">
-      <span class="font-medium text-gray-900">{{ props.label }}</span>
-      <span v-if="props.description" class="block text-gray-500 dark:text-gray-400">
+      <span class="font-medium">{{ props.label }}</span>
+      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
         {{ props.description }}
       </span>
     </label>

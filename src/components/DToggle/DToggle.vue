@@ -31,17 +31,17 @@ const enabled = computed({
     :class="{ 'justify-between': props.labelSide === 'left' }"
   >
     <span v-if="props.labelSide === 'left'" class="flex flex-grow flex-col">
-      <SwitchLabel as="span" class="text-sm font-medium leading-6 text-gray-900" passive>
+      <SwitchLabel as="span" class="text-sm font-medium leading-6" passive>
         {{ props.label }}
       </SwitchLabel>
-      <SwitchDescription as="span" class="text-sm text-gray-500">
+      <SwitchDescription as="span" class="text-sm text-black/60 dark:text-white/60">
         {{ props.description }}
       </SwitchDescription>
     </span>
     <Switch
       v-model="enabled"
       :class="[
-        enabled ? 'bg-indigo-600' : 'bg-gray-200',
+        enabled ? 'bg-indigo-600' : 'bg-gray-200 dark:bg-white/10',
         'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2',
       ]"
     >
@@ -55,8 +55,8 @@ const enabled = computed({
       />
     </Switch>
     <SwitchLabel v-if="props.labelSide === 'right'" as="span" class="ml-3 text-sm">
-      <span class="font-medium text-gray-900">{{ props.label }}</span>
-      <span class="ml-2 text-gray-500">({{ props.description }})</span>
+      <span class="font-medium">{{ props.label }}</span>
+      <span class="ml-2 text-black/60 dark:text-white/60">({{ props.description }})</span>
     </SwitchLabel>
   </SwitchGroup>
 </template>

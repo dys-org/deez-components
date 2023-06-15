@@ -30,6 +30,7 @@ const lastName = ref('Soards');
           name="email"
           status="error"
           error-message="Not a valid email address."
+          placeholder="Don't use placeholders."
         />
         <p class="mt-8 font-mono">Value: {{ genericVal }}</p>
       </div>

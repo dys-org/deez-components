@@ -15,7 +15,7 @@ const selected = ref('email');
   <Story>
     <Variant title="Default">
       <DRadioGroup :options="notificationMethods" name="notifMethods" v-model="selected" />
-      <p class="mt-8 font-mono">Chosen: {{ selected }}</p>
+      <p class="mt-8 font-mono dark:text-white/40">Chosen: {{ selected }}</p>
     </Variant>
   </Story>
 </template>
