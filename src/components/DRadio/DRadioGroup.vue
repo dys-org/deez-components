@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+export interface DRadioGroupProps {
+  modelValue: string;
+  name: string;
+  options: { id: string; label: string; value: string }[];
+}
+
 const props = withDefaults(
-  defineProps<{
-    modelValue: string;
-    name: string;
-    options: { id: string; label: string; value: string }[];
-  }>(),
+  defineProps<DRadioGroupProps>(),
   {},
 );
 

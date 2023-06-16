@@ -1,1 +1,1 @@
-export { default as DRadioGroup } from './DRadioGroup.vue';
+export { default as DRadioGroup, type DRadioGroupProps } from './DRadioGroup.vue';
