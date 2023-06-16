@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-const props = withDefaults(
-  defineProps<{
-    image?: string;
-    notifications?: number;
-  }>(),
-  { notifications: 0 },
-);
+export interface DAvatarProps {
+  image?: string;
+  notifications?: number;
+}
+
+const props = withDefaults(defineProps<DAvatarProps>(), { notifications: 0 });
 
 const hasNotif = computed(() => props.notifications > 0);
 </script>

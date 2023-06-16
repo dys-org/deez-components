@@ -1,1 +1,1 @@
-export { default as DToggle } from './DToggle.vue';
+export { default as DToggle, type DToggleProps } from './DToggle.vue';

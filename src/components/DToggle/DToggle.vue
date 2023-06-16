@@ -2,14 +2,16 @@
 import { computed } from 'vue';
 import { Switch, SwitchDescription, SwitchGroup, SwitchLabel } from '@headlessui/vue';
 
+export interface DToggleProps {
+  modelValue: boolean;
+  label: string;
+  description?: string;
+  hideLabel?: boolean;
+  labelLeft?: boolean;
+}
+
 const props = withDefaults(
-  defineProps<{
-    modelValue?: boolean;
-    label: string;
-    description?: string;
-    hideLabel?: boolean;
-    labelLeft?: boolean;
-  }>(),
+  defineProps<DToggleProps>(),
   { modelValue: false, hideLabel: false, labelSide: 'right' },
 );
 

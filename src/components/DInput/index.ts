@@ -1,1 +1,1 @@
-export { default as DInput } from './DInput.vue';
+export { default as DInput, type DInputProps } from './DInput.vue';

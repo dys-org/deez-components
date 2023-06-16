@@ -1,1 +1,1 @@
-export { default as DAvatar } from './DAvatar.vue';
+export { default as DAvatar, type DAvatarProps } from './DAvatar.vue';

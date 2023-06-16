@@ -2,28 +2,26 @@
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
 import { computed } from 'vue';
 
+export interface DInputProps {
+  modelValue: string;
+  name: string;
+  label: string;
+  hideLabel?: boolean;
+  description?: string;
+  type?: 'text' | 'email' | 'url' | 'password';
+  status?: 'valid' | 'error';
+  errorMessage?: string;
+}
+
 defineOptions({
-  name: 'DInput',
   inheritAttrs: false,
 });
 
-const props = withDefaults(
-  defineProps<{
-    modelValue: string;
-    name: string;
-    label: string;
-    hideLabel?: boolean;
-    description?: string;
-    type?: 'text' | 'email' | 'url' | 'password';
-    status?: 'valid' | 'error';
-    errorMessage?: string;
-  }>(),
-  {
-    type: 'text',
-    hideLabel: false,
-    status: 'valid',
-  },
-);
+const props = withDefaults(defineProps<DInputProps>(), {
+  type: 'text',
+  hideLabel: false,
+  status: 'valid',
+});
 
 const emit = defineEmits(['update:modelValue']);
 

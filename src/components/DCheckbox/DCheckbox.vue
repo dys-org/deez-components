@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+
+export interface DCheckboxProps {
+  modelValue: boolean | string[];
+  name: string;
+  id: string;
+  value?: string;
+  label: string;
+  description?: string;
+}
+
 defineOptions({
-  name: 'DCheckbox',
   inheritAttrs: false,
 });
 
-const props = withDefaults(
-  defineProps<{
-    modelValue?: boolean | string[];
-    name: string;
-    id: string;
-    value?: string;
-    label: string;
-    description?: string;
-  }>(),
-  { value: 'on' },
-);
+const props = withDefaults(defineProps<DCheckboxProps>(), { value: 'on' });
 
 const emit = defineEmits(['update:modelValue']);
 

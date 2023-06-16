@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-const props = withDefaults(
-  defineProps<{
-    variant?: 'primary' | 'secondary' | 'tertiary' | null;
-    danger?: boolean;
-    loading?: boolean;
-  }>(),
-  { variant: 'primary', danger: false, loading: false },
-);
+export interface DButtonProps {
+  variant?: 'primary' | 'secondary' | 'tertiary' | null;
+  danger?: boolean;
+  loading?: boolean;
+}
+
+const props = withDefaults(defineProps<DButtonProps>(), {
+  variant: 'primary',
+  danger: false,
+  loading: false,
+});
 
 // const isPrimary = computed(() => props.variant === 'primary');
 // const isSecondary = computed(() => props.variant === 'secondary');

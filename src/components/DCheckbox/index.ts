@@ -1,1 +1,1 @@
-export { default as DCheckbox } from './DCheckbox.vue';
+export { default as DCheckbox, type DCheckboxProps } from './DCheckbox.vue';
