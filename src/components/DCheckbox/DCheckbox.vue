@@ -7,7 +7,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<{
-    modelValue: boolean | string[];
+    modelValue?: boolean | string[];
     name: string;
     id: string;
     value?: string;
