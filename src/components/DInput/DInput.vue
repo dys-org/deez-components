@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
+import IconAlertCircle from '~icons/feather/alert-circle';
 import { computed } from 'vue';
 
 export interface DInputProps {
@@ -64,7 +64,7 @@ const isError = computed(() => props.status === 'error');
         v-if="isError"
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
       >
-        <ExclamationCircleIcon class="h-5 w-5 text-red-500" aria-hidden="true" />
+        <IconAlertCircle class="h-5 w-5 text-red-500" aria-hidden="true" />
       </div>
     </div>
   </div>

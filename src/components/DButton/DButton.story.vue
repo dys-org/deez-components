@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import DButton from './DButton.vue';
 import { logEvent } from 'histoire/client';
-import { CheckCircleIcon } from '@heroicons/vue/20/solid';
+import RoundCheckCircle from '~icons/feather/check-circle';
+import RoundChevronRight from '~icons/feather/chevron-right';
 </script>
 
 <template>
@@ -16,7 +17,7 @@ import { CheckCircleIcon } from '@heroicons/vue/20/solid';
 
     <Variant title="Primary Icon Start">
       <DButton variant="primary" @click="logEvent('Primary Icon Start', $event)">
-        <template #iconStart><CheckCircleIcon aria-hidden="true" /></template>
+        <template #iconStart><RoundCheckCircle aria-hidden="true" /></template>
         Click Me
       </DButton>
     </Variant>
@@ -28,7 +29,7 @@ import { CheckCircleIcon } from '@heroicons/vue/20/solid';
     <Variant title="Default Danger Icon End">
       <DButton danger @click="logEvent('Default Danger Icon End', $event)">
         Click Me
-        <template #iconEnd><CheckCircleIcon aria-hidden="true" /></template>
+        <template #iconEnd><RoundChevronRight aria-hidden="true" /></template>
       </DButton>
     </Variant>
 
