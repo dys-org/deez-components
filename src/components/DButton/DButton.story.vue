@@ -1,40 +1,53 @@
 <script setup lang="ts">
 import DButton from './DButton.vue';
 import { logEvent } from 'histoire/client';
+import { CheckCircleIcon } from '@heroicons/vue/20/solid';
 </script>
 
 <template>
   <Story :layout="{ type: 'grid', width: 300 }">
     <Variant title="Default">
-      <DButton @click="logEvent('Clicked Default', $event)">Click Me</DButton>
+      <DButton @click="logEvent('Default', $event)">Click Me</DButton>
     </Variant>
 
     <Variant title="Primary">
-      <DButton variant="primary" @click="logEvent('Clicked Primary', $event)">Click Me</DButton>
+      <DButton variant="primary" @click="logEvent('Primary', $event)">Click Me</DButton>
     </Variant>
 
-    <Variant title="Default Danger">
-      <DButton @click="logEvent('Clicked Default Danger', $event)" danger>Click Me</DButton>
-    </Variant>
-
-    <Variant title="Primary Danger">
-      <DButton variant="primary" danger @click="logEvent('Clicked Primary Danger', $event)">
+    <Variant title="Primary Icon Start">
+      <DButton variant="primary" @click="logEvent('Primary Icon Start', $event)">
+        <template #iconStart><CheckCircleIcon aria-hidden="true" /></template>
         Click Me
       </DButton>
     </Variant>
 
-    <Variant title="Text">
-      <DButton variant="text" @click="logEvent('Clicked Text', $event)">Click Me</DButton>
+    <Variant title="Default Danger">
+      <DButton @click="logEvent('Default Danger', $event)" danger>Click Me</DButton>
     </Variant>
 
-    <Variant title="Text Danger">
-      <DButton variant="text" danger @click="logEvent('Clicked Text Danger', $event)"
-        >Click Me</DButton
-      >
+    <Variant title="Default Danger Icon End">
+      <DButton danger @click="logEvent('Default Danger Icon End', $event)">
+        Click Me
+        <template #iconEnd><CheckCircleIcon aria-hidden="true" /></template>
+      </DButton>
+    </Variant>
+
+    <Variant title="Primary Danger">
+      <DButton variant="primary" danger @click="logEvent('Primary Danger', $event)">
+        Click Me
+      </DButton>
+    </Variant>
+
+    <Variant title="Link">
+      <DButton variant="link" @click="logEvent('Text', $event)">Click Me</DButton>
+    </Variant>
+
+    <Variant title="Link Danger">
+      <DButton variant="link" danger @click="logEvent('Text Danger', $event)"> Click Me </DButton>
     </Variant>
 
     <Variant title="Primary Loading">
-      <DButton variant="primary" loading @click="logEvent('Clicked Primary Loading', $event)">
+      <DButton variant="primary" loading @click="logEvent('Primary Loading', $event)">
         Click Me
       </DButton>
     </Variant>
