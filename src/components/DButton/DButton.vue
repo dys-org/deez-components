@@ -48,20 +48,20 @@ function onClick(e: MouseEvent) {
 
       'text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 dark:text-black dark:mix-blend-lighten':
         isPrimary,
-      'bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-600 dark:bg-primary-500 dark:hover:bg-primary-400':
+      'bg-primary-600 hover:bg-primary-700 focus-visible:outline-primary-600 dark:bg-primary-500 dark:hover:bg-primary-400':
         isPrimary && !isDanger,
-      'bg-danger-600 hover:bg-danger-500 focus-visible:outline-danger-600 dark:bg-danger-500 dark:hover:bg-danger-400':
+      'bg-danger-600 hover:bg-danger-700 focus-visible:outline-danger-600 dark:bg-danger-500 dark:hover:bg-danger-400':
         isPrimary && isDanger,
 
       'hover:underline focus:underline': isLink,
-      'text-primary-600 hover:text-primary-500 dark:text-primary-500 dark:hover:text-primary-400':
+      'text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400':
         isLink && !isDanger,
-      'text-danger-600 hover:text-danger-500 dark:text-danger-500 dark:hover:text-danger-400':
+      'text-danger-600 hover:text-danger-700 dark:text-danger-500 dark:hover:text-danger-400':
         isLink && isDanger,
 
       'cursor-not-allowed opacity-60': isLoading,
     }"
-    :aria-disabled="isLoading"
+    :aria-disabled="isLoading || undefined"
     @click="onClick"
   >
     <span v-if="isLoading" class="sr-only">Loading</span>
