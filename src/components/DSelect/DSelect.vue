@@ -36,7 +36,11 @@ const picked = computed({
 
 <template>
   <div :class="{ 'flex items-center gap-4': props.labelLeft }">
-    <label :for="props.name" class="block whitespace-nowrap text-sm font-medium leading-6">
+    <label
+      :for="props.name"
+      class="block whitespace-nowrap text-sm font-medium leading-6"
+      :class="{ 'sr-only': hideLabel }"
+    >
       {{ props.label }}
     </label>
     <select

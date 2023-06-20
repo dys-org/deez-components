@@ -19,6 +19,7 @@ const people = [
 
 const select1 = ref('');
 const select2 = ref('');
+const select3 = ref('');
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const select2 = ref('');
         label="Assign To"
         name="people"
         :options="people"
-        @update:modelValue="logEvent('updated select', { value: select1 })"
+        @update:modelValue="(val) => logEvent('updated select', { value: val })"
       />
     </Variant>
 
@@ -41,6 +42,17 @@ const select2 = ref('');
         :options="people"
         label-left
         @update:modelValue="logEvent('updated select', { value: select2 })"
+      />
+    </Variant>
+
+    <Variant title="Hidden Label">
+      <DSelect
+        v-model="select3"
+        label="Assign To"
+        name="people"
+        :options="people"
+        hide-label
+        @update:modelValue="logEvent('updated select', { value: select3 })"
       />
     </Variant>
   </Story>
