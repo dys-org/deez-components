@@ -8,9 +8,6 @@ dependencies:
   '@headlessui/vue':
     specifier: ^1.7.14
     version: 1.7.14(vue@3.3.4)
-  '@heroicons/vue':
-    specifier: ^2.0.18
-    version: 2.0.18(vue@3.3.4)
   pinia:
     specifier: ^2.1.4
     version: 2.1.4(typescript@5.0.4)(vue@3.3.4)
@@ -443,14 +440,6 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       vue: ^3.2.0
-    dependencies:
-      vue: 3.3.4
-    dev: false
-
-  /@heroicons/vue@2.0.18(vue@3.3.4):
-    resolution: {integrity: sha512-BcTC9nq2TkwNSfQuqo96J7ehx4etezypc2YeTq7KsXWxrcrerhkgjLrxGRBnStN0wrXo0Gv4BInybqz5uBG6Cw==}
-    peerDependencies:
-      vue: '>= 3'
     dependencies:
       vue: 3.3.4
     dev: false
