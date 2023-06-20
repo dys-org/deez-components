@@ -16,7 +16,7 @@ const hasNotif = computed(() => props.notifications > 0);
     <img v-if="props.image" class="h-10 w-10 rounded-full" :src="props.image" alt="" />
     <svg
       v-else
-      class="h-10 w-10 rounded-full bg-gray-100 text-gray-300"
+      class="h-10 w-10 rounded-full bg-gray-100 text-gray-300 dark:bg-gray-800 dark:text-gray-600"
       fill="currentColor"
       viewBox="0 0 24 24"
     >

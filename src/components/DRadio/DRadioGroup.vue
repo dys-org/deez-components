@@ -7,10 +7,7 @@ export interface DRadioGroupProps {
   options: { id: string; label: string; value: string }[];
 }
 
-const props = withDefaults(
-  defineProps<DRadioGroupProps>(),
-  {},
-);
+const props = withDefaults(defineProps<DRadioGroupProps>(), {});
 
 const emit = defineEmits(['update:modelValue']);
 
@@ -38,7 +35,7 @@ const picked = computed({
           :name="props.name"
           type="radio"
           v-model="picked"
-          class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 dark:border-white/30 dark:bg-white/5"
+          class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 dark:border-white/30 dark:bg-white/5 dark:checked:bg-current"
         />
         <label :for="opt.id" class="ml-3 block text-sm font-medium leading-6">
           {{ opt.label }}
@@ -47,10 +44,3 @@ const picked = computed({
     </div>
   </fieldset>
 </template>
-
-<style>
-/* Known tailwind issue w/darkMode for checkboxes https://github.com/tailwindlabs/tailwindcss-forms/issues/74 */
-.dark [type='radio']:checked {
-  background-color: currentColor;
-}
-</style>
