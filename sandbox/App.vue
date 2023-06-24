@@ -5,6 +5,7 @@ import { DCheckbox } from '../src/components/DCheckbox';
 import { DToggle } from '../src/components/DToggle';
 
 const darkMode = ref(false);
+const cb1 = ref(false);
 
 watch(darkMode, (val) => {
   document.documentElement.classList.toggle('dark', val);
@@ -12,7 +13,7 @@ watch(darkMode, (val) => {
 </script>
 
 <template>
-  <div class="min-h-screen dark:bg-gray-900 dark:text-white">
+  <div class="min-h-screen text-gray-900 dark:bg-gray-900 dark:text-white">
     <header class="mx-auto max-w-screen-xl px-4 py-8">
       <h1 class="mb-4 text-2xl font-bold">Deez Components Sandbox</h1>
     </header>
@@ -28,6 +29,7 @@ watch(darkMode, (val) => {
           name="cb1"
           label="Checkbox"
           description="Description of what this checkbox does"
+          v-model="cb1"
         ></DCheckbox>
       </div>
       <div class="border-b p-8">

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, type ButtonHTMLAttributes } from 'vue';
 
 export interface DButtonProps {
   variant?: 'default' | 'primary' | 'link';
   danger?: boolean;
   loading?: boolean;
-  type?: 'button' | 'submit';
+  type?: ButtonHTMLAttributes['type'];
 }
 
 const props = withDefaults(defineProps<DButtonProps>(), {
@@ -64,11 +64,10 @@ function onClick(e: MouseEvent) {
     :aria-disabled="isLoading || undefined"
     @click="onClick"
   >
-    <span v-if="isLoading" class="sr-only">Loading</span>
     <span v-if="$slots.iconStart || isLoading" class="-ml-0.5 h-5 w-5 text-current">
       <svg
         v-if="isLoading"
-        aria-hidden="true"
+        aria-label="Loading"
         role="status"
         class="animate-spin"
         xmlns="http://www.w3.org/2000/svg"

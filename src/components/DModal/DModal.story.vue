@@ -2,8 +2,9 @@
 import { ref } from 'vue';
 import { logEvent } from 'histoire/client';
 import DModal from './DModal.vue';
+import { DButton } from '../DButton';
 
-const isOpen = ref(true);
+const isOpen = ref(false);
 
 function onConfirm(e: Event) {
   logEvent('Confirm', e);
@@ -14,10 +15,12 @@ function onConfirm(e: Event) {
 <template>
   <Story>
     <Variant title="Default">
+      <DButton @click="isOpen = true">Open</DButton>
       <DModal v-model:open="isOpen" @confirm="onConfirm" />
     </Variant>
 
     <Variant title="Danger">
+      <DButton @click="isOpen = true">Open</DButton>
       <DModal
         v-model:open="isOpen"
         @confirm="onConfirm"
@@ -29,6 +32,7 @@ function onConfirm(e: Event) {
     </Variant>
 
     <Variant title="Content slot hide icon">
+      <DButton @click="isOpen = true">Open</DButton>
       <DModal
         v-model:open="isOpen"
         @confirm="onConfirm"
