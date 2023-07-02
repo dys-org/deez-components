@@ -14,7 +14,6 @@ const lastName = ref('Soards');
           v-model="genericVal"
           label="First Name"
           name="firstName"
-          status="valid"
           placeholder="Don't use placeholders."
           description="Enter your first name."
         />
@@ -29,7 +28,7 @@ const lastName = ref('Soards');
           label="Email"
           name="email"
           status="error"
-          error-message="Not a valid email address."
+          error-message="Not a valid email address"
           placeholder="Don't use placeholders."
         />
         <p class="mt-8 font-mono">Value: {{ genericVal }}</p>

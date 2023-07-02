@@ -9,7 +9,7 @@ export interface DInputProps {
   hideLabel?: boolean;
   description?: string;
   type?: 'text' | 'email' | 'url' | 'password';
-  status?: 'valid' | 'error';
+  status?: 'error';
   errorMessage?: string;
 }
 
@@ -20,7 +20,7 @@ defineOptions({
 const props = withDefaults(defineProps<DInputProps>(), {
   type: 'text',
   hideLabel: false,
-  status: 'valid',
+  errorMessage: 'Invalid input',
 });
 
 const emit = defineEmits(['update:modelValue']);
