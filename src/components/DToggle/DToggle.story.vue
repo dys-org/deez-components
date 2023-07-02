@@ -6,6 +6,7 @@ import { logEvent } from 'histoire/client';
 const tg1 = ref(false);
 const tg2 = ref(false);
 const tg3 = ref(false);
+const tg4 = ref(false);
 </script>
 
 <template>
@@ -36,11 +37,11 @@ const tg3 = ref(false);
     </Variant>
     <Variant title="Label Left with Description">
       <DToggle
-        v-model="tg3"
+        v-model="tg4"
         label="Feature Flag"
         label-left
         description="Additonal information is provided about this toggle."
-        @update:modelValue="logEvent('Clicked Toggle', { tg3 })"
+        @update:modelValue="logEvent('Clicked Toggle', { tg4 })"
       />
     </Variant>
   </Story>
