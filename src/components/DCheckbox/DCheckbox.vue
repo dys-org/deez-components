@@ -37,7 +37,7 @@ const checked = computed({
         type="checkbox"
         :value="props.value"
         v-model="checked"
-        class="h-4 w-4 rounded border-black/40 text-indigo-600 focus:ring-indigo-600 dark:border-white/30 dark:bg-white/5 dark:checked:bg-current"
+        class="h-4 w-4 rounded border-black/40 text-primary-600 focus:ring-primary-600 dark:border-white/30 dark:bg-white/5 dark:checked:bg-current"
         v-bind="$attrs"
       />
     </div>

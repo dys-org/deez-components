@@ -35,7 +35,7 @@ const picked = computed({
           :name="props.name"
           type="radio"
           v-model="picked"
-          class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 dark:border-white/30 dark:bg-white/5 dark:checked:bg-current"
+          class="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-600 dark:border-white/30 dark:bg-white/5 dark:checked:bg-current"
         />
         <label :for="opt.id" class="ml-3 block text-sm font-medium leading-6">
           {{ opt.label }}

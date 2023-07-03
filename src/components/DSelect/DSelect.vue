@@ -46,7 +46,7 @@ const picked = computed({
     <select
       :id="props.name"
       :name="props.name"
-      class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 dark:bg-gray-700 dark:ring-white/10 dark:focus:ring-indigo-500 sm:text-sm sm:leading-6"
+      class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary-600 dark:bg-gray-700 dark:ring-white/10 dark:focus:ring-primary-500 sm:text-sm sm:leading-6"
       :class="{ 'mt-2': !props.labelLeft }"
       v-model="picked"
     >

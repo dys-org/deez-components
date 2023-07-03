@@ -53,7 +53,7 @@ const isError = computed(() => props.status === 'error');
         :class="[
           isError
             ? 'pr-10 text-red-600 ring-red-500 focus:ring-red-500 dark:text-red-500'
-            : 'ring-gray-300 focus:ring-indigo-500 dark:ring-white/10 dark:focus:ring-indigo-500',
+            : 'ring-gray-300 focus:ring-primary-500 dark:ring-white/10 dark:focus:ring-primary-500',
         ]"
         @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         :value="props.modelValue"
