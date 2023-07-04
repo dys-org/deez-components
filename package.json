@@ -71,7 +71,7 @@
     "vue-tsc": "^1.6.5"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "pnpm dlx lint-staged"
   },
   "lint-staged": {
     "*.{vue,ts,js,cjs}": [
