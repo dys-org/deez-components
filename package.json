@@ -20,6 +20,9 @@
     "type": "git",
     "url": "https://github.com/dys-org/deez-components"
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p build:types build-only",
@@ -33,7 +36,8 @@
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "test": "echo \"No test specified\""
   },
   "peerDependencies": {
     "@headlessui/vue": "^1.7.14",
