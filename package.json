@@ -36,8 +36,10 @@
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
-    "prepublish": "npm run build",
-    "test": "echo \"No test specified\""
+    "test": "echo \"No test specified\"",
+    "prepublish": "pnpm build",
+    "preversion": "pnpm test",
+    "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
     "@headlessui/vue": "^1.7.14",
