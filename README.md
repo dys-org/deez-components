@@ -11,13 +11,13 @@ pnpm add deez-components
 
 Make sure all `peerDependencies` are installed.
 
-```
+```sh
 pnpm add @headlessui/vue @tailwindcss/forms tailwindcss vue
 ```
 
 The utility classes are not bundled with the package. After installing add the following to the content list of your `tailwind.config.*`, otherwise the necessary CSS will not be generated.
 
-```
+```js
 content: [
   ...
   './node_modules/deez-components/**/*.js',
