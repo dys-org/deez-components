@@ -10,7 +10,7 @@ export interface DInputProps {
   label: string;
   hideLabel?: boolean;
   description?: string;
-  type?: 'text' | 'email' | 'url' | 'password';
+  type?: 'text' | 'email' | 'url' | 'password' | 'tel';
   status?: 'error';
   errorMessage?: string;
 }
@@ -36,6 +36,14 @@ const id = (attrs.id as string) || props.name;
 const isPassword = props.type === 'password';
 
 const isError = computed(() => props.status === 'error');
+const input = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(val) {
+    emit('update:modelValue', val);
+  },
+});
 </script>
 
 <template>
@@ -61,8 +69,7 @@ const isError = computed(() => props.status === 'error');
             ? 'pr-10 text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-white/10 dark:focus:ring-primary-500',
         ]"
-        @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-        :value="props.modelValue"
+        v-model.trim="input"
         :aria-invalid="isError"
         v-bind="attrs"
       />
@@ -70,7 +77,7 @@ const isError = computed(() => props.status === 'error');
       <button
         v-if="isPassword"
         type="button"
-        class="absolute inset-y-0 right-0 flex items-center pr-3"
+        class="absolute inset-y-0 right-0 mr-2 flex items-center px-1"
         @click="showPassword = !showPassword"
       >
         <IconEyeOff v-if="showPassword" class="h-5 w-5" aria-hidden="true" />
