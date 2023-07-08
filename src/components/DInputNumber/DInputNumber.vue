@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs } from 'vue';
 import IconAlertCircle from '~icons/feather/alert-circle';
+import IconPlus from '~icons/feather/plus';
+import IconMinus from '~icons/feather/minus';
 
 export interface DInputNumberProps {
   modelValue: number | string;
@@ -69,35 +71,35 @@ const input = computed({
         v-bind="attrs"
         ref="inputEl"
       />
-      <!-- increment/decrement buttons -->
+
       <div class="absolute inset-y-0 right-0 flex items-center pr-2">
-        <button
-          type="button"
-          @click="
-            inputEl?.stepUp(1);
-            emit('update:modelValue', parseFloat(inputEl?.value as string));
-          "
-          class="px-1.5 text-lg hover:bg-gray-50 dark:hover:bg-white/5"
-        >
-          +
-        </button>
+        <!-- error state icon -->
+        <div v-if="isError" class="pointer-events-none mr-1">
+          <IconAlertCircle class="h-5 w-5 text-danger-500" aria-hidden="true" />
+        </div>
+        <!-- increment/decrement buttons -->
         <button
           type="button"
           @click="
             inputEl?.stepDown(1);
             emit('update:modelValue', parseFloat(inputEl?.value as string));
           "
-          class="px-1.5 text-lg hover:bg-gray-50 dark:hover:bg-white/5"
+          aria-label="Decrement value"
+          class="p-0.5 hover:bg-gray-50 dark:hover:bg-white/5"
         >
-          -
+          <IconMinus class="h-4 w-4" aria-hidden="true" />
         </button>
-      </div>
-      <!-- error state icon -->
-      <div
-        v-if="isError"
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-      >
-        <IconAlertCircle class="h-5 w-5 text-danger-500" aria-hidden="true" />
+        <button
+          type="button"
+          @click="
+            inputEl?.stepUp(1);
+            emit('update:modelValue', parseFloat(inputEl?.value as string));
+          "
+          aria-label="Increment value"
+          class="p-0.5 text-lg hover:bg-gray-50 dark:hover:bg-white/5"
+        >
+          <IconPlus class="h-4 w-4" aria-hidden="true" />
+        </button>
       </div>
     </div>
   </div>
