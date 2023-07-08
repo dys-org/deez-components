@@ -20,6 +20,7 @@ const lastName = ref('Soards');
         <p class="mt-8 font-mono">Value: {{ genericVal }}</p>
       </div>
     </Variant>
+
     <Variant title="Email Invalid">
       <div class="w-96">
         <DInput
@@ -34,21 +35,37 @@ const lastName = ref('Soards');
         <p class="mt-8 font-mono">Value: {{ genericVal }}</p>
       </div>
     </Variant>
+
     <Variant title="Disabled">
       <div class="w-96">
         <DInput v-model="lastName" label="Last Name" name="lastName" disabled />
         <p class="mt-8 font-mono">Value: {{ lastName }}</p>
       </div>
     </Variant>
-    <Variant title="Hidden Label">
+
+    <Variant title="Hidden Label with ID passed">
       <div class="w-96">
         <DInput
           v-model="genericVal"
           type="password"
           label="Invisible"
           name="invisible"
+          id="attrs-id"
           hide-label
           placeholder="This is terrible for a11y"
+        />
+        <p class="mt-8 font-mono">Value: {{ genericVal }}</p>
+      </div>
+    </Variant>
+
+    <Variant title="Password">
+      <div class="w-96">
+        <DInput
+          v-model="genericVal"
+          label="Password"
+          name="password"
+          description="ABC 123 is good."
+          type="password"
         />
         <p class="mt-8 font-mono">Value: {{ genericVal }}</p>
       </div>
