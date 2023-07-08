@@ -23,3 +23,20 @@ content: [
   './node_modules/deez-components/**/*.js',
 ],
 ```
+
+Your "brand" colors for `primary` and `danger` also need to be set in the `tailwind.config.*`
+The following maps them to the default tailwind blue and red colors.
+
+```js
+const colors = require('tailwindcss/colors');
+...
+theme: {
+  extend: {
+    ...
+    colors: {
+      primary: colors.blue,
+      danger: colors.red,
+    },
+  },
+},
+```
