@@ -3,7 +3,6 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 import IconAlertTriangle from '~icons/feather/alert-triangle';
 import IconCheckCircle from '~icons/feather/check-circle';
 import { DButton } from '../DButton';
-import { computed } from 'vue';
 
 export interface DModalProps {
   open: boolean;
@@ -23,7 +22,8 @@ const props = withDefaults(defineProps<DModalProps>(), {
 
 const emit = defineEmits(['update:open', 'confirm']);
 
-const isDanger = computed(() => props.danger === true);
+// static computed values
+const isDanger = props.danger === true;
 
 function closeDialog() {
   emit('update:open', false);

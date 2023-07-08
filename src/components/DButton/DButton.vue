@@ -19,11 +19,12 @@ const emit = defineEmits<{
   click: [event: MouseEvent];
 }>();
 
-const isDefault = computed(() => props.variant === 'default');
-const isPrimary = computed(() => props.variant === 'primary');
-const isLink = computed(() => props.variant === 'link');
+// static computed values
+const isDefault = props.variant === 'default';
+const isPrimary = props.variant === 'primary';
+const isLink = props.variant === 'link';
+const isDanger = props.danger === true;
 
-const isDanger = computed(() => props.danger === true);
 const isLoading = computed(() => props.loading === true);
 
 function onClick(e: MouseEvent) {
