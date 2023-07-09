@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import DAutoComplete from './DAutoComplete.vue';
+import IconSearch from '~icons/feather/search';
 import { logEvent } from 'histoire/client';
 
 const person = ref(null);
@@ -46,6 +47,18 @@ const people = [
         hideLabel
         placeholder="Type the person's name"
       />
+    </Variant>
+    <Variant title="With icon (Search)">
+      <DAutoComplete
+        label="Assign to"
+        :options="people"
+        v-model="person"
+        @update:modelValue="logEvent('autocomplete update', $event)"
+        hideLabel
+        placeholder="Search"
+      >
+        <template #icon> <IconSearch class="h-5 w-5" aria-hidden="true" /></template>
+      </DAutoComplete>
     </Variant>
   </Story>
 </template>
