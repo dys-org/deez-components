@@ -66,29 +66,25 @@ const input = computed({
         class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6"
         :class="[
           isError
-            ? 'pr-10 text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
+            ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-white/10 dark:focus:ring-primary-500',
+          { 'pr-16': isPassword && isError },
+          { 'pr-10': isPassword || isError },
         ]"
         v-model.trim="input"
         :aria-invalid="isError"
         v-bind="attrs"
       />
-      <!-- show/hide password -->
-      <button
-        v-if="isPassword"
-        type="button"
-        class="absolute inset-y-0 right-0 mr-2 flex items-center px-1"
-        @click="showPassword = !showPassword"
-      >
-        <IconEyeOff v-if="showPassword" class="h-5 w-5" aria-hidden="true" />
-        <IconEye v-else class="h-5 w-5" aria-hidden="true" />
-      </button>
-      <!-- error state icon -->
-      <div
-        v-if="isError"
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-      >
-        <IconAlertCircle class="h-5 w-5 text-danger-500" aria-hidden="true" />
+      <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
+        <!-- error state icon -->
+        <div v-if="isError" class="pointer-events-none pr-1">
+          <IconAlertCircle class="h-5 w-5 text-danger-500" aria-hidden="true" />
+        </div>
+        <!-- show/hide password -->
+        <button v-if="isPassword" type="button" class="px-1" @click="showPassword = !showPassword">
+          <IconEyeOff v-if="showPassword" class="h-5 w-5" aria-hidden="true" />
+          <IconEye v-else class="h-5 w-5" aria-hidden="true" />
+        </button>
       </div>
     </div>
   </div>
