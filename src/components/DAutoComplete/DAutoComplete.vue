@@ -93,7 +93,7 @@ function onClear() {
 
       <ComboboxOptions
         v-if="filtered.length > 0"
-        class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-900 sm:text-sm"
+        class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 sm:text-sm"
       >
         <ComboboxOption
           v-for="opt in filtered"
@@ -105,7 +105,7 @@ function onClear() {
           <li
             :class="[
               'relative cursor-default select-none py-2 pl-3 pr-9 ',
-              active ? 'bg-primary-600 text-white dark:bg-primary-600' : 'dark:bg-white/5',
+              active && 'bg-primary-600 text-white dark:bg-primary-600',
             ]"
           >
             <div class="flex items-center">

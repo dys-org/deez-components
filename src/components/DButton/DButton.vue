@@ -47,7 +47,7 @@ function onClick(e: MouseEvent) {
       'dark:text-white': isDefault && !isDanger,
       'text-danger-600 dark:text-danger-500': isDefault && isDanger,
 
-      'text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ':
+      'text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2':
         isPrimary,
       'bg-primary-600 hover:bg-primary-700 focus-visible:outline-primary-400 dark:bg-primary-500 dark:hover:bg-primary-400':
         isPrimary && !isDanger,
