@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs } from 'vue';
-import IconAlertCircle from '~icons/feather/alert-circle';
+import { DInlineError } from '../DInlineError';
+
 import IconPlus from '~icons/feather/plus';
 import IconMinus from '~icons/feather/minus';
 
@@ -47,16 +48,16 @@ const input = computed({
   <div>
     <label class="block text-sm leading-6" :class="{ 'sr-only': props.hideLabel }" :for="id">
       <span class="font-medium">{{ props.label }}</span>
-      <span v-if="isError" class="block text-danger-600 dark:text-danger-500">
-        {{ props.errorMessage }}
-      </span>
-      <span v-else-if="props.description" class="block text-black/60 dark:text-white/60">
+
+      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
         {{ props.description }}
       </span>
+      <DInlineError v-if="isError" :message="errorMessage" />
     </label>
 
-    <div class="relative mt-2">
+    <div :class="['relative', !props.hideLabel && 'mt-2']">
       <input
+        v-bind="attrs"
         type="number"
         :name="props.name"
         :id="id"
@@ -68,7 +69,7 @@ const input = computed({
         ]"
         v-model="input"
         :aria-invalid="isError"
-        v-bind="attrs"
+        :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
         ref="inputEl"
       />
 
@@ -102,5 +103,11 @@ const input = computed({
         </button>
       </div>
     </div>
+    <DInlineError
+      v-if="isError && props.hideLabel"
+      :message="props.errorMessage"
+      class="mt-2"
+      :id="`${id}ErrorMessage`"
+    />
   </div>
 </template>

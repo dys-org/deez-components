@@ -8,7 +8,7 @@ const lastName = ref('Soards');
 
 <template>
   <Story>
-    <Variant title="Default">
+    <Variant title="Default with description">
       <div class="w-96">
         <DInput
           v-model="genericVal"
@@ -21,7 +21,7 @@ const lastName = ref('Soards');
       </div>
     </Variant>
 
-    <Variant title="Email Invalid">
+    <Variant title="Email Invalid no description">
       <div class="w-96">
         <DInput
           v-model="genericVal"
@@ -53,6 +53,22 @@ const lastName = ref('Soards');
           id="attrs-id"
           hide-label
           placeholder="This is terrible for a11y"
+        />
+        <p class="mt-8 font-mono">Value: {{ genericVal }}</p>
+      </div>
+    </Variant>
+
+    <Variant title="Hidden Label with Error">
+      <div class="w-96">
+        <DInput
+          v-model="genericVal"
+          type="password"
+          label="Invisible"
+          name="invisible"
+          hide-label
+          placeholder="This is terrible for a11y"
+          status="error"
+          error-message="This is an error message."
         />
         <p class="mt-8 font-mono">Value: {{ genericVal }}</p>
       </div>

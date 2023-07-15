@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
+import { DInlineError } from '../DInlineError';
 
 export interface DSelectOption {
   value: string;
@@ -14,16 +15,25 @@ export interface DSelectProps {
   description?: string;
   labelLeft?: boolean;
   options: DSelectOption[];
+  status?: 'error';
+  errorMessage?: string;
 }
 
 const props = withDefaults(defineProps<DSelectProps>(), {
   hideLabel: false,
   defaultText: 'Choose an option',
   labelLeft: false,
+  errorMessage: 'Invalid input',
 });
 
 const emit = defineEmits(['update:modelValue']);
 
+const attrs = useAttrs();
+
+// static computed values
+const id = (attrs.id as string) || props.name;
+
+const isError = computed(() => props.status === 'error');
 const picked = computed({
   get() {
     return props.modelValue;
@@ -37,18 +47,30 @@ const picked = computed({
 <template>
   <div :class="{ 'flex items-center gap-4': props.labelLeft }">
     <label
-      :for="props.name"
-      class="block whitespace-nowrap text-sm font-medium leading-6"
-      :class="{ 'sr-only': hideLabel }"
+      :for="id"
+      class="block whitespace-nowrap text-sm leading-6"
+      :class="{ 'sr-only': props.hideLabel }"
     >
-      {{ props.label }}
+      <span class="font-medium">{{ props.label }}</span>
+      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
+        {{ props.description }}
+      </span>
+      <DInlineError v-if="isError" :message="props.errorMessage" />
     </label>
     <select
-      :id="props.name"
+      v-bind="attrs"
+      :id="id"
       :name="props.name"
-      class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary-600 dark:bg-white/5 dark:ring-white/10 dark:focus:ring-primary-500 sm:text-sm sm:leading-6"
-      :class="{ 'mt-2': !props.labelLeft }"
+      class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6"
+      :class="[
+        isError
+          ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
+          : 'ring-gray-300 focus:ring-primary-600 dark:ring-white/10 dark:focus:ring-primary-500',
+        { 'mt-2': !props.labelLeft && !props.hideLabel },
+      ]"
       v-model="picked"
+      :aria-invalid="isError"
+      :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
     >
       <option
         v-for="opt in props.options"
@@ -59,6 +81,12 @@ const picked = computed({
         {{ opt.display }}
       </option>
     </select>
+    <DInlineError
+      v-if="isError && props.hideLabel"
+      :message="props.errorMessage"
+      class="mt-2"
+      :id="`${id}ErrorMessage`"
+    />
   </div>
 </template>
 ==

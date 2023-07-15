@@ -35,7 +35,10 @@ const checked = computed({
     <p v-if="props.description" class="text-sm text-black/60 dark:text-white/60" :id="describedBy">
       {{ props.description }}
     </p>
-    <div class="mt-4 flex flex-col gap-x-10 gap-y-4" :class="{ 'sm:flex-row': props.inline }">
+    <div
+      class="flex flex-col gap-x-10 gap-y-4"
+      :class="{ 'sm:flex-row': props.inline, 'mt-4': !props.hideLegend }"
+    >
       <div v-for="opt in props.options" :key="opt.id" class="flex items-center">
         <input
           :id="opt.id"

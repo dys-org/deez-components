@@ -20,6 +20,8 @@ const people = [
 const select1 = ref('');
 const select2 = ref('');
 const select3 = ref('');
+const select4 = ref('');
+const select5 = ref('');
 </script>
 
 <template>
@@ -31,6 +33,29 @@ const select3 = ref('');
         name="people"
         :options="people"
         @update:modelValue="(val) => logEvent('updated select', { value: val })"
+      />
+    </Variant>
+
+    <Variant title="With Description">
+      <DSelect
+        v-model="select4"
+        label="Assign To"
+        name="people"
+        :options="people"
+        @update:modelValue="(val) => logEvent('updated select', { value: val })"
+        description="Select a person to assign to this task."
+      />
+    </Variant>
+
+    <Variant title="With Error">
+      <DSelect
+        v-model="select5"
+        label="Assign To"
+        name="people"
+        :options="people"
+        @update:modelValue="(val) => logEvent('updated select', { value: val })"
+        status="error"
+        errorMessage="This field is required."
       />
     </Variant>
 
@@ -53,6 +78,19 @@ const select3 = ref('');
         :options="people"
         hide-label
         @update:modelValue="logEvent('updated select', { value: select3 })"
+      />
+    </Variant>
+
+    <Variant title="Hidden Label with Error">
+      <DSelect
+        v-model="select3"
+        label="Assign To"
+        name="people"
+        :options="people"
+        hide-label
+        @update:modelValue="logEvent('updated select', { value: select3 })"
+        status="error"
+        errorMessage="This field is required."
       />
     </Variant>
   </Story>

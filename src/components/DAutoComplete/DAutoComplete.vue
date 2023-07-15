@@ -9,6 +9,8 @@ import {
   ComboboxOptions,
 } from '@headlessui/vue';
 import { dom } from '../../utils';
+import { DInlineError } from '../DInlineError';
+
 import IconCheck from '~icons/feather/check';
 import IconChevronDown from '~icons/feather/chevron-down';
 import IconX from '~icons/feather/x';
@@ -25,6 +27,7 @@ export interface Option {
 
 export interface DAutoCompleteProps {
   modelValue: Option | null;
+  name: string;
   label: string;
   hideLabel?: boolean;
   description?: string;
@@ -34,13 +37,17 @@ export interface DAutoCompleteProps {
   placeholder?: string;
 }
 
-const props = withDefaults(defineProps<DAutoCompleteProps>(), { placeholder: '' });
+const props = withDefaults(defineProps<DAutoCompleteProps>(), {
+  hideLabel: false,
+  errorMessage: 'Invalid input',
+});
 
 const emit = defineEmits(['update:modelValue']);
 
 const query = ref('');
 const inputRef = ref<HTMLInputElement | null>(null);
 
+const isError = computed(() => props.status === 'error');
 const selected = computed({
   get() {
     return props.modelValue;
@@ -66,23 +73,33 @@ function onClear() {
 }
 </script>
 <template>
-  <Combobox as="div" v-model="selected">
-    <ComboboxLabel class="block text-sm font-medium leading-6" :class="{ 'sr-only': hideLabel }">
-      {{ props.label }}
+  <Combobox as="div" v-model="selected" :name="props.name">
+    <ComboboxLabel class="block text-sm leading-6" :class="{ 'sr-only': hideLabel }">
+      <span class="font-medium">{{ props.label }}</span>
+      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
+        {{ props.description }}
+      </span>
+      <DInlineError v-if="isError" :message="props.errorMessage" />
     </ComboboxLabel>
     <div class="relative mt-2">
       <div class="absolute inset-y-0 left-2 flex items-center text-gray-400 dark:text-gray-500">
         <slot name="icon"></slot>
       </div>
       <ComboboxInput
+        :id="props.name"
         :class="[
-          'w-full rounded-md border-0 bg-white py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:bg-white/5 dark:ring-white/10 dark:placeholder:text-white/30 dark:focus:ring-primary-500 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
+          'w-full rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
+          isError
+            ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
+            : 'ring-gray-300 focus:ring-primary-600 dark:ring-white/10 dark:focus:ring-primary-500',
           selected ? 'pr-14' : 'pr-10',
           $slots.icon ? 'pl-9' : 'pr-3',
         ]"
         @change="query = $event.target.value"
         :displayValue="(opt) => (opt as Option)?.label"
         :placeholder="placeholder"
+        :aria-invalid="isError"
+        :aria-errormessage="isError && props.hideLabel ? `${props.name}ErrorMessage` : undefined"
         ref="inputRef"
       />
       <ComboboxButton
@@ -163,5 +180,11 @@ function onClear() {
         </button>
       </div>
     </div>
+    <DInlineError
+      v-if="isError && props.hideLabel"
+      :message="props.errorMessage"
+      class="mt-2"
+      :id="`${props.name}ErrorMessage`"
+    />
   </Combobox>
 </template>

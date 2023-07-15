@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed, useAttrs } from 'vue';
+import { DInlineError } from '../DInlineError';
+
 export interface DTextareaProps {
   modelValue: string;
   name: string;
@@ -6,6 +9,8 @@ export interface DTextareaProps {
   hideLabel?: boolean;
   description?: string;
   rows?: number;
+  status?: 'error';
+  errorMessage?: string;
 }
 
 defineOptions({
@@ -15,30 +20,44 @@ defineOptions({
 const props = withDefaults(defineProps<DTextareaProps>(), {
   hideLabel: false,
   rows: 4,
+  errorMessage: 'This field is invalid.',
 });
 
 const emit = defineEmits(['update:modelValue']);
+
+const attrs = useAttrs();
+
+// static computed values
+const id = (attrs.id as string) || props.name;
+
+const isError = computed(() => props.status === 'error');
 </script>
 
 <template>
   <div>
-    <label
-      :for="$attrs.id as string || props.name"
-      class="block text-sm font-medium leading-6"
-      :class="{ 'sr-only': hideLabel }"
-    >
-      {{ props.label }}
+    <label :for="id" class="block text-sm leading-6" :class="{ 'sr-only': props.hideLabel }">
+      <span class="font-medium">{{ props.label }}</span>
+      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
+        {{ props.description }}
+      </span>
+      <DInlineError v-if="isError" :message="errorMessage" />
     </label>
-    <div class="mt-2">
+    <div :class="['relative', !props.hideLabel && 'mt-2']">
       <textarea
+        v-bind="attrs"
         :rows="props.rows"
         :name="props.name"
-        :id="props.name"
-        class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black/40 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:bg-white/5 dark:ring-white/10 dark:placeholder:text-white/30 dark:focus:ring-primary-500 sm:text-sm sm:leading-6"
+        :id="id"
+        :class="[
+          'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset dark:bg-white/5  dark:placeholder:text-white/30 sm:text-sm sm:leading-6',
+          isError
+            ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
+            : 'ring-gray-300 focus:ring-primary-600 dark:ring-white/10 dark:focus:ring-primary-500',
+        ]"
         @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         :value="props.modelValue"
-        v-bind="$attrs"
       />
     </div>
+    <DInlineError v-if="isError && props.hideLabel" :message="props.errorMessage" class="mt-2" />
   </div>
 </template>

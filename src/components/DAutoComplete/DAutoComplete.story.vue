@@ -53,18 +53,34 @@ const things = [
 
 <template>
   <Story>
-    <Variant title="Basic">
+    <Variant title="Basic with description">
       <DAutoComplete
         label="Assign to"
+        name="auto1"
         :options="basic"
         v-model="selected"
         @update:modelValue="logEvent('autocomplete update', $event)"
+        description="Select a person to assign to this task."
+      />
+      <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
+    </Variant>
+    <Variant title="With Error">
+      <DAutoComplete
+        label="Assign to"
+        name="auto2"
+        :options="basic"
+        v-model="selected"
+        @update:modelValue="logEvent('autocomplete update', $event)"
+        description="Select a person to assign to this task."
+        error-message="This is a required field."
+        status="error"
       />
       <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
     </Variant>
     <Variant title="Images">
       <DAutoComplete
         label="Assign to"
+        name="auto3"
         :options="people"
         v-model="selected"
         @update:modelValue="logEvent('autocomplete update', $event)"
@@ -74,6 +90,7 @@ const things = [
     <Variant title="Icons">
       <DAutoComplete
         label="Check these out"
+        name="auto4"
         :options="things"
         v-model="selected"
         @update:modelValue="logEvent('autocomplete update', $event)"
@@ -83,6 +100,7 @@ const things = [
     <Variant title="Hidden Label">
       <DAutoComplete
         label="Assign to"
+        name="auto5"
         :options="people"
         v-model="selected"
         @update:modelValue="logEvent('autocomplete update', $event)"
@@ -91,9 +109,24 @@ const things = [
       />
       <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
     </Variant>
+    <Variant title="Hidden Label with Error">
+      <DAutoComplete
+        label="Assign to"
+        name="auto6"
+        :options="people"
+        v-model="selected"
+        @update:modelValue="logEvent('autocomplete update', $event)"
+        hideLabel
+        placeholder="Type the person's name"
+        status="error"
+        error-message="This is a required field."
+      />
+      <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
+    </Variant>
     <Variant title="With icon (Search)">
       <DAutoComplete
         label="Assign to"
+        name="auto7"
         :options="people"
         v-model="selected"
         @update:modelValue="logEvent('autocomplete update', $event)"

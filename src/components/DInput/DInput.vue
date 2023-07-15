@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs } from 'vue';
-import IconAlertCircle from '~icons/feather/alert-circle';
+import { DInlineError } from '../DInlineError';
+
 import IconEye from '~icons/feather/eye';
 import IconEyeOff from '~icons/feather/eye-off';
 
@@ -22,7 +23,7 @@ defineOptions({
 const props = withDefaults(defineProps<DInputProps>(), {
   type: 'text',
   hideLabel: false,
-  errorMessage: 'Invalid input',
+  errorMessage: 'This field is invalid.',
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -50,16 +51,15 @@ const input = computed({
   <div>
     <label class="block text-sm leading-6" :class="{ 'sr-only': props.hideLabel }" :for="id">
       <span class="font-medium">{{ props.label }}</span>
-      <span v-if="isError" class="block text-danger-600 dark:text-danger-500">
-        {{ props.errorMessage || 'This field is invalid.' }}
-      </span>
-      <span v-else-if="props.description" class="block text-black/60 dark:text-white/60">
+      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
         {{ props.description }}
       </span>
+      <DInlineError v-if="isError" :message="errorMessage" />
     </label>
 
-    <div class="relative mt-2">
+    <div :class="['relative', !props.hideLabel && 'mt-2']">
       <input
+        v-bind="attrs"
         :type="isPassword ? (showPassword ? 'text' : props.type) : props.type"
         :name="props.name"
         :id="id"
@@ -67,13 +67,13 @@ const input = computed({
         :class="[
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
-            : 'ring-gray-300 focus:ring-primary-500 dark:ring-white/10 dark:focus:ring-primary-500',
+            : 'ring-gray-300 focus:ring-primary-600 dark:ring-white/10 dark:focus:ring-primary-500',
           { 'pr-16': isPassword && isError },
           { 'pr-10': isPassword || isError },
         ]"
         v-model.trim="input"
         :aria-invalid="isError"
-        v-bind="attrs"
+        :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
       />
       <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
         <!-- error state icon -->
@@ -87,5 +87,11 @@ const input = computed({
         </button>
       </div>
     </div>
+    <DInlineError
+      v-if="isError && props.hideLabel"
+      :message="props.errorMessage"
+      class="mt-2"
+      :id="`${id}ErrorMessage`"
+    />
   </div>
 </template>
