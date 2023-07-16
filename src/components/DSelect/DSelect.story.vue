@@ -25,7 +25,7 @@ const select5 = ref('');
 </script>
 
 <template>
-  <Story :layout="{ type: 'grid', width: '100%' }">
+  <Story :layout="{ type: 'grid', width: '400px' }">
     <Variant title="Default">
       <DSelect
         v-model="select1"

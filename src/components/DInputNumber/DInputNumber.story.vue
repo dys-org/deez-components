@@ -3,52 +3,60 @@ import { ref } from 'vue';
 import DInputNumber from './DInputNumber.vue';
 import { logEvent } from 'histoire/client';
 
-const num = ref(0);
+const num1 = ref(0);
+const num2 = ref(0);
+const num3 = ref(0);
 </script>
 
 <template>
-  <Story>
+  <Story :layout="{ type: 'grid', width: '100%' }">
     <Variant title="Default">
-      <DInputNumber
-        name="number"
-        label="Pick a number"
-        description="Any even number 0 - 10"
-        min="0"
-        max="10"
-        step="2.0"
-        v-model="num"
-        @update:modelValue="logEvent('number updated', $event)"
-      />
-      <p class="mt-8 font-mono">Value: {{ num }}</p>
+      <div class="w-96">
+        <DInputNumber
+          name="number"
+          label="Pick a number"
+          description="Any even number 0 - 10"
+          min="0"
+          max="10"
+          step="2.0"
+          v-model="num1"
+          @update:modelValue="logEvent('num1 updated', $event)"
+        />
+      </div>
+      <p class="mt-8 font-mono">Value: {{ num1 }}</p>
     </Variant>
     <Variant title="Error">
-      <DInputNumber
-        name="number"
-        label="Pick a number"
-        description="Any even number 0 - 10"
-        min="0"
-        max="10"
-        step="2.0"
-        v-model="num"
-        @update:modelValue="logEvent('number updated', $event)"
-        status="error"
-      />
-      <p class="mt-8 font-mono">Value: {{ num }}</p>
+      <div class="w-96">
+        <DInputNumber
+          name="number"
+          label="Pick a number"
+          description="Any even number 0 - 10"
+          min="0"
+          max="10"
+          step="2.0"
+          v-model="num2"
+          @update:modelValue="logEvent('num 2 updated', $event)"
+          status="error"
+        />
+      </div>
+      <p class="mt-8 font-mono">Value: {{ num2 }}</p>
     </Variant>
     <Variant title="Hidden label with error">
-      <DInputNumber
-        name="number"
-        label="Pick a number"
-        description="Any even number 0 - 10"
-        min="0"
-        max="10"
-        step="2.0"
-        v-model="num"
-        @update:modelValue="logEvent('number updated', $event)"
-        status="error"
-        hideLabel
-      />
-      <p class="mt-8 font-mono">Value: {{ num }}</p>
+      <div class="w-96">
+        <DInputNumber
+          name="number"
+          label="Pick a number"
+          description="Any even number 0 - 10"
+          min="0"
+          max="10"
+          step="2.0"
+          v-model="num3"
+          @update:modelValue="logEvent('num3 updated', $event)"
+          status="error"
+          hideLabel
+        />
+      </div>
+      <p class="mt-8 font-mono">Value: {{ num3 }}</p>
     </Variant>
   </Story>
 </template>

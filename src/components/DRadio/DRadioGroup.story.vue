@@ -8,41 +8,43 @@ const notificationMethods = [
   { id: 'push', label: 'Push notification', value: 'push' },
 ];
 
-const chosen = ref('email');
+const chosen1 = ref('email');
+const chosen2 = ref('email');
+const chosen3 = ref('email');
 </script>
 
 <template>
-  <Story>
+  <Story :layout="{ type: 'grid', width: '100%' }">
     <Variant title="Default">
       <DRadioGroup
         :options="notificationMethods"
-        name="notifMethods"
-        v-model="chosen"
+        name="notifMethods1"
+        v-model="chosen1"
         legend="Notifications"
         description="How would you prefer to be notified?"
       />
-      <p class="mt-8 font-mono dark:text-white/40">Chosen: {{ chosen }}</p>
+      <p class="mt-8 font-mono dark:text-white/40">Chosen: {{ chosen1 }}</p>
     </Variant>
     <Variant title="Inline">
       <DRadioGroup
         :options="notificationMethods"
-        name="notifMethods"
-        v-model="chosen"
+        name="notifMethods2"
+        v-model="chosen2"
         legend="Notifications"
         description="How would you prefer to be notified?"
         inline
       />
-      <p class="mt-8 font-mono dark:text-white/40">Chosen: {{ chosen }}</p>
+      <p class="mt-8 font-mono dark:text-white/40">Chosen: {{ chosen2 }}</p>
     </Variant>
     <Variant title="Hidden Legend no description">
       <DRadioGroup
         :options="notificationMethods"
-        name="notifMethods"
-        v-model="chosen"
+        name="notifMethods3"
+        v-model="chosen3"
         legend="Notifications"
         hide-legend
       />
-      <p class="mt-8 font-mono dark:text-white/40">Chosen: {{ chosen }}</p>
+      <p class="mt-8 font-mono dark:text-white/40">Chosen: {{ chosen3 }}</p>
     </Variant>
   </Story>
 </template>
