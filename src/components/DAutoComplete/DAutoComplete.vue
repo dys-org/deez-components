@@ -91,7 +91,7 @@ function onClear() {
           'w-full rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
-            : 'ring-gray-300 focus:ring-primary-600 dark:ring-white/10 dark:focus:ring-primary-500',
+            : 'ring-gray-300 focus:ring-primary-500 dark:ring-white/20 dark:focus:ring-primary-500',
           selected ? 'pr-14' : 'pr-10',
           $slots.icon ? 'pl-9' : 'pr-3',
         ]"
@@ -122,7 +122,7 @@ function onClear() {
           <li
             :class="[
               'relative cursor-default select-none py-2 pl-3 pr-9 ',
-              active && 'bg-primary-600 text-white dark:bg-primary-600',
+              active && 'bg-primary-600 text-white',
             ]"
           >
             <div class="flex items-center">

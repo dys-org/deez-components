@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {});
       <!-- button with text -->
       <MenuButton
         v-else
-        class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 transition-colors hover:bg-gray-50 dark:bg-white/10 dark:ring-white/10 dark:hover:bg-white/[.15]"
+        class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-white/10 dark:ring-white/5 dark:hover:bg-white/[.15]"
       >
         {{ props.label }} <IconChevronDown class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
       </MenuButton>

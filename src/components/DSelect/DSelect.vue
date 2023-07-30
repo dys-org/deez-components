@@ -65,7 +65,7 @@ const picked = computed({
       :class="[
         isError
           ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
-          : 'ring-gray-300 focus:ring-primary-600 dark:ring-white/10 dark:focus:ring-primary-500',
+          : 'ring-gray-300 focus:ring-primary-500 dark:ring-white/20',
         { 'mt-2': !props.labelLeft && !props.hideLabel },
       ]"
       v-model="picked"

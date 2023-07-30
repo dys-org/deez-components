@@ -40,18 +40,17 @@ function onClick(e: MouseEvent) {
 <template>
   <button
     :type="props.type"
-    class="inline-flex items-center gap-x-2 rounded px-3.5 py-2.5 text-sm font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60"
+    class="inline-flex items-center gap-x-2 rounded px-3.5 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 disabled:pointer-events-none disabled:opacity-60"
     :class="{
-      'bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:ring-transparent dark:hover:bg-white/[.15]':
+      'bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:ring-white/5 dark:hover:bg-white/[.15]':
         isDefault,
       'dark:text-white': isDefault && !isDanger,
       'text-danger-600 dark:text-danger-500': isDefault && isDanger,
 
-      'text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2':
-        isPrimary,
-      'bg-primary-600 hover:bg-primary-700 focus-visible:outline-primary-400 dark:bg-primary-500 dark:hover:bg-primary-400':
+      'text-white shadow-sm ': isPrimary,
+      'bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400':
         isPrimary && !isDanger,
-      'bg-danger-600 hover:bg-danger-700 focus-visible:outline-danger-400 dark:bg-danger-500 dark:hover:bg-danger-400':
+      'bg-danger-600 hover:bg-danger-700 dark:bg-danger-500 dark:hover:bg-danger-400':
         isPrimary && isDanger,
 
       'hover:underline focus:underline': isLink,
