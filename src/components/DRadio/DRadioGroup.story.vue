@@ -17,9 +17,9 @@ const chosen3 = ref('email');
   <Story :layout="{ type: 'grid', width: '100%' }">
     <Variant title="Default">
       <DRadioGroup
+        v-model="chosen1"
         :options="notificationMethods"
         name="notifMethods1"
-        v-model="chosen1"
         legend="Notifications"
         description="How would you prefer to be notified?"
       />
@@ -27,9 +27,9 @@ const chosen3 = ref('email');
     </Variant>
     <Variant title="Inline">
       <DRadioGroup
+        v-model="chosen2"
         :options="notificationMethods"
         name="notifMethods2"
-        v-model="chosen2"
         legend="Notifications"
         description="How would you prefer to be notified?"
         inline
@@ -38,9 +38,9 @@ const chosen3 = ref('email');
     </Variant>
     <Variant title="Hidden Legend no description">
       <DRadioGroup
+        v-model="chosen3"
         :options="notificationMethods"
         name="notifMethods3"
-        v-model="chosen3"
         legend="Notifications"
         hide-legend
       />

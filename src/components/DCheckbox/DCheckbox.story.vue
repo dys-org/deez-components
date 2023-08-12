@@ -11,20 +11,20 @@ const checkedNames = ref([]);
   <Story :layout="{ type: 'grid', width: '100%' }">
     <Variant title="Default (single boolean value)">
       <DCheckbox
+        id="box1"
         v-model="cb1"
         label="Candidates"
         name="box1"
-        id="box1"
         @update:modelValue="logEvent('Clicked CB1', { cb1 })"
       />
     </Variant>
 
     <Variant title="With Description">
       <DCheckbox
+        id="box2"
         v-model="cb2"
         label="Comments"
         name="box2"
-        id="box2"
         description="Get notified when someones posts a comment on a posting."
         @update:modelValue="logEvent('Clicked CB2', { cb2 })"
       />
@@ -33,26 +33,26 @@ const checkedNames = ref([]);
     <Variant title="Multiple (bound to same string array)">
       <div class="flex gap-8">
         <DCheckbox
+          id="david"
           v-model="checkedNames"
           label="David"
           name="checkedNames"
-          id="david"
           value="david"
           @update:modelValue="logEvent('Clicked David', checkedNames)"
         />
         <DCheckbox
+          id="gretel"
           v-model="checkedNames"
           label="Gretel"
           name="checkedNames"
-          id="gretel"
           value="gretel"
           @update:modelValue="logEvent('Clicked Gretel', checkedNames)"
         />
         <DCheckbox
+          id="sebastian"
           v-model="checkedNames"
           label="Sebastian"
           name="checkedNames"
-          id="sebastian"
           value="sebastian"
           @update:modelValue="logEvent('Clicked Sebastian', checkedNames)"
         />

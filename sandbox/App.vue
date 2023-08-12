@@ -26,15 +26,15 @@ watch(darkMode, (val) => {
         <h2 class="mb-4 text-xl font-bold">Checkbox</h2>
         <DCheckbox
           id="cb1"
+          v-model="cb1"
           name="cb1"
           label="Checkbox"
           description="Description of what this checkbox does"
-          v-model="cb1"
         ></DCheckbox>
       </div>
       <div class="border-b p-8">
         <h2 class="mb-4 text-xl font-bold">Toggle</h2>
-        <DToggle label="Dark Mode" v-model="darkMode" />
+        <DToggle v-model="darkMode" label="Dark Mode" />
       </div>
     </main>
   </div>

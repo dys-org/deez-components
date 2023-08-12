@@ -60,9 +60,10 @@ const input = computed({
     <div :class="['relative', !props.hideLabel && 'mt-2']">
       <input
         v-bind="attrs"
+        :id="id"
+        v-model.trim="input"
         :type="isPassword ? (showPassword ? 'text' : props.type) : props.type"
         :name="props.name"
-        :id="id"
         class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6"
         :class="[
           isError
@@ -71,15 +72,10 @@ const input = computed({
           { 'pr-16': isPassword && isError },
           { 'pr-10': isPassword || isError },
         ]"
-        v-model.trim="input"
         :aria-invalid="isError"
         :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
       />
       <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
-        <!-- error state icon -->
-        <div v-if="isError" class="pointer-events-none pr-1">
-          <IconAlertCircle class="h-5 w-5 text-danger-500" aria-hidden="true" />
-        </div>
         <!-- show/hide password -->
         <button v-if="isPassword" type="button" class="px-1" @click="showPassword = !showPassword">
           <IconEyeOff v-if="showPassword" class="h-5 w-5" aria-hidden="true" />
@@ -89,9 +85,9 @@ const input = computed({
     </div>
     <DInlineError
       v-if="isError && props.hideLabel"
+      :id="`${id}ErrorMessage`"
       :message="props.errorMessage"
       class="mt-2"
-      :id="`${id}ErrorMessage`"
     />
   </div>
 </template>

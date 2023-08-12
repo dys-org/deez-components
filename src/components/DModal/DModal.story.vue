@@ -23,11 +23,11 @@ function onConfirm(e: Event) {
       <DButton @click="isOpen = true">Open</DButton>
       <DModal
         v-model:open="isOpen"
-        @confirm="onConfirm"
         danger
         title="Delete Account"
         description="Are you sure you want to deactivate your account? All of your data will be permanently removed from our servers forever. This action cannot be undone."
         confirm-text="Yes, Delete"
+        @confirm="onConfirm"
       />
     </Variant>
 
@@ -35,10 +35,10 @@ function onConfirm(e: Event) {
       <DButton @click="isOpen = true">Open</DButton>
       <DModal
         v-model:open="isOpen"
-        @confirm="onConfirm"
         title="Yay, this is awesome!"
         confirm-text="Do it!"
         hide-icon
+        @confirm="onConfirm"
       >
         <template #content>
           <h4 class="text-xl">XL Text</h4>

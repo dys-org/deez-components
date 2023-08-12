@@ -34,10 +34,10 @@ const checked = computed({
       <input
         v-bind="$attrs"
         :id="props.id"
+        v-model="checked"
         :name="props.name"
         type="checkbox"
         :value="props.value"
-        v-model="checked"
         class="h-4 w-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500 dark:border-white/30 dark:bg-white/5 dark:ring-offset-gray-800 dark:checked:border-current dark:checked:bg-current"
       />
     </div>

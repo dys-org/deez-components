@@ -13,13 +13,13 @@ const num3 = ref(0);
     <Variant title="Default">
       <div class="w-96">
         <DInputNumber
+          v-model="num1"
           name="number"
           label="Pick a number"
           description="Any even number 0 - 10"
           min="0"
           max="10"
           step="2.0"
-          v-model="num1"
           @update:modelValue="logEvent('num1 updated', $event)"
         />
       </div>
@@ -28,15 +28,15 @@ const num3 = ref(0);
     <Variant title="Error">
       <div class="w-96">
         <DInputNumber
+          v-model="num2"
           name="number"
           label="Pick a number"
           description="Any even number 0 - 10"
           min="0"
           max="10"
           step="2.0"
-          v-model="num2"
-          @update:modelValue="logEvent('num 2 updated', $event)"
           status="error"
+          @update:modelValue="logEvent('num 2 updated', $event)"
         />
       </div>
       <p class="mt-8 font-mono">Value: {{ num2 }}</p>
@@ -44,16 +44,16 @@ const num3 = ref(0);
     <Variant title="Hidden label with error">
       <div class="w-96">
         <DInputNumber
+          v-model="num3"
           name="number"
           label="Pick a number"
           description="Any even number 0 - 10"
           min="0"
           max="10"
           step="2.0"
-          v-model="num3"
-          @update:modelValue="logEvent('num3 updated', $event)"
           status="error"
-          hideLabel
+          hide-label
+          @update:modelValue="logEvent('num3 updated', $event)"
         />
       </div>
       <p class="mt-8 font-mono">Value: {{ num3 }}</p>

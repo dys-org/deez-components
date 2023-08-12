@@ -31,7 +31,7 @@ const content5 = ref('');
         name="ta1"
         label="Add a Comment"
         status="error"
-        errorMessage="This text is the wrong format."
+        error-message="This text is the wrong format."
       />
       <p class="mt-4 font-mono">Value: {{ content3 }}</p>
     </Variant>
@@ -40,7 +40,7 @@ const content5 = ref('');
       <DTextarea
         v-model="content4"
         name="ta2"
-        :hideLabel="true"
+        :hide-label="true"
         placeholder="Label is sr-only..."
         label="Add a Comment"
       />
@@ -51,11 +51,11 @@ const content5 = ref('');
       <DTextarea
         v-model="content5"
         name="ta2"
-        :hideLabel="true"
+        :hide-label="true"
         placeholder="Label is sr-only..."
         label="Add a Comment"
         status="error"
-        errorMessage="This text is the wrong format."
+        error-message="This text is the wrong format."
       />
       <p class="mt-4 font-mono">Value: {{ content5 }}</p>
     </Variant>

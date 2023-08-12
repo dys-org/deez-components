@@ -60,6 +60,7 @@ const picked = computed({
     <select
       v-bind="attrs"
       :id="id"
+      v-model="picked"
       :name="props.name"
       class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6"
       :class="[
@@ -68,24 +69,23 @@ const picked = computed({
           : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
         { 'mt-2': !props.labelLeft && !props.hideLabel },
       ]"
-      v-model="picked"
       :aria-invalid="isError"
       :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
     >
       <option
         v-for="opt in props.options"
+        :key="opt.value"
         :value="opt.value"
         :disabled="opt.disabled"
-        :key="opt.value"
       >
         {{ opt.display }}
       </option>
     </select>
     <DInlineError
       v-if="isError && props.hideLabel"
+      :id="`${id}ErrorMessage`"
       :message="props.errorMessage"
       class="mt-2"
-      :id="`${id}ErrorMessage`"
     />
   </div>
 </template>

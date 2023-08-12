@@ -32,7 +32,7 @@ const checked = computed({
     <legend class="text-base font-semibold" :class="{ 'sr-only': hideLegend }">
       {{ props.legend }}
     </legend>
-    <p v-if="props.description" class="text-sm text-black/60 dark:text-white/60" :id="describedBy">
+    <p v-if="props.description" :id="describedBy" class="text-sm text-black/60 dark:text-white/60">
       {{ props.description }}
     </p>
     <div
@@ -42,10 +42,10 @@ const checked = computed({
       <div v-for="opt in props.options" :key="opt.id" class="flex items-center">
         <input
           :id="opt.id"
+          v-model="checked"
           :value="opt.value"
           :name="props.name"
           type="radio"
-          v-model="checked"
           class="h-4 w-4 border-gray-300 text-primary-500 focus:ring-primary-500 dark:border-white/30 dark:bg-white/5 dark:ring-offset-gray-800 dark:checked:border-current dark:checked:bg-current"
         />
         <label :for="opt.id" class="ml-3 block text-sm font-medium leading-6">

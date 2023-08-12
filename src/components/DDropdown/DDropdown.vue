@@ -67,8 +67,8 @@ const props = withDefaults(defineProps<DDropdownProps>(), {});
                 ]"
               >
                 <component
-                  v-if="opt.icon"
                   :is="opt.icon"
+                  v-if="opt.icon"
                   class="mr-2 h-3.5 w-3.5 text-gray-400"
                   aria-hidden="true"
                 />

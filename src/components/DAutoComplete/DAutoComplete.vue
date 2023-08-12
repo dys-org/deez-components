@@ -48,7 +48,7 @@ const query = ref('');
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const isError = computed(() => props.status === 'error');
-const selected = computed({
+const selectedValue = computed({
   get() {
     return props.modelValue;
   },
@@ -73,7 +73,7 @@ function onClear() {
 }
 </script>
 <template>
-  <Combobox as="div" v-model="selected" :name="props.name">
+  <Combobox v-model="selectedValue" as="div" :name="props.name">
     <ComboboxLabel class="block text-sm leading-6" :class="{ 'sr-only': hideLabel }">
       <span class="font-medium">{{ props.label }}</span>
       <span v-if="props.description" class="block text-black/60 dark:text-white/60">
@@ -87,20 +87,20 @@ function onClear() {
       </div>
       <ComboboxInput
         :id="props.name"
+        ref="inputRef"
         :class="[
           'w-full rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
-          selected ? 'pr-14' : 'pr-10',
+          selectedValue ? 'pr-14' : 'pr-10',
           $slots.icon ? 'pl-9' : 'pr-3',
         ]"
-        @change="query = $event.target.value"
-        :displayValue="(opt) => (opt as Option)?.label"
+        :display-value="(opt) => (opt as Option)?.label"
         :placeholder="placeholder"
         :aria-invalid="isError"
         :aria-errormessage="isError && props.hideLabel ? `${props.name}ErrorMessage` : undefined"
-        ref="inputRef"
+        @change="query = $event.target.value"
       />
       <ComboboxButton
         class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
@@ -115,9 +115,9 @@ function onClear() {
         <ComboboxOption
           v-for="opt in filtered"
           :key="opt.id"
+          v-slot="{ active, selected }"
           :value="opt"
           as="template"
-          v-slot="{ active, selected }"
         >
           <li
             :class="[
@@ -133,8 +133,8 @@ function onClear() {
                 class="mr-3 h-6 w-6 flex-shrink-0 rounded-full"
               />
               <component
-                v-else-if="opt.left?.icon"
                 :is="opt.left.icon"
+                v-else-if="opt.left?.icon"
                 :class="[
                   'mr-3 h-3.5 w-3.5 ',
                   active ? 'text-white' : 'text-gray-400 dark:text-gray-500',
@@ -170,11 +170,11 @@ function onClear() {
       <!-- Clear Button -->
       <div class="absolute inset-y-0 right-8 flex items-center">
         <button
-          v-if="selected"
+          v-if="selectedValue"
           type="button"
-          @click="onClear()"
           aria-label="Clear"
           class="rounded-full p-0.5 text-lg text-primary-600 transition-colors hover:bg-black/5 hover:text-primary-700 dark:text-primary-500 dark:hover:bg-white/5 dark:hover:text-primary-400"
+          @click="onClear()"
         >
           <IconX class="h-4 w-4" aria-hidden="true" />
         </button>
@@ -182,9 +182,9 @@ function onClear() {
     </div>
     <DInlineError
       v-if="isError && props.hideLabel"
+      :id="`${props.name}ErrorMessage`"
       :message="props.errorMessage"
       class="mt-2"
-      :id="`${props.name}ErrorMessage`"
     />
   </Combobox>
 </template>

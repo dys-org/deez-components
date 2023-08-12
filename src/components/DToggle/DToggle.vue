@@ -35,8 +35,8 @@ const enabled = computed({
         {{ props.label }}
       </SwitchLabel>
       <SwitchDescription
-        as="span"
         v-if="props.description"
+        as="span"
         class="text-sm text-black/60 dark:text-white/60"
       >
         {{ props.description }}

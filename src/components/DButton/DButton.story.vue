@@ -23,7 +23,7 @@ import IconChevronRight from '~icons/feather/chevron-right';
     </Variant>
 
     <Variant title="Default Danger">
-      <DButton @click="logEvent('Default Danger', $event)" danger>Click Me</DButton>
+      <DButton danger @click="logEvent('Default Danger', $event)">Click Me</DButton>
     </Variant>
 
     <Variant title="Default Danger Icon End">

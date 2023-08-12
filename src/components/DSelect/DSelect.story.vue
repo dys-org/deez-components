@@ -42,8 +42,8 @@ const select5 = ref('');
         label="Assign To"
         name="people"
         :options="people"
-        @update:modelValue="(val) => logEvent('updated select', { value: val })"
         description="Select a person to assign to this task."
+        @update:modelValue="(val) => logEvent('updated select', { value: val })"
       />
     </Variant>
 
@@ -53,9 +53,9 @@ const select5 = ref('');
         label="Assign To"
         name="people"
         :options="people"
-        @update:modelValue="(val) => logEvent('updated select', { value: val })"
         status="error"
-        errorMessage="This field is required."
+        error-message="This field is required."
+        @update:modelValue="(val) => logEvent('updated select', { value: val })"
       />
     </Variant>
 
@@ -88,9 +88,9 @@ const select5 = ref('');
         name="people"
         :options="people"
         hide-label
-        @update:modelValue="logEvent('updated select', { value: select3 })"
         status="error"
-        errorMessage="This field is required."
+        error-message="This field is required."
+        @update:modelValue="logEvent('updated select', { value: select3 })"
       />
     </Variant>
   </Story>

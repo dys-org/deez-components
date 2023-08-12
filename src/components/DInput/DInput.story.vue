@@ -50,11 +50,11 @@ const lastName = ref('Soards');
     <Variant title="Hidden Label with ID passed">
       <div class="w-96">
         <DInput
+          id="attrs-id"
           v-model="val3"
           type="password"
           label="Invisible"
           name="invisible"
-          id="attrs-id"
           hide-label
           placeholder="This is terrible for a11y"
         />
