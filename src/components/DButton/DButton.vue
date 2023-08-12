@@ -42,7 +42,7 @@ function onClick(e: MouseEvent) {
     :type="props.type"
     class="inline-flex items-center gap-x-2 rounded px-3.5 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 disabled:pointer-events-none disabled:opacity-60"
     :class="{
-      'bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:ring-white/5 dark:hover:bg-white/[.15]':
+      'bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:ring-transparent dark:hover:bg-white/[.15]':
         isDefault,
       'dark:text-white': isDefault && !isDanger,
       'text-danger-600 dark:text-danger-500': isDefault && isDanger,

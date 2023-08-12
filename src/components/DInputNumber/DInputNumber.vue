@@ -65,7 +65,7 @@ const input = computed({
         :class="[
           isError
             ? 'pr-10 text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
-            : 'ring-gray-300 focus:ring-primary-500 dark:ring-white/20 dark:focus:ring-primary-500',
+            : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
         ]"
         v-model="input"
         :aria-invalid="isError"
