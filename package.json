@@ -37,8 +37,8 @@
     "story:build": "histoire build",
     "story:preview": "histoire preview",
     "test": "echo \"No test specified\"",
-    "prepublish": "pnpm build",
-    "preversion": "pnpm test",
+    "prepublishOnly": "pnpm build",
+    "prepare": "pnpm test",
     "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
