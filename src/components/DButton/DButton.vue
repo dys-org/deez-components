@@ -6,7 +6,7 @@ export interface DButtonProps {
   danger?: boolean;
   loading?: boolean;
   type?: ButtonHTMLAttributes['type'];
-  size?: 'default' | 'small';
+  size?: 'default' | 'small' | 'large';
 }
 
 const props = withDefaults(defineProps<DButtonProps>(), {
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<DButtonProps>(), {
   danger: false,
   loading: false,
   type: 'button',
-  small: 'default',
+  size: 'default',
 });
 
 const emit = defineEmits<{
@@ -22,11 +22,13 @@ const emit = defineEmits<{
 }>();
 
 // static computed values
-const isDefault = props.variant === 'default';
+const isDefaultVariant = props.variant === 'default';
 const isPrimary = props.variant === 'primary';
 const isLink = props.variant === 'link';
 const isDanger = props.danger === true;
+const isDefaultSize = props.size === 'default';
 const isSmall = props.size === 'small';
+const isLarge = props.size === 'large';
 
 const isLoading = computed(() => props.loading === true);
 
@@ -45,12 +47,15 @@ function onClick(e: MouseEvent) {
     :type="props.type"
     :class="[
       'inline-flex items-center gap-x-2 rounded font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 disabled:pointer-events-none disabled:opacity-60',
-      isSmall ? 'px-2 py-1 text-xs' : 'px-3.5 py-2.5 text-sm',
       {
+        'px-2 py-1 text-xs': isSmall,
+        'px-3 py-1.5 text-sm': isDefaultSize,
+        'px-4 py-2.5 text-base': isLarge,
+
         'bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:ring-transparent dark:hover:bg-white/[.15]':
-          isDefault,
-        'dark:text-white': isDefault && !isDanger,
-        'text-danger-600 dark:text-danger-500': isDefault && isDanger,
+          isDefaultVariant,
+        'dark:text-white': isDefaultVariant && !isDanger,
+        'text-danger-600 dark:text-danger-500': isDefaultVariant && isDanger,
 
         'text-white shadow-sm ': isPrimary,
         'bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400':
