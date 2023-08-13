@@ -56,7 +56,7 @@ import IconChevronRight from '~icons/feather/chevron-right';
       <DButton size="small" @click="logEvent('Small', $event)">Click Me</DButton>
     </Variant>
     <Variant title="Large">
-      <DButton size="large" @click="logEvent('Small', $event)">Click Me</DButton>
+      <DButton size="large" @click="logEvent('Large', $event)">Click Me</DButton>
     </Variant>
   </Story>
 </template>
