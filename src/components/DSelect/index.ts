@@ -1,1 +1,1 @@
-export { default as DSelect, type DSelectProps, type DSelectOption } from './DSelect.vue';
+export { default as DSelect, type DSelectProps } from './DSelect.vue';
