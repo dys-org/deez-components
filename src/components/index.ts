@@ -1,6 +1,7 @@
 export * from './DAvatar';
 export * from './DButton';
 export * from './DCheckbox';
+export * from './DDropdown';
 export * from './DInput';
 export * from './DModal';
 export * from './DRadio';

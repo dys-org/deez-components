@@ -57,7 +57,7 @@ function onClick(e: MouseEvent) {
         'dark:text-white': isDefaultVariant && !isDanger,
         'text-danger-600 dark:text-danger-500': isDefaultVariant && isDanger,
 
-        'text-white shadow-sm ': isPrimary,
+        'text-white shadow-sm': isPrimary,
         'bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400':
           isPrimary && !isDanger,
         'bg-danger-600 hover:bg-danger-700 dark:bg-danger-500 dark:hover:bg-danger-400':

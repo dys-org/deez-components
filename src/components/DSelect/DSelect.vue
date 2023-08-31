@@ -2,11 +2,6 @@
 import { computed, useAttrs } from 'vue';
 import { DInlineError } from '../DInlineError';
 
-export interface DSelectOption {
-  value: string;
-  display: string;
-  disabled?: boolean;
-}
 export interface DSelectProps {
   modelValue: string;
   name: string;
@@ -14,14 +9,16 @@ export interface DSelectProps {
   hideLabel?: boolean;
   description?: string;
   labelLeft?: boolean;
-  options: DSelectOption[];
   status?: 'error';
   errorMessage?: string;
 }
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = withDefaults(defineProps<DSelectProps>(), {
   hideLabel: false,
-  defaultText: 'Choose an option',
   labelLeft: false,
   errorMessage: 'Invalid input',
 });
@@ -72,14 +69,7 @@ const picked = computed({
       :aria-invalid="isError"
       :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
     >
-      <option
-        v-for="opt in props.options"
-        :key="opt.value"
-        :value="opt.value"
-        :disabled="opt.disabled"
-      >
-        {{ opt.display }}
-      </option>
+      <slot />
     </select>
     <DInlineError
       v-if="isError && props.hideLabel"
