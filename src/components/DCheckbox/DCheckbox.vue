@@ -7,6 +7,7 @@ export interface DCheckboxProps {
   id: string;
   value?: string;
   label: string;
+  hideLabel?: boolean;
   description?: string;
 }
 
@@ -14,7 +15,7 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const props = withDefaults(defineProps<DCheckboxProps>(), { value: 'on' });
+const props = withDefaults(defineProps<DCheckboxProps>(), { value: 'on', hideLabel: false });
 
 const emit = defineEmits(['update:modelValue']);
 
@@ -41,7 +42,11 @@ const checked = computed({
         class="h-4 w-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500 dark:border-white/30 dark:bg-white/5 dark:ring-offset-gray-800 dark:checked:border-current dark:checked:bg-current"
       />
     </div>
-    <label :for="props.id" class="ml-3 select-none text-sm leading-6">
+    <label
+      :for="props.id"
+      class="ml-3 select-none text-sm leading-6"
+      :class="{ 'sr-only': props.hideLabel }"
+    >
       <span class="font-medium">{{ props.label }}</span>
       <span v-if="props.description" class="block text-black/60 dark:text-white/60">
         {{ props.description }}

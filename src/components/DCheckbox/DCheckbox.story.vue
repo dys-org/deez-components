@@ -4,6 +4,7 @@ import DCheckbox from './DCheckbox.vue';
 import { logEvent } from 'histoire/client';
 const cb1 = ref(false);
 const cb2 = ref(false);
+const cb3 = ref(false);
 const checkedNames = ref([]);
 </script>
 
@@ -57,6 +58,17 @@ const checkedNames = ref([]);
           @update:modelValue="logEvent('Clicked Sebastian', checkedNames)"
         />
       </div>
+    </Variant>
+
+    <Variant title="Hidden Label">
+      <DCheckbox
+        id="box3"
+        v-model="cb3"
+        label="Hello Aria"
+        hide-label
+        name="box3"
+        @update:modelValue="logEvent('Clicked CB3', { cb3 })"
+      />
     </Variant>
   </Story>
 </template>
