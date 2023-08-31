@@ -3,36 +3,45 @@ import DDropdown from './DDropdown.vue';
 import IconDollarSign from '~icons/feather/dollar-sign';
 const options = [
   {
-    label: 'Jay Gatsby',
-    id: 'jay_gatsby',
+    label: 'Profile',
+    key: 'profile',
+    to: '/profile',
   },
   {
-    label: 'Daisy Buchanan',
-    id: 'daisy_buchanan',
+    label: 'Settings',
+    key: 'settings',
     icon: IconDollarSign,
+    to: '/settings',
   },
+  { divider: true, key: 'd1' },
   {
-    divider: true,
-    id: 'd1',
-  },
-  {
-    label: 'Nick Carraway',
-    id: 'nick_carraway',
+    label: 'Disabled Option',
+    key: 'disabled_option',
     disabled: true,
   },
   {
-    label: 'Others',
-    id: 'others',
+    label: 'Other People',
+    key: 'other_people',
+    // TODO implement nested dropdowns
     children: [
       {
         label: 'Jordan Baker',
-        id: 'jordan baker',
+        key: 'jordan_baker',
       },
       {
         label: 'Tom Buchanan',
-        id: 'tom buchanan',
+        key: 'tom_buchanan',
       },
     ],
+  },
+  { divider: true, key: 'd2' },
+  {
+    label: 'Sign Out',
+    key: 'sign_out',
+    icon: IconDollarSign,
+    fn: () => {
+      console.log('sign out');
+    },
   },
 ];
 

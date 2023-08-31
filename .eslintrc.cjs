@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    'vue/no-undef-components': ['error', { ignorePatterns: ['Story', 'Variant'] }],
+    'vue/no-undef-components': ['error', { ignorePatterns: ['Story', 'Variant', 'RouterLink'] }],
     'vue/require-default-prop': 'off',
     'vue/v-on-event-hyphenation': 'off',
   },
