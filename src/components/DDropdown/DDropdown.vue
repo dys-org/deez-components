@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
+import type { RouteLocationRaw } from 'vue-router';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import IconChevronDown from '~icons/feather/chevron-down';
 import IconMoreHorizontal from '~icons/feather/more-horizontal';
+import DLink from '../DLink/DLink.vue';
 
 export interface DropOption {
   label?: string;
   key: string | number;
-  to?: string;
+  to?: RouteLocationRaw;
   fn?: () => void;
   icon?: string | Component;
   children?: DropOption[];
@@ -19,11 +21,11 @@ export interface DDropdownProps {
   label: string;
   minimal?: boolean;
   options: DropOption[];
+  aligned?: 'right' | 'left';
 }
 
-const props = withDefaults(defineProps<DDropdownProps>(), {});
+const props = withDefaults(defineProps<DDropdownProps>(), { minimal: false, aligned: 'right' });
 </script>
-
 <template>
   <Menu as="div" class="relative inline-block text-left">
     <div>
@@ -53,13 +55,16 @@ const props = withDefaults(defineProps<DDropdownProps>(), {});
       leave-to-class="transform opacity-0 scale-95"
     >
       <MenuItems
-        class="absolute right-0 z-10 mt-2 w-56 origin-top-right overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800"
+        :class="[
+          'absolute z-10 mt-2 w-56 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800',
+          props.aligned === 'left' ? 'left-0 origin-top-left' : 'right-0 origin-top-right',
+        ]"
       >
         <div class="p-1">
           <template v-for="opt in options" :key="opt.id">
             <hr v-if="opt.divider" class="m-1 border-gray-200 dark:border-gray-700" />
             <MenuItem v-else v-slot="{ active }" :disabled="opt.disabled">
-              <RouterLink
+              <DLink
                 v-if="opt.to"
                 :class="[
                   'inline-flex w-full items-center px-4 py-2 text-left text-sm',
@@ -75,7 +80,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {});
                   aria-hidden="true"
                 />
                 {{ opt.label }}
-              </RouterLink>
+              </DLink>
               <button
                 v-else
                 type="button"

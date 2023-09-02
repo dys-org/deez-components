@@ -1,6 +1,22 @@
 <script setup lang="ts">
 import DDropdown from './DDropdown.vue';
 import IconDollarSign from '~icons/feather/dollar-sign';
+
+import { createRouter, createMemoryHistory } from 'vue-router';
+
+function setupApp({ app, story, variant }) {
+  // Router mock
+  app.use(
+    createRouter({
+      history: createMemoryHistory(),
+      routes: [
+        { path: '/profile', name: 'Profile', component: { render: () => null } },
+        { path: '/settings', name: 'Settings', component: { render: () => null } },
+      ],
+    }),
+  );
+}
+
 const options = [
   {
     label: 'Profile',
@@ -49,7 +65,7 @@ const options = [
 </script>
 
 <template>
-  <Story>
+  <Story :setup-app="setupApp">
     <Variant title="Minimal button">
       <div class="flex justify-center">
         <DDropdown :options="options" minimal label="Open Options" />
