@@ -13,9 +13,7 @@ export interface DTextareaProps {
   errorMessage?: string;
 }
 
-defineOptions({
-  inheritAttrs: false,
-});
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DTextareaProps>(), {
   hideLabel: false,

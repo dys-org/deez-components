@@ -15,9 +15,7 @@ export interface DInputNumberProps {
   errorMessage?: string;
 }
 
-defineOptions({
-  inheritAttrs: false,
-});
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DInputNumberProps>(), {
   hideLabel: false,

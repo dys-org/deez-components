@@ -16,9 +16,7 @@ export interface DInputProps {
   errorMessage?: string;
 }
 
-defineOptions({
-  inheritAttrs: false,
-});
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DInputProps>(), {
   type: 'text',

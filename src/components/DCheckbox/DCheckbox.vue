@@ -11,9 +11,7 @@ export interface DCheckboxProps {
   description?: string;
 }
 
-defineOptions({
-  inheritAttrs: false,
-});
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DCheckboxProps>(), { value: 'on', hideLabel: false });
 
