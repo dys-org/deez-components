@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DInlineError } from '../DInlineError';
+import { DFormGroup } from '../DFormGroup';
 
 export interface DTextareaProps {
   modelValue: string;
@@ -27,14 +27,14 @@ const isError = computed(() => props.status === 'error');
 </script>
 
 <template>
-  <div>
-    <label :for="id" class="block text-sm leading-6" :class="{ 'sr-only': props.hideLabel }">
-      <span class="font-medium">{{ props.label }}</span>
-      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
-        {{ props.description }}
-      </span>
-      <DInlineError v-if="isError" :message="errorMessage" />
-    </label>
+  <DFormGroup
+    :id="props.id"
+    :label="props.label"
+    :hide-label="props.hideLabel"
+    :description="props.description"
+    :status="props.status"
+    :error-message="props.errorMessage"
+  >
     <div :class="['relative', !props.hideLabel && 'mt-2']">
       <textarea
         v-bind="$attrs"
@@ -51,6 +51,5 @@ const isError = computed(() => props.status === 'error');
         @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       />
     </div>
-    <DInlineError v-if="isError && props.hideLabel" :message="props.errorMessage" class="mt-2" />
-  </div>
+  </DFormGroup>
 </template>

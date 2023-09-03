@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { DInlineError } from '../DInlineError';
+import { DFormGroup } from '../DFormGroup';
 
 import IconEye from '~icons/feather/eye';
 import IconEyeOff from '~icons/feather/eye-off';
@@ -43,15 +43,14 @@ const input = computed({
 </script>
 
 <template>
-  <div>
-    <label class="block text-sm leading-6" :class="{ 'sr-only': props.hideLabel }" :for="id">
-      <span class="font-medium">{{ props.label }}</span>
-      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
-        {{ props.description }}
-      </span>
-      <DInlineError v-if="isError" :message="errorMessage" />
-    </label>
-
+  <DFormGroup
+    :id="props.id"
+    :label="props.label"
+    :hide-label="props.hideLabel"
+    :description="props.description"
+    :status="props.status"
+    :error-message="props.errorMessage"
+  >
     <div :class="['relative', !props.hideLabel && 'mt-2']">
       <input
         v-bind="$attrs"
@@ -78,11 +77,5 @@ const input = computed({
         </button>
       </div>
     </div>
-    <DInlineError
-      v-if="isError && props.hideLabel"
-      :id="`${id}ErrorMessage`"
-      :message="props.errorMessage"
-      class="mt-2"
-    />
-  </div>
+  </DFormGroup>
 </template>

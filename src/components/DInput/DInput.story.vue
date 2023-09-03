@@ -47,13 +47,12 @@ const lastName = ref('Soards');
       </div>
     </Variant>
 
-    <Variant title="Hidden Label with ID passed">
+    <Variant title="Hidden Label with name passed">
       <div class="w-96">
         <DInput
           id="invisible"
           v-model="val3"
           name="attrs-name"
-          type="password"
           label="Invisible"
           hide-label
           placeholder="This is terrible for a11y"
@@ -67,7 +66,6 @@ const lastName = ref('Soards');
         <DInput
           id="invisible"
           v-model="val4"
-          type="password"
           label="Invisible"
           hide-label
           placeholder="This is terrible for a11y"

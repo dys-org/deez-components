@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DInlineError } from '../DInlineError';
+import { DFormGroup } from '../DFormGroup';
 
 export interface DSelectProps {
   modelValue: string;
@@ -36,18 +36,15 @@ const picked = computed({
 </script>
 
 <template>
-  <div :class="{ 'flex items-center gap-4': props.labelLeft }">
-    <label
-      :for="props.id"
-      class="block whitespace-nowrap text-sm leading-6"
-      :class="{ 'sr-only': props.hideLabel }"
-    >
-      <span class="font-medium">{{ props.label }}</span>
-      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
-        {{ props.description }}
-      </span>
-      <DInlineError v-if="isError" :message="props.errorMessage" />
-    </label>
+  <DFormGroup
+    :id="props.id"
+    :label="props.label"
+    :hide-label="props.hideLabel"
+    :description="props.description"
+    :status="props.status"
+    :error-message="props.errorMessage"
+    :class="{ 'flex items-center gap-4': props.labelLeft }"
+  >
     <select
       v-bind="$attrs"
       :id="props.id"
@@ -65,12 +62,6 @@ const picked = computed({
     >
       <slot />
     </select>
-    <DInlineError
-      v-if="isError && props.hideLabel"
-      :id="`${id}ErrorMessage`"
-      :message="props.errorMessage"
-      class="mt-2"
-    />
-  </div>
+  </DFormGroup>
 </template>
 ==
