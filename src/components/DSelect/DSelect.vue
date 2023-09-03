@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
+import { computed } from 'vue';
 import { DInlineError } from '../DInlineError';
 
 export interface DSelectProps {
   modelValue: string;
-  name: string;
+  id: string;
   label: string;
   hideLabel?: boolean;
   description?: string;
@@ -23,12 +23,8 @@ const props = withDefaults(defineProps<DSelectProps>(), {
 
 const emit = defineEmits(['update:modelValue']);
 
-const attrs = useAttrs();
-
-// static computed values
-const id = (attrs.id as string) || props.name;
-
 const isError = computed(() => props.status === 'error');
+
 const picked = computed({
   get() {
     return props.modelValue;
@@ -42,7 +38,7 @@ const picked = computed({
 <template>
   <div :class="{ 'flex items-center gap-4': props.labelLeft }">
     <label
-      :for="id"
+      :for="props.id"
       class="block whitespace-nowrap text-sm leading-6"
       :class="{ 'sr-only': props.hideLabel }"
     >
@@ -53,10 +49,10 @@ const picked = computed({
       <DInlineError v-if="isError" :message="props.errorMessage" />
     </label>
     <select
-      v-bind="attrs"
-      :id="id"
+      v-bind="$attrs"
+      :id="props.id"
       v-model="picked"
-      :name="props.name"
+      :name="($attrs.name as string) || props.id"
       class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6"
       :class="[
         isError

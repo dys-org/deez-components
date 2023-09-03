@@ -27,9 +27,9 @@ const select5 = ref('');
   <Story :layout="{ type: 'grid', width: '400px' }">
     <Variant title="Default">
       <DSelect
+        id="people"
         v-model="select1"
         label="Assign To"
-        name="people"
         @update:modelValue="(val) => logEvent('updated select', { value: val })"
       >
         <option value="" disabled>Choose an option</option>
@@ -41,10 +41,10 @@ const select5 = ref('');
 
     <Variant title="With Description and ID">
       <DSelect
-        id="id-attr"
+        id="people"
         v-model="select4"
+        name="name-attr"
         label="Assign To"
-        name="people"
         description="Select a person to assign to this task."
         @update:modelValue="(val) => logEvent('updated select', { value: val })"
       >
@@ -57,9 +57,9 @@ const select5 = ref('');
 
     <Variant title="With Error">
       <DSelect
+        id="people"
         v-model="select5"
         label="Assign To"
-        name="people"
         status="error"
         error-message="This field is required."
         @update:modelValue="(val) => logEvent('updated select', { value: val })"
@@ -73,9 +73,9 @@ const select5 = ref('');
 
     <Variant title="Label on Left">
       <DSelect
+        id="people"
         v-model="select2"
         label="Assign To"
-        name="people"
         label-left
         @update:modelValue="logEvent('updated select', { value: select2 })"
       >
@@ -88,9 +88,9 @@ const select5 = ref('');
 
     <Variant title="Hidden Label">
       <DSelect
+        id="people"
         v-model="select3"
         label="Assign To"
-        name="people"
         hide-label
         @update:modelValue="logEvent('updated select', { value: select3 })"
       >
@@ -103,9 +103,9 @@ const select5 = ref('');
 
     <Variant title="Hidden Label with Error">
       <DSelect
+        id="people"
         v-model="select3"
         label="Assign To"
-        name="people"
         hide-label
         status="error"
         error-message="This field is required."
