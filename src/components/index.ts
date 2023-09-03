@@ -6,6 +6,7 @@ export * from './DInput';
 export * from './DLink';
 export * from './DModal';
 export * from './DRadio';
+export * from './DRange';
 export * from './DSelect';
 export * from './DTextarea';
 export * from './DToggle';
