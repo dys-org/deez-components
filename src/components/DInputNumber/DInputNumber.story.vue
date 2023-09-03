@@ -13,8 +13,8 @@ const num3 = ref(0);
     <Variant title="Default">
       <div class="w-96">
         <DInputNumber
+          id="number"
           v-model="num1"
-          name="number"
           label="Pick a number"
           description="Any even number 0 - 10"
           min="0"
@@ -28,8 +28,8 @@ const num3 = ref(0);
     <Variant title="Error">
       <div class="w-96">
         <DInputNumber
+          id="number"
           v-model="num2"
-          name="number"
           label="Pick a number"
           description="Any even number 0 - 10"
           min="0"
@@ -44,8 +44,8 @@ const num3 = ref(0);
     <Variant title="Hidden label with error">
       <div class="w-96">
         <DInputNumber
+          id="number"
           v-model="num3"
-          name="number"
           label="Pick a number"
           description="Any even number 0 - 10"
           min="0"

@@ -15,9 +15,9 @@ const lastName = ref('Soards');
     <Variant title="Default with description">
       <div class="w-96">
         <DInput
+          id="firstName"
           v-model="val1"
           label="First Name"
-          name="firstName"
           placeholder="Don't use placeholders."
           description="Enter your first name."
         />
@@ -28,10 +28,10 @@ const lastName = ref('Soards');
     <Variant title="Email Invalid no description">
       <div class="w-96">
         <DInput
+          id="email"
           v-model="val2"
           type="email"
           label="Email"
-          name="email"
           status="error"
           error-message="Not a valid email address"
           placeholder="Don't use placeholders."
@@ -42,7 +42,7 @@ const lastName = ref('Soards');
 
     <Variant title="Disabled">
       <div class="w-96">
-        <DInput v-model="lastName" label="Last Name" name="lastName" disabled />
+        <DInput id="lastName" v-model="lastName" label="Last Name" disabled />
         <p class="mt-4 font-mono">Value: {{ lastName }}</p>
       </div>
     </Variant>
@@ -50,11 +50,11 @@ const lastName = ref('Soards');
     <Variant title="Hidden Label with ID passed">
       <div class="w-96">
         <DInput
-          id="attrs-id"
+          id="invisible"
           v-model="val3"
+          name="attrs-name"
           type="password"
           label="Invisible"
-          name="invisible"
           hide-label
           placeholder="This is terrible for a11y"
         />
@@ -65,10 +65,10 @@ const lastName = ref('Soards');
     <Variant title="Hidden Label with Error">
       <div class="w-96">
         <DInput
+          id="invisible"
           v-model="val4"
           type="password"
           label="Invisible"
-          name="invisible"
           hide-label
           placeholder="This is terrible for a11y"
           status="error"
@@ -81,9 +81,9 @@ const lastName = ref('Soards');
     <Variant title="Password">
       <div class="w-96">
         <DInput
+          id="password"
           v-model="val5"
           label="Password"
-          name="password"
           description="ABC 123 is good."
           type="password"
         />

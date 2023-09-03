@@ -11,14 +11,14 @@ const content5 = ref('');
 <template>
   <Story :layout="{ type: 'grid', width: '50%' }">
     <Variant title="Default">
-      <DTextarea v-model="content1" name="ta1" label="Add a Comment" />
+      <DTextarea id="ta1" v-model="content1" label="Add a Comment" />
       <p class="mt-4 font-mono">Value: {{ content1 }}</p>
     </Variant>
 
     <Variant title="With Description">
       <DTextarea
+        id="ta1"
         v-model="content2"
-        name="ta1"
         label="Add a Comment"
         description="You can enter text in this area."
       />
@@ -27,8 +27,8 @@ const content5 = ref('');
 
     <Variant title="With Error">
       <DTextarea
+        id="ta1"
         v-model="content3"
-        name="ta1"
         label="Add a Comment"
         status="error"
         error-message="This text is the wrong format."
@@ -38,8 +38,8 @@ const content5 = ref('');
 
     <Variant title="Hidden Label">
       <DTextarea
+        id="ta2"
         v-model="content4"
-        name="ta2"
         :hide-label="true"
         placeholder="Label is sr-only..."
         label="Add a Comment"
@@ -49,8 +49,8 @@ const content5 = ref('');
 
     <Variant title="Hidden Label with Error">
       <DTextarea
+        id="ta2"
         v-model="content5"
-        name="ta2"
         :hide-label="true"
         placeholder="Label is sr-only..."
         label="Add a Comment"

@@ -86,7 +86,6 @@ function onClear() {
         <slot name="icon"></slot>
       </div>
       <ComboboxInput
-        :id="props.name"
         ref="inputRef"
         :class="[
           'w-full rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',

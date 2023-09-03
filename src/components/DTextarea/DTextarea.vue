@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
+import { computed } from 'vue';
 import { DInlineError } from '../DInlineError';
 
 export interface DTextareaProps {
   modelValue: string;
-  name: string;
+  id: string;
   label: string;
   hideLabel?: boolean;
   description?: string;
@@ -23,11 +23,6 @@ const props = withDefaults(defineProps<DTextareaProps>(), {
 
 const emit = defineEmits(['update:modelValue']);
 
-const attrs = useAttrs();
-
-// static computed values
-const id = (attrs.id as string) || props.name;
-
 const isError = computed(() => props.status === 'error');
 </script>
 
@@ -42,10 +37,10 @@ const isError = computed(() => props.status === 'error');
     </label>
     <div :class="['relative', !props.hideLabel && 'mt-2']">
       <textarea
-        v-bind="attrs"
-        :id="id"
+        v-bind="$attrs"
+        :id="props.id"
         :rows="props.rows"
-        :name="props.name"
+        :name="($attrs.name as string) || props.id"
         :class="[
           'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset dark:bg-white/5  dark:placeholder:text-white/30 sm:text-sm sm:leading-6',
           isError

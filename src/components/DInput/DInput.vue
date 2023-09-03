@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useAttrs } from 'vue';
+import { computed, ref } from 'vue';
 import { DInlineError } from '../DInlineError';
 
 import IconEye from '~icons/feather/eye';
@@ -7,7 +7,7 @@ import IconEyeOff from '~icons/feather/eye-off';
 
 export interface DInputProps {
   modelValue: string;
-  name: string;
+  id: string;
   label: string;
   hideLabel?: boolean;
   description?: string;
@@ -26,15 +26,12 @@ const props = withDefaults(defineProps<DInputProps>(), {
 
 const emit = defineEmits(['update:modelValue']);
 
-const attrs = useAttrs();
-
 const showPassword = ref(false);
 
-// static computed values
-const id = (attrs.id as string) || props.name;
 const isPassword = props.type === 'password';
 
 const isError = computed(() => props.status === 'error');
+
 const input = computed({
   get() {
     return props.modelValue;
@@ -57,11 +54,11 @@ const input = computed({
 
     <div :class="['relative', !props.hideLabel && 'mt-2']">
       <input
-        v-bind="attrs"
-        :id="id"
+        v-bind="$attrs"
+        :id="props.id"
         v-model.trim="input"
+        :name="($attrs.name as string) || props.id"
         :type="isPassword ? (showPassword ? 'text' : props.type) : props.type"
-        :name="props.name"
         class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6"
         :class="[
           isError
