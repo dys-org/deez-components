@@ -15,7 +15,7 @@ import IconCheck from '~icons/feather/check';
 import IconChevronDown from '~icons/feather/chevron-down';
 import IconX from '~icons/feather/x';
 
-export interface Option {
+export interface DAutoCompleteOption {
   id: number | string;
   label: string;
   description?: string;
@@ -26,14 +26,14 @@ export interface Option {
 }
 
 export interface DAutoCompleteProps {
-  modelValue: Option | null;
+  modelValue: DAutoCompleteOption | null;
   name: string;
   label: string;
   hideLabel?: boolean;
   description?: string;
   status?: 'error';
   errorMessage?: string;
-  options: Option[];
+  options: DAutoCompleteOption[];
   placeholder?: string;
 }
 
@@ -95,7 +95,7 @@ function onClear() {
           selectedValue ? 'pr-14' : 'pr-10',
           $slots.icon ? 'pl-9' : 'pr-3',
         ]"
-        :display-value="(opt) => (opt as Option)?.label"
+        :display-value="(opt) => (opt as DAutoCompleteOption)?.label"
         :placeholder="placeholder"
         :aria-invalid="isError"
         :aria-errormessage="isError && props.hideLabel ? `${props.name}ErrorMessage` : undefined"
