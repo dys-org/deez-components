@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+
 import DRadioGroup from './DRadioGroup.vue';
 
 const notificationMethods = [

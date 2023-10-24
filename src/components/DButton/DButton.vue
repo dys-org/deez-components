@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, type ButtonHTMLAttributes } from 'vue';
+import { type ButtonHTMLAttributes, computed } from 'vue';
 import { twMerge } from 'tailwind-merge';
 
 export interface DButtonProps {

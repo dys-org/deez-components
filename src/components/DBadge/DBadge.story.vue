@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import DBadge from './DBadge.vue';
 import { logEvent } from 'histoire/client';
+
+import DBadge from './DBadge.vue';
 </script>
 
 <template>

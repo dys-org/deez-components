@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import DAutoComplete, { type DAutoCompleteOption } from './DAutoComplete.vue';
-import { DBadge } from '../DBadge';
 import { logEvent } from 'histoire/client';
 
-import IconSearch from '~icons/feather/search';
-import IconPaperclip from '~icons/feather/paperclip';
-import IconZap from '~icons/feather/zap';
+import { DBadge } from '../DBadge';
+
+import DAutoComplete, { type DAutoCompleteOption } from './DAutoComplete.vue';
+
 import IconAperture from '~icons/feather/aperture';
+import IconPaperclip from '~icons/feather/paperclip';
+import IconSearch from '~icons/feather/search';
+import IconZap from '~icons/feather/zap';
 
 const basic = [
   { id: 1, label: 'David Youngquist Soards', description: 'Software Engineer' },

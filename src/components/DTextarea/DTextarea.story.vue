@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+
 import DTextarea from './DTextarea.vue';
 const content1 = ref('');
 const content2 = ref('');

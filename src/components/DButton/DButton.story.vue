@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import DButton from './DButton.vue';
 import { logEvent } from 'histoire/client';
+
+import DButton from './DButton.vue';
+
 import IconCheckCircle from '~icons/feather/check-circle';
 import IconChevronRight from '~icons/feather/chevron-right';
 </script>

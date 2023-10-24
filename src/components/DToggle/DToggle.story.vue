@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import DToggle from './DToggle.vue';
 import { logEvent } from 'histoire/client';
+
+import DToggle from './DToggle.vue';
 
 const tg1 = ref(false);
 const tg2 = ref(false);

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { logEvent } from 'histoire/client';
+
 import DSelect from './DSelect.vue';
 
 const people = [

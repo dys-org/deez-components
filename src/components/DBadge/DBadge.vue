@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge';
+
 import IconX from '~icons/feather/x';
 
 export interface DBadgeProps {

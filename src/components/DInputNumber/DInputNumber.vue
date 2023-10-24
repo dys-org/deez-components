@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+
 import { DFormGroup } from '../DFormGroup';
 
-import IconPlus from '~icons/feather/plus';
 import IconMinus from '~icons/feather/minus';
+import IconPlus from '~icons/feather/plus';
 
 export interface DInputNumberProps {
   modelValue: number | string;

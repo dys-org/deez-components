@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
+
+import { DButton } from '../DButton';
+
 import IconAlertTriangle from '~icons/feather/alert-triangle';
 import IconCheckCircle from '~icons/feather/check-circle';
-import { DButton } from '../DButton';
 
 export interface DModalProps {
   open: boolean;

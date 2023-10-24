@@ -1,5 +1,5 @@
 export {
   default as DAutoComplete,
-  type DAutoCompleteProps,
   type DAutoCompleteOption,
+  type DAutoCompleteProps,
 } from './DAutoComplete.vue';

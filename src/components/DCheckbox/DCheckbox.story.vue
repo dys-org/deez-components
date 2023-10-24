@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import DCheckbox from './DCheckbox.vue';
 import { logEvent } from 'histoire/client';
+
+import DCheckbox from './DCheckbox.vue';
 const cb1 = ref(false);
 const cb2 = ref(false);
 const cb3 = ref(false);

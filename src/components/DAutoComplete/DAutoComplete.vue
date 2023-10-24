@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, type Component } from 'vue';
+import { type Component, computed, ref } from 'vue';
 import {
   Combobox,
   ComboboxButton,
@@ -8,6 +8,7 @@ import {
   ComboboxOption,
   ComboboxOptions,
 } from '@headlessui/vue';
+
 import { dom } from '../../utils';
 import { DInlineError } from '../DInlineError';
 

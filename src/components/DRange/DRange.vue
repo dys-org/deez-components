@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+
 import { DFormGroup } from '../DFormGroup';
 
 export interface DRangeProps {
@@ -24,8 +25,6 @@ const props = withDefaults(defineProps<DRangeProps>(), {
 });
 
 const emit = defineEmits(['update:modelValue']);
-
-const isError = computed(() => props.status === 'error');
 
 const progressStyle = computed(() => {
   const { modelValue, min, max } = props;

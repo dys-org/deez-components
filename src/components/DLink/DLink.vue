@@ -6,10 +6,7 @@ defineOptions({ inheritAttrs: false });
 
 export type { RouterLinkProps as DLinkProps };
 
-const props = defineProps({
-  // @ts-ignore
-  ...RouterLink.props,
-});
+const props = defineProps<RouterLinkProps>();
 
 const emit = defineEmits(['click']);
 
@@ -19,6 +16,7 @@ const isExternal = computed(() => {
 </script>
 
 <template>
+  <!-- prettier-ignore -->
   <a
     v-if="isExternal"
     v-bind="$attrs"
@@ -29,7 +27,7 @@ const isExternal = computed(() => {
   >
     <slot />
   </a>
-  <RouterLink v-else v-slot="{ href, navigate }" v-bind="(props as RouterLinkProps)" custom>
+  <RouterLink v-else v-slot="{ href, navigate }" v-bind="props" custom>
     <a
       v-bind="$attrs"
       :href="href"

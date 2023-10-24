@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+
 import DRange from './DRange.vue';
 
 const val1 = ref(50);

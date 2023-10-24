@@ -2,9 +2,11 @@
 import type { Component } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+
+import DLink from '../DLink/DLink.vue';
+
 import IconChevronDown from '~icons/feather/chevron-down';
 import IconMoreHorizontal from '~icons/feather/more-horizontal';
-import DLink from '../DLink/DLink.vue';
 
 export interface DropOption {
   label?: string;

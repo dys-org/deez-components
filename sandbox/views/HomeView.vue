@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+
 import { DButton } from '../../src/components/DButton';
 import { DCheckbox } from '../../src/components/DCheckbox';
-import { DToggle } from '../../src/components/DToggle';
 import { DDropdown } from '../../src/components/DDropdown';
+import { DToggle } from '../../src/components/DToggle';
 
 import IconDollarSign from '~icons/feather/dollar-sign';
 

@@ -1,4 +1,4 @@
-import type { Ref, ComponentPublicInstance } from 'vue';
+import type { ComponentPublicInstance, Ref } from 'vue';
 
 export function dom<T extends Element | ComponentPublicInstance>(
   ref?: Ref<T | null> | null,

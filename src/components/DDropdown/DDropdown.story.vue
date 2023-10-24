@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { createMemoryHistory, createRouter } from 'vue-router';
+
 import DDropdown from './DDropdown.vue';
+
 import IconDollarSign from '~icons/feather/dollar-sign';
 
-import { createRouter, createMemoryHistory } from 'vue-router';
-
+//@ts-expect-error
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
 function setupApp({ app, story, variant }) {
   // Router mock
   app.use(

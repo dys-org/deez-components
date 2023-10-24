@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import DInputNumber from './DInputNumber.vue';
 import { logEvent } from 'histoire/client';
+
+import DInputNumber from './DInputNumber.vue';
 
 const num1 = ref(0);
 const num2 = ref(0);
