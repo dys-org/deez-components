@@ -102,9 +102,12 @@ function onClear() {
         @change="query = $event.target.value"
       />
       <ComboboxButton
-        class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
+        class="absolute inset-0 flex cursor-default items-center px-2 focus:outline-none"
       >
-        <IconChevronDown class="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+        <IconChevronDown
+          class="ml-auto h-5 w-5 text-gray-400 dark:text-gray-500"
+          aria-hidden="true"
+        />
       </ComboboxButton>
 
       <ComboboxOptions
