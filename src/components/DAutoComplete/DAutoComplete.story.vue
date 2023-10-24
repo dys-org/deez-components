@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import DAutoComplete, { type DAutoCompleteOption } from './DAutoComplete.vue';
+import { DBadge } from '../DBadge';
 import { logEvent } from 'histoire/client';
 
 import IconSearch from '~icons/feather/search';
@@ -53,7 +54,7 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
 </script>
 
 <template>
-  <Story :layout="{ type: 'grid', width: '100%' }">
+  <Story>
     <Variant title="Basic with description">
       <div class="w-96">
         <DAutoComplete
@@ -154,9 +155,9 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
     </Variant>
     <Variant title="Mutiple with description">
       <div class="w-96">
-        <ul v-if="selectedList?.length">
+        <ul class="flex min-h-[2rem] gap-4">
           <li v-for="person in selectedList" :key="person.id">
-            {{ person.label }}
+            <DBadge>{{ person.label }}</DBadge>
           </li>
         </ul>
         <DAutoComplete
@@ -166,6 +167,7 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
           :options="basic"
           description="Select people to assign to this task."
           multiple
+          class="mt-2"
           @update:modelValue="logEvent('autocomplete update', $event)"
         />
       </div>
