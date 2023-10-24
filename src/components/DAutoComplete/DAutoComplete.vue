@@ -26,7 +26,7 @@ export interface DAutoCompleteOption {
 }
 
 export interface DAutoCompleteProps {
-  modelValue: DAutoCompleteOption | null;
+  modelValue: DAutoCompleteOption | DAutoCompleteOption[] | null;
   name: string;
   label: string;
   hideLabel?: boolean;
@@ -35,16 +35,19 @@ export interface DAutoCompleteProps {
   errorMessage?: string;
   options: DAutoCompleteOption[];
   placeholder?: string;
+  multiple?: boolean;
 }
 
 const props = withDefaults(defineProps<DAutoCompleteProps>(), {
   hideLabel: false,
   errorMessage: 'Invalid input',
+  multiple: false,
 });
 
 const emit = defineEmits(['update:modelValue']);
 
 const query = ref('');
+
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const isError = computed(() => props.status === 'error');
@@ -73,7 +76,7 @@ function onClear() {
 }
 </script>
 <template>
-  <Combobox v-model="selectedValue" as="div" :name="props.name">
+  <Combobox v-model="selectedValue" as="div" :name="props.name" :multiple="props.multiple">
     <ComboboxLabel class="block text-sm leading-6" :class="{ 'sr-only': hideLabel }">
       <span class="font-medium">{{ props.label }}</span>
       <span v-if="props.description" class="block text-black/60 dark:text-white/60">
@@ -172,7 +175,7 @@ function onClear() {
       <!-- Clear Button -->
       <div class="absolute inset-y-0 right-8 flex items-center">
         <button
-          v-if="selectedValue"
+          v-if="!props.multiple && selectedValue"
           type="button"
           aria-label="Clear"
           class="rounded-full p-0.5 text-lg text-primary-600 transition-colors hover:bg-black/5 hover:text-primary-700 dark:text-primary-500 dark:hover:bg-white/5 dark:hover:text-primary-400"

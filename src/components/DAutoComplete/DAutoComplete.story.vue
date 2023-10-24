@@ -8,8 +8,6 @@ import IconPaperclip from '~icons/feather/paperclip';
 import IconZap from '~icons/feather/zap';
 import IconAperture from '~icons/feather/aperture';
 
-const selected = ref<DAutoCompleteOption | null>(null);
-
 const basic = [
   { id: 1, label: 'David Youngquist Soards', description: 'Software Engineer' },
   { id: 2, label: 'Gretel Durruty Soards', description: 'OR Nurse' },
@@ -49,6 +47,9 @@ const things = [
   { id: 'za', label: 'Zap', left: { icon: IconZap } },
   { id: 'ap', label: 'Aperture', left: { icon: IconAperture } },
 ];
+
+const selected = ref<DAutoCompleteOption | null>(null);
+const selectedList = ref<DAutoCompleteOption[]>([]);
 </script>
 
 <template>
@@ -149,6 +150,24 @@ const things = [
           <template #icon> <IconSearch class="h-5 w-5" aria-hidden="true" /></template>
         </DAutoComplete>
         <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
+      </div>
+    </Variant>
+    <Variant title="Mutiple with description">
+      <div class="w-96">
+        <ul v-if="selectedList?.length">
+          <li v-for="person in selectedList" :key="person.id">
+            {{ person.label }}
+          </li>
+        </ul>
+        <DAutoComplete
+          v-model="selectedList"
+          label="Assign to"
+          name="auto8"
+          :options="basic"
+          description="Select people to assign to this task."
+          multiple
+          @update:modelValue="logEvent('autocomplete update', $event)"
+        />
       </div>
     </Variant>
   </Story>
