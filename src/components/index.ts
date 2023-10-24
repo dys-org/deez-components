@@ -1,5 +1,6 @@
 export * from './DAutoComplete';
 export * from './DAvatar';
+export * from './DBadge';
 export * from './DButton';
 export * from './DCheckbox';
 export * from './DDropdown';
