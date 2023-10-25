@@ -75,6 +75,13 @@ function onClear() {
   emit('update:modelValue', null);
   dom(inputRef)?.focus();
 }
+
+function handleDisplayValue(opt: unknown) {
+  if (Array.isArray(opt)) {
+    return opt.map((o) => o.label).join(', ');
+  }
+  return (opt as DAutoCompleteOption)?.label;
+}
 </script>
 <template>
   <Combobox v-model="selectedValue" as="div" :name="props.name" :multiple="props.multiple">
@@ -92,14 +99,14 @@ function onClear() {
       <ComboboxInput
         ref="inputRef"
         :class="[
-          'w-full rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
+          'w-full overflow-hidden overflow-ellipsis whitespace-nowrap rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
-          selectedValue ? 'pr-14' : 'pr-10',
-          $slots.icon ? 'pl-9' : 'pr-3',
+          selectedValue && !props.multiple ? 'pr-14' : 'pr-9',
+          $slots.icon ? 'pl-9' : 'pl-3',
         ]"
-        :display-value="(opt) => (opt as DAutoCompleteOption)?.label"
+        :display-value="handleDisplayValue"
         :placeholder="placeholder"
         :aria-invalid="isError"
         :aria-errormessage="isError && props.hideLabel ? `${props.name}ErrorMessage` : undefined"
