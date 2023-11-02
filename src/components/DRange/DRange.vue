@@ -46,7 +46,7 @@ const rangeVal = computed({
 </script>
 <template>
   <DFormGroup
-    :id="props.id"
+    :for="props.id"
     :label="props.label"
     :hide-label="props.hideLabel"
     :description="props.description"
