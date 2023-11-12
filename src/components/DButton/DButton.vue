@@ -28,8 +28,8 @@ const isDefault = props.variant === 'default';
 const isPrimary = props.variant === 'primary';
 const isLink = props.variant === 'link';
 const isDanger = props.danger === true;
-const isSmall = props.size === 'small';
-const isLarge = props.size === 'large';
+const isSmall = props.size === 'sm';
+const isLarge = props.size === 'lg';
 
 const isLoading = computed(() => props.loading === true);
 
