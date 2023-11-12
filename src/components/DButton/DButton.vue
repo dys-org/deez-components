@@ -7,7 +7,7 @@ export interface DButtonProps {
   danger?: boolean;
   loading?: boolean;
   type?: ButtonHTMLAttributes['type'];
-  size?: 'small' | 'large';
+  size?: 'sm' | 'lg';
 }
 
 defineOptions({ inheritAttrs: false });
