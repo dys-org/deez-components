@@ -10,7 +10,7 @@ defineOptions({ inheritAttrs: false });
       aria-hidden="true"
       :class="
         twMerge(
-          'mr-2 inline h-10 w-10 animate-spin fill-primary-600 text-gray-200 dark:text-gray-600',
+          'inline h-10 w-10 animate-spin fill-primary-600 text-gray-200 dark:text-gray-600',
           $attrs.class as string,
         )
       "

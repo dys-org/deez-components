@@ -11,5 +11,6 @@ export * from './DModal';
 export * from './DRadio';
 export * from './DRange';
 export * from './DSelect';
+export * from './DSpinner';
 export * from './DTextarea';
 export * from './DToggle';
