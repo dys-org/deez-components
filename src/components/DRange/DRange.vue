@@ -14,6 +14,7 @@ export interface DRangeProps {
   min?: number;
   max?: number;
   step?: number;
+  hideValue?: boolean;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -22,6 +23,7 @@ const props = withDefaults(defineProps<DRangeProps>(), {
   min: 0,
   max: 100,
   step: 1,
+  hideLabel: false,
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -53,6 +55,12 @@ const rangeVal = computed({
     :status="props.status"
     :error-message="props.errorMessage"
   >
+    <template #label>
+      <div class="flex justify-between font-medium">
+        <span class="whitespace-nowrap">{{ props.label }}</span>
+        <span v-if="!hideValue" aria-hidden="true">{{ rangeVal }}</span>
+      </div>
+    </template>
     <div :class="['relative flex h-2 w-full items-center', !props.hideLabel && 'mt-3']">
       <input
         v-bind="$attrs"

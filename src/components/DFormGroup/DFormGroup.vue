@@ -5,7 +5,7 @@ import { DInlineError } from '../DInlineError';
 
 export interface DFormGroupProps {
   for: string;
-  label: string;
+  label?: string;
   hideLabel?: boolean;
   description?: string;
   status?: 'error';
@@ -23,10 +23,14 @@ const isError = computed(() => props.status === 'error');
 <template>
   <div>
     <label class="block text-sm leading-6" :class="{ 'sr-only': props.hideLabel }" :for="props.for">
-      <span class="whitespace-nowrap font-medium">{{ props.label }}</span>
-      <span v-if="props.description" class="block text-black/60 dark:text-white/60">
-        {{ props.description }}
-      </span>
+      <slot name="label">
+        <span class="whitespace-nowrap font-medium">{{ props.label }}</span>
+      </slot>
+      <slot name="description">
+        <span v-if="props.description" class="block text-black/60 dark:text-white/60">
+          {{ props.description }}
+        </span>
+      </slot>
       <DInlineError v-if="isError" :message="errorMessage" />
     </label>
 
