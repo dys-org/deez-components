@@ -65,7 +65,7 @@ const lastName = ref('Soards');
     <Variant title="Hidden Label with Error">
       <div class="w-96">
         <DInput
-          id="invisible"
+          id="invisibleError"
           v-model="val4"
           label="Invisible"
           hide-label
