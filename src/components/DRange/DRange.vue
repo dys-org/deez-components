@@ -11,9 +11,9 @@ export interface DRangeProps {
   description?: string;
   status?: 'error';
   errorMessage?: string;
-  min: number;
-  max: number;
-  step: number;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
 defineOptions({ inheritAttrs: false });
