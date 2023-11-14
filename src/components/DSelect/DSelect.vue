@@ -4,7 +4,7 @@ import { computed } from 'vue';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DSelectProps {
-  modelValue: string;
+  modelValue?: string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -17,6 +17,7 @@ export interface DSelectProps {
 defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DSelectProps>(), {
+  modelValue: '',
   hideLabel: false,
   labelLeft: false,
   errorMessage: 'Invalid input',

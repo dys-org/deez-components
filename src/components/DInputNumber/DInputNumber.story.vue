@@ -4,7 +4,7 @@ import { logEvent } from 'histoire/client';
 
 import DInputNumber from './DInputNumber.vue';
 
-const num1 = ref(0);
+const num1 = ref('');
 const num2 = ref(0);
 const num3 = ref(0);
 </script>
@@ -20,7 +20,7 @@ const num3 = ref(0);
           description="Any even number 0 - 10"
           min="0"
           max="10"
-          step="2.0"
+          step="2"
           @update:modelValue="logEvent('num1 updated', $event)"
         />
       </div>
@@ -32,10 +32,9 @@ const num3 = ref(0);
           id="number"
           v-model="num2"
           label="Pick a number"
-          description="Any even number 0 - 10"
+          description="Any odd number 0 - 9"
           min="0"
           max="10"
-          step="2.0"
           status="error"
           @update:modelValue="logEvent('num 2 updated', $event)"
         />
@@ -51,7 +50,7 @@ const num3 = ref(0);
           description="Any even number 0 - 10"
           min="0"
           max="10"
-          step="2.0"
+          step="2"
           status="error"
           hide-label
           @update:modelValue="logEvent('num3 updated', $event)"

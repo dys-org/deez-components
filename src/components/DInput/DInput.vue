@@ -8,7 +8,7 @@ import IconEye from '~icons/feather/eye';
 import IconEyeOff from '~icons/feather/eye-off';
 
 export interface DInputProps {
-  modelValue: string;
+  modelValue?: string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -21,6 +21,7 @@ export interface DInputProps {
 defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DInputProps>(), {
+  modelValue: '',
   type: 'text',
   hideLabel: false,
   errorMessage: 'This field is invalid.',

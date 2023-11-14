@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { Switch, SwitchDescription, SwitchGroup, SwitchLabel } from '@headlessui/vue';
 
 export interface DToggleProps {
-  modelValue: boolean;
+  modelValue?: boolean;
   label: string;
   description?: string;
   hideLabel?: boolean;

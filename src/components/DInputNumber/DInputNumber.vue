@@ -7,7 +7,7 @@ import IconMinus from '~icons/feather/minus';
 import IconPlus from '~icons/feather/plus';
 
 export interface DInputNumberProps {
-  modelValue: number | string;
+  modelValue?: number | string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -19,6 +19,7 @@ export interface DInputNumberProps {
 defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DInputNumberProps>(), {
+  modelValue: '',
   hideLabel: false,
   errorMessage: 'Invalid input',
 });

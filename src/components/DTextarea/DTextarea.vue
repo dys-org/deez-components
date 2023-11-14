@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DTextareaProps {
-  modelValue: string;
+  modelValue?: string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -18,6 +18,7 @@ export interface DTextareaProps {
 defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DTextareaProps>(), {
+  modelValue: '',
   hideLabel: false,
   errorMessage: 'This field is invalid.',
 });
@@ -25,6 +26,15 @@ const props = withDefaults(defineProps<DTextareaProps>(), {
 const emit = defineEmits(['update:modelValue']);
 
 const isError = computed(() => props.status === 'error');
+
+const input = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(val) {
+    emit('update:modelValue', val);
+  },
+});
 </script>
 
 <template>
@@ -41,6 +51,7 @@ const isError = computed(() => props.status === 'error');
       <textarea
         v-bind="$attrs"
         :id="props.id"
+        v-model="input"
         :rows="props.rows"
         :name="($attrs.name as string) || props.id"
         :class="
@@ -52,8 +63,6 @@ const isError = computed(() => props.status === 'error');
             $attrs.class as string,
           )
         "
-        :value="props.modelValue"
-        @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       />
       <slot name="after" />
     </div>

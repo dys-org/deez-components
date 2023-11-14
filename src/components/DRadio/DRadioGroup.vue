@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 export interface DRadioGroupProps {
-  modelValue: string;
+  modelValue?: string;
   name: string;
   options: { id: string; label: string; value: string }[];
   legend: string;
@@ -11,7 +11,7 @@ export interface DRadioGroupProps {
   hideLegend?: boolean;
 }
 
-const props = withDefaults(defineProps<DRadioGroupProps>(), {});
+const props = withDefaults(defineProps<DRadioGroupProps>(), { modelValue: '' });
 
 const emit = defineEmits(['update:modelValue']);
 

@@ -27,7 +27,7 @@ export interface DAutoCompleteOption {
 }
 
 export interface DAutoCompleteProps {
-  modelValue: DAutoCompleteOption | DAutoCompleteOption[] | null;
+  modelValue?: DAutoCompleteOption | DAutoCompleteOption[] | null;
   name: string;
   label: string;
   hideLabel?: boolean;
@@ -40,6 +40,7 @@ export interface DAutoCompleteProps {
 }
 
 const props = withDefaults(defineProps<DAutoCompleteProps>(), {
+  modelValue: null,
   hideLabel: false,
   errorMessage: 'Invalid input',
   multiple: false,

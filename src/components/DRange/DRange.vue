@@ -4,7 +4,7 @@ import { computed } from 'vue';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DRangeProps {
-  modelValue: number;
+  modelValue?: number;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -20,6 +20,7 @@ export interface DRangeProps {
 defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DRangeProps>(), {
+  modelValue: 0,
   min: 0,
   max: 100,
   step: 1,

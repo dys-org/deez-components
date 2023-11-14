@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 export interface DCheckboxProps {
-  modelValue: boolean | string[];
+  modelValue?: boolean | string[];
   name: string;
   id: string;
   value?: string;
@@ -13,7 +13,11 @@ export interface DCheckboxProps {
 
 defineOptions({ inheritAttrs: false });
 
-const props = withDefaults(defineProps<DCheckboxProps>(), { value: 'on', hideLabel: false });
+const props = withDefaults(defineProps<DCheckboxProps>(), {
+  modelValue: false,
+  value: 'on',
+  hideLabel: false,
+});
 
 const emit = defineEmits(['update:modelValue']);
 
