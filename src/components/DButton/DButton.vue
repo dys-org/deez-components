@@ -8,6 +8,7 @@ export interface DButtonProps {
   loading?: boolean;
   type?: ButtonHTMLAttributes['type'];
   size?: 'sm' | 'lg';
+  useFocusVisible?: boolean;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -17,6 +18,7 @@ const props = withDefaults(defineProps<DButtonProps>(), {
   danger: false,
   loading: false,
   type: 'button',
+  useFocusVisible: true,
 });
 
 const emit = defineEmits<{
@@ -48,7 +50,10 @@ function onClick(e: MouseEvent) {
     :type="props.type"
     :class="
       twMerge(
-        'inline-flex items-center gap-x-2 rounded px-3 py-1.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 disabled:pointer-events-none disabled:opacity-60',
+        'inline-flex items-center gap-x-2 rounded px-3 py-1.5 text-sm font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60',
+        useFocusVisible
+          ? 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500'
+          : 'focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-primary-500',
         isLoading && 'cursor-not-allowed opacity-60',
 
         isSmall && 'px-2 py-1 text-xs',

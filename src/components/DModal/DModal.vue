@@ -107,10 +107,15 @@ function closeDialog() {
               <div
                 class="flex flex-col gap-3 bg-gray-50 px-4 py-3 dark:bg-white/5 sm:flex-row-reverse sm:px-6"
               >
-                <DButton variant="primary" :danger="isDanger" @click="emit('confirm')">
+                <DButton
+                  variant="primary"
+                  :danger="isDanger"
+                  :use-focus-visible="false"
+                  @click="emit('confirm')"
+                >
                   {{ props.confirmText }}
                 </DButton>
-                <DButton @click="closeDialog">Cancel</DButton>
+                <DButton :use-focus-visible="false" @click="closeDialog">Cancel</DButton>
               </div>
             </DialogPanel>
           </TransitionChild>
