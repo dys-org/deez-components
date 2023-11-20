@@ -58,6 +58,7 @@ const input = computed({
     <div :class="['relative flex', !props.hideLabel && 'mt-2']">
       <slot name="before" />
       <input
+        v-bind="$attrs"
         :id="props.id"
         v-model.trim="input"
         :name="($attrs.name as string) || props.id"
@@ -74,7 +75,6 @@ const input = computed({
         "
         :aria-invalid="isError"
         :aria-describedby="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
-        v-bind="$attrs"
       />
       <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
         <!-- show/hide password -->

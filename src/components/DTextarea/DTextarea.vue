@@ -50,6 +50,7 @@ const input = computed({
     <div :class="['relative', !props.hideLabel && 'mt-2']">
       <slot name="before" />
       <textarea
+        v-bind="$attrs"
         :id="props.id"
         v-model="input"
         :rows="props.rows"
@@ -63,7 +64,6 @@ const input = computed({
             props.class,
           )
         "
-        v-bind="$attrs"
       />
       <slot name="after" />
     </div>

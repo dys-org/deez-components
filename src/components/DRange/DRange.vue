@@ -64,6 +64,7 @@ const rangeVal = computed({
     </template>
     <div :class="['relative flex h-2 w-full items-center', !props.hideLabel && 'mt-3']">
       <input
+        v-bind="$attrs"
         :id="props.id"
         v-model.number="rangeVal"
         :name="($attrs.name as string) || props.id"
@@ -72,7 +73,6 @@ const rangeVal = computed({
         :max="props.max"
         :step="props.step"
         class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 text-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-gray-700 dark:text-primary-400 dark:focus-visible:ring-primary-400 dark:focus-visible:ring-offset-gray-900 [&::-moz-range-thumb]:relative [&::-moz-range-thumb]:z-[1] [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-current [&::-webkit-slider-thumb]:relative [&::-webkit-slider-thumb]:z-[1] [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:ring-2 [&::-webkit-slider-thumb]:ring-current [&::-webkit-slider-thumb]:dark:bg-gray-900"
-        v-bind="$attrs"
       />
       <span
         class="pointer-events-none absolute h-2 rounded-s-lg bg-primary-500 peer-disabled:bg-opacity-50 dark:bg-primary-400"

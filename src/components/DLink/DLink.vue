@@ -19,18 +19,18 @@ const isExternal = computed(() => {
   <!-- prettier-ignore -->
   <a
     v-if="isExternal"
+    v-bind="$attrs"
     :href="(props.to as string)"
     target="_blank"
     rel="noopener noreferrer"
-    v-bind="$attrs"
     @click="emit('click')"
   >
     <slot />
   </a>
   <RouterLink v-else v-slot="{ href, navigate }" v-bind="props" custom>
     <a
-      :href="href"
       v-bind="$attrs"
+      :href="href"
       @click.prevent="
         navigate();
         emit('click');

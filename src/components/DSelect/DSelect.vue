@@ -48,11 +48,12 @@ const picked = computed({
     :class="{ 'flex items-center gap-4': props.labelLeft }"
   >
     <select
+      v-bind="$attrs"
       :id="props.id"
       v-model="picked"
       :name="($attrs.name as string) || props.id"
-      class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6"
       :class="[
+        'block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6',
         isError
           ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
           : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
@@ -60,7 +61,6 @@ const picked = computed({
       ]"
       :aria-invalid="isError"
       :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
-      v-bind="$attrs"
     >
       <slot />
     </select>
