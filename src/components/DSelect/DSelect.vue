@@ -48,7 +48,6 @@ const picked = computed({
     :class="{ 'flex items-center gap-4': props.labelLeft }"
   >
     <select
-      v-bind="$attrs"
       :id="props.id"
       v-model="picked"
       :name="($attrs.name as string) || props.id"
@@ -61,6 +60,7 @@ const picked = computed({
       ]"
       :aria-invalid="isError"
       :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
+      v-bind="$attrs"
     >
       <slot />
     </select>

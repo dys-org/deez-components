@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { twMerge } from 'tailwind-merge';
+import { type ClassNameValue, twMerge } from 'tailwind-merge';
 
 import { DFormGroup } from '../DFormGroup';
 
@@ -16,6 +16,7 @@ export interface DInputProps {
   type?: 'text' | 'email' | 'url' | 'password' | 'tel';
   status?: 'error';
   errorMessage?: string;
+  class?: ClassNameValue;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -57,7 +58,6 @@ const input = computed({
     <div :class="['relative flex', !props.hideLabel && 'mt-2']">
       <slot name="before" />
       <input
-        v-bind="$attrs"
         :id="props.id"
         v-model.trim="input"
         :name="($attrs.name as string) || props.id"
@@ -69,11 +69,12 @@ const input = computed({
               ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
             isPassword && 'pr-10',
-            $attrs.class as string,
+            props.class,
           ])
         "
         :aria-invalid="isError"
         :aria-describedby="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
+        v-bind="$attrs"
       />
       <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
         <!-- show/hide password -->

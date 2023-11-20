@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import { type ClassNameValue, twMerge } from 'tailwind-merge';
 
 import IconX from '~icons/feather/x';
 
@@ -7,6 +7,7 @@ export interface DBadgeProps {
   color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
   size?: 'small' | 'default';
   removeable?: boolean;
+  class?: ClassNameValue;
 }
 
 const props = withDefaults(defineProps<DBadgeProps>(), {
@@ -46,7 +47,7 @@ const isPink = props.color === 'pink';
           'bg-purple-50 text-purple-700 ring-purple-700/10 dark:bg-purple-400/10 dark:text-purple-400 dark:ring-purple-400/30',
         isPink &&
           'bg-pink-50 text-pink-700 ring-pink-700/10 dark:bg-pink-400/10 dark:text-pink-400 dark:ring-pink-400/20',
-        $attrs.class as string,
+        props.class,
       )
     "
   >

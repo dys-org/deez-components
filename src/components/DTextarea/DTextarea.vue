@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { twMerge } from 'tailwind-merge';
+import { type ClassNameValue, twMerge } from 'tailwind-merge';
 
 import { DFormGroup } from '../DFormGroup';
 
@@ -13,6 +13,7 @@ export interface DTextareaProps {
   rows?: number;
   status?: 'error';
   errorMessage?: string;
+  class?: ClassNameValue;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -49,7 +50,6 @@ const input = computed({
     <div :class="['relative', !props.hideLabel && 'mt-2']">
       <slot name="before" />
       <textarea
-        v-bind="$attrs"
         :id="props.id"
         v-model="input"
         :rows="props.rows"
@@ -60,9 +60,10 @@ const input = computed({
             isError
               ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-600 dark:ring-gray-600 dark:focus:ring-primary-500',
-            $attrs.class as string,
+            props.class,
           )
         "
+        v-bind="$attrs"
       />
       <slot name="after" />
     </div>

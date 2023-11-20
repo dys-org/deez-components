@@ -54,11 +54,24 @@ import IconChevronRight from '~icons/feather/chevron-right';
         Click Me
       </DButton>
     </Variant>
+
     <Variant title="Small">
       <DButton size="sm" @click="logEvent('Small', $event)">Click Me</DButton>
     </Variant>
+
     <Variant title="Large">
       <DButton size="lg" @click="logEvent('Large', $event)">Click Me</DButton>
+    </Variant>
+
+    <Variant title="Using Tailwind-Merge">
+      <DButton
+        :class="['rounded-full p-4', true && 'dark:bg-green-400']"
+        aria-describedby="a test aria"
+        @click="logEvent('Merge', $event)"
+      >
+        <span class="sr-only">Check</span>
+        <IconCheckCircle aria-hidden="true" class="h-4 w-4" />
+      </DButton>
     </Variant>
   </Story>
 </template>

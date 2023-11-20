@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import { type ClassNameValue, twMerge } from 'tailwind-merge';
 
-defineOptions({ inheritAttrs: false });
+const props = defineProps<{
+  class?: ClassNameValue;
+}>();
 </script>
 
 <template>
@@ -11,7 +13,7 @@ defineOptions({ inheritAttrs: false });
       :class="
         twMerge(
           'inline h-10 w-10 animate-spin fill-primary-600 text-gray-200 dark:text-gray-600',
-          $attrs.class as string,
+          props.class,
         )
       "
       viewBox="0 0 100 101"

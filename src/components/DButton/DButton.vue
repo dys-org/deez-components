@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type ButtonHTMLAttributes, computed } from 'vue';
-import { twMerge } from 'tailwind-merge';
+import { type ClassNameValue, twMerge } from 'tailwind-merge';
 
 export interface DButtonProps {
   variant?: 'default' | 'primary' | 'link';
@@ -9,9 +9,8 @@ export interface DButtonProps {
   type?: ButtonHTMLAttributes['type'];
   size?: 'sm' | 'lg';
   useFocusVisible?: boolean;
+  class?: ClassNameValue;
 }
-
-defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<DButtonProps>(), {
   variant: 'default',
@@ -75,11 +74,10 @@ function onClick(e: MouseEvent) {
           isDanger &&
           'text-danger-600 hover:text-danger-700 dark:text-danger-500 dark:hover:text-danger-400',
 
-        $attrs.class as string,
+        props.class,
       )
     "
     :aria-disabled="isLoading || undefined"
-    v-bind="$attrs"
     @click="onClick"
   >
     <span v-if="$slots.iconStart || isLoading" class="-ml-0.5 h-5 w-5 text-current">
