@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { type ClassNameValue, twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
 
+import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DTextareaProps {
@@ -13,7 +14,7 @@ export interface DTextareaProps {
   rows?: number;
   status?: 'error';
   errorMessage?: string;
-  class?: ClassNameValue;
+  class?: VueClass;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -22,6 +23,7 @@ const props = withDefaults(defineProps<DTextareaProps>(), {
   modelValue: '',
   hideLabel: false,
   errorMessage: 'This field is invalid.',
+  class: '',
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -61,7 +63,7 @@ const input = computed({
             isError
               ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-600 dark:ring-gray-600 dark:focus:ring-primary-500',
-            props.class,
+            props.class as string,
           )
         "
       />

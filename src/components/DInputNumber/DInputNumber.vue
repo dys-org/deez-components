@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { type ClassNameValue, twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
 
+import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
 import IconMinus from '~icons/feather/minus';
@@ -15,7 +16,7 @@ export interface DInputNumberProps {
   description?: string;
   status?: 'error';
   errorMessage?: string;
-  class?: ClassNameValue;
+  class?: VueClass;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -24,6 +25,7 @@ const props = withDefaults(defineProps<DInputNumberProps>(), {
   modelValue: '',
   hideLabel: false,
   errorMessage: 'Invalid input',
+  class: '',
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -65,7 +67,7 @@ const input = computed({
             isError
               ? 'pr-10 text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
-            props.class,
+            props.class as string,
           )
         "
         :aria-invalid="isError"

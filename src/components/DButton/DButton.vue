@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { type ButtonHTMLAttributes, computed } from 'vue';
-import { type ClassNameValue, twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
+
+import type { VueClass } from '../../types';
 
 export interface DButtonProps {
   variant?: 'default' | 'primary' | 'link';
@@ -9,7 +11,7 @@ export interface DButtonProps {
   type?: ButtonHTMLAttributes['type'];
   size?: 'sm' | 'lg';
   useFocusVisible?: boolean;
-  class?: ClassNameValue | Record<string, boolean> | (string | Record<string, boolean>)[];
+  class?: VueClass;
 }
 
 const props = withDefaults(defineProps<DButtonProps>(), {
@@ -18,6 +20,7 @@ const props = withDefaults(defineProps<DButtonProps>(), {
   loading: false,
   type: 'button',
   useFocusVisible: true,
+  class: '',
 });
 
 const emit = defineEmits<{
@@ -74,7 +77,7 @@ function onClick(e: MouseEvent) {
           isDanger &&
           'text-danger-600 hover:text-danger-700 dark:text-danger-500 dark:hover:text-danger-400',
 
-        props.class as ClassNameValue,
+        props.class as string,
       )
     "
     :aria-disabled="isLoading || undefined"

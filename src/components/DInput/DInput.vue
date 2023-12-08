@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { type ClassNameValue, twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
 
+import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
 import IconEye from '~icons/feather/eye';
@@ -16,7 +17,7 @@ export interface DInputProps {
   type?: 'text' | 'email' | 'url' | 'password' | 'tel';
   status?: 'error';
   errorMessage?: string;
-  class?: ClassNameValue;
+  class?: VueClass;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<DInputProps>(), {
   type: 'text',
   hideLabel: false,
   errorMessage: 'This field is invalid.',
+  class: '',
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -70,7 +72,7 @@ const input = computed({
               ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
             isPassword && 'pr-10',
-            props.class,
+            props.class as string,
           ])
         "
         :aria-invalid="isError"

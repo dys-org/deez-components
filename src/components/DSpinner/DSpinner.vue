@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { type ClassNameValue, twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
 
-const props = defineProps<{
-  class?: ClassNameValue;
-}>();
+import type { VueClass } from '../../types';
+
+const props = withDefaults(defineProps<{ class?: VueClass }>(), { class: '' });
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const props = defineProps<{
       :class="
         twMerge(
           'inline h-10 w-10 animate-spin fill-primary-600 text-gray-200 dark:text-gray-600',
-          props.class,
+          props.class as string,
         )
       "
       viewBox="0 0 100 101"

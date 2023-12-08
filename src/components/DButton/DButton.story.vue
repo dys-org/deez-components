@@ -68,7 +68,10 @@ const bool = ref(true);
 
     <Variant title="Using Tailwind-Merge">
       <DButton
-        :class="[{ 'bg-green-500 hover:bg-orange-500': bool }, 'rounded-full p-2']"
+        :class="[
+          { 'bg-green-600 hover:bg-orange-600 dark:bg-green-500 dark:hover:bg-orange-500': bool },
+          'rounded-full p-2',
+        ]"
         variant="primary"
         @click="bool = !bool"
       >
