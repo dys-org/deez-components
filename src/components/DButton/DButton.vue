@@ -9,7 +9,7 @@ export interface DButtonProps {
   type?: ButtonHTMLAttributes['type'];
   size?: 'sm' | 'lg';
   useFocusVisible?: boolean;
-  class?: ClassNameValue;
+  class?: ClassNameValue | Record<string, boolean> | (string | Record<string, boolean>)[];
 }
 
 const props = withDefaults(defineProps<DButtonProps>(), {
@@ -74,7 +74,7 @@ function onClick(e: MouseEvent) {
           isDanger &&
           'text-danger-600 hover:text-danger-700 dark:text-danger-500 dark:hover:text-danger-400',
 
-        props.class,
+        props.class as ClassNameValue,
       )
     "
     :aria-disabled="isLoading || undefined"

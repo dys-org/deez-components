@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { logEvent } from 'histoire/client';
 
 import DButton from './DButton.vue';
 
 import IconCheckCircle from '~icons/feather/check-circle';
 import IconChevronRight from '~icons/feather/chevron-right';
+
+const bool = ref(true);
 </script>
 
 <template>
@@ -65,9 +68,9 @@ import IconChevronRight from '~icons/feather/chevron-right';
 
     <Variant title="Using Tailwind-Merge">
       <DButton
-        :class="['rounded-full p-4', true && 'dark:bg-green-400']"
-        aria-describedby="a test aria"
-        @click="logEvent('Merge', $event)"
+        :class="[{ 'bg-green-500 hover:bg-orange-500': bool }, 'rounded-full p-2']"
+        variant="primary"
+        @click="bool = !bool"
       >
         <span class="sr-only">Check</span>
         <IconCheckCircle aria-hidden="true" class="h-4 w-4" />
