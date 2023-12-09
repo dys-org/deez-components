@@ -46,13 +46,13 @@
     "@tailwindcss/forms": "^0.5.7",
     "tailwind-merge": "^2.1.0",
     "tailwindcss": "^3.3.6",
-    "vue": "^3.3.10",
+    "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.16",
     "@histoire/plugin-vue": "^0.17.6",
-    "@iconify/json": "^2.2.153",
+    "@iconify/json": "^2.2.154",
     "@rushstack/eslint-patch": "^1.6.0",
     "@tailwindcss/forms": "^0.5.7",
     "@tsconfig/node20": "^20.1.2",
@@ -79,9 +79,9 @@
     "tailwindcss": "^3.3.6",
     "typescript": "~5.2.2",
     "unplugin-icons": "^0.18.1",
-    "vite": "^5.0.6",
-    "vitest": "^1.0.2",
-    "vue": "^3.3.10",
+    "vite": "^5.0.7",
+    "vitest": "^1.0.3",
+    "vue": "^3.3.11",
     "vue-router": "^4.2.5",
     "vue-tsc": "^1.8.25"
   },
