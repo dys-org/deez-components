@@ -7,16 +7,15 @@ export default defineConfig({
   theme: {
     title: 'deez-components',
     logo: {
-      square: '/src/assets/img/DYS_white_on_red.svg',
-      light: '/src/assets/img/DYS_light.svg',
-      dark: '/src/assets/img/DYS_dark.svg',
+      square: '/src/assets/img/deez-components-square.svg',
+      light: '/src/assets/img/deez-logo-light.svg',
+      dark: '/src/assets/img/deez-logo-dark.svg',
     },
-    dark: '/src/assets/img/DYS_dark.svg',
     // logoHref: 'https://acme.com',
     // favicon: './favicon.ico',
     colors: {
       gray: defaultColors.gray,
-      primary: defaultColors.teal,
+      primary: defaultColors.sky,
     },
   },
 });
