@@ -3,7 +3,7 @@ import DSpinner from './DSpinner.vue';
 </script>
 
 <template>
-  <Story :layout="{ type: 'grid', width: '100%' }">
+  <Story :layout="{ type: 'grid', width: 300 }">
     <Variant title="Default">
       <DSpinner />
     </Variant>

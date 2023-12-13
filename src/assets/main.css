@@ -1,15 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.histoire-generic-render-story {
-  padding: 8px;
-}
-
-/* .htw-dark {
-  @apply text-white;
-}
-
-.htw-dark .bind-preview-bg {
-  @apply bg-gray-900;
-} */

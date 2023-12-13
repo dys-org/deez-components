@@ -14,8 +14,19 @@ export default defineConfig({
     // logoHref: 'https://acme.com',
     // favicon: './favicon.ico',
     colors: {
-      gray: defaultColors.gray,
+      gray: {
+        ...defaultColors.gray,
+        700: defaultColors.gray[800],
+      },
       primary: defaultColors.sky,
+    },
+  },
+  // autoApplyContrastColor: true,
+  defaultStoryProps: {
+    icon: 'lucide:puzzle',
+    layout: {
+      type: 'grid',
+      width: '100%',
     },
   },
 });

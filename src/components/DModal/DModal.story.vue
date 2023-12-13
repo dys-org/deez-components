@@ -15,7 +15,7 @@ function onConfirm(e: Event) {
 </script>
 
 <template>
-  <Story>
+  <Story :layout="{ type: 'single', iframe: true }">
     <Variant title="Default">
       <DButton @click="isOpen = true">Open</DButton>
       <DModal v-model:open="isOpen" @confirm="onConfirm" />

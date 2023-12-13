@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { logEvent } from 'histoire/client';
 
 import { DBadge } from '../DBadge';
@@ -53,10 +53,17 @@ const things = [
 
 const selected = ref<DAutoCompleteOption | null>(null);
 const selectedList = ref<DAutoCompleteOption[]>([]);
+
+watch(
+  () => selected.value,
+  (newValue, oldValue) => {
+    logEvent('autocomplete update', newValue);
+  },
+);
 </script>
 
 <template>
-  <Story>
+  <Story :layout="{ type: 'single', iframe: true }">
     <Variant title="Basic with description">
       <div class="w-96">
         <DAutoComplete
@@ -65,11 +72,11 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
           name="auto1"
           :options="basic"
           description="Select a person to assign to this task."
-          @update:modelValue="logEvent('autocomplete update', $event)"
         />
         <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
       </div>
     </Variant>
+
     <Variant title="With Error">
       <div class="w-96">
         <DAutoComplete
@@ -80,49 +87,25 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
           description="Select a person to assign to this task."
           error-message="This is a required field."
           status="error"
-          @update:modelValue="logEvent('autocomplete update', $event)"
         />
         <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
       </div>
     </Variant>
+
     <Variant title="Images">
       <div class="w-96">
-        <DAutoComplete
-          v-model="selected"
-          label="Assign to"
-          name="auto3"
-          :options="people"
-          @update:modelValue="logEvent('autocomplete update', $event)"
-        />
+        <DAutoComplete v-model="selected" label="Assign to" name="auto3" :options="people" />
         <p class="mt-8 font-mono">ID Value: {{ selected?.id }}</p>
       </div>
     </Variant>
+
     <Variant title="Icons">
       <div class="w-96">
-        <DAutoComplete
-          v-model="selected"
-          label="Check these out"
-          name="auto4"
-          :options="things"
-          @update:modelValue="logEvent('autocomplete update', $event)"
-        />
+        <DAutoComplete v-model="selected" label="Check these out" name="auto4" :options="things" />
         <p class="mt-8 font-mono">Value: {{ selected }}</p>
       </div>
     </Variant>
-    <Variant title="Hidden Label">
-      <div class="w-96">
-        <DAutoComplete
-          v-model="selected"
-          label="Assign to"
-          name="auto5"
-          :options="people"
-          hide-label
-          placeholder="Type the person's name"
-          @update:modelValue="logEvent('autocomplete update', $event)"
-        />
-        <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
-      </div>
-    </Variant>
+
     <Variant title="Hidden Label with Error">
       <div class="w-96">
         <DAutoComplete
@@ -134,11 +117,11 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
           placeholder="Type the person's name"
           status="error"
           error-message="This is a required field."
-          @update:modelValue="logEvent('autocomplete update', $event)"
         />
         <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
       </div>
     </Variant>
+
     <Variant title="With icon (Search)">
       <div class="w-96">
         <DAutoComplete
@@ -148,13 +131,13 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
           :options="people"
           hide-label
           placeholder="Search"
-          @update:modelValue="logEvent('autocomplete update', $event)"
         >
           <template #icon> <IconSearch class="h-5 w-5" aria-hidden="true" /></template>
         </DAutoComplete>
         <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
       </div>
     </Variant>
+
     <Variant title="Mutiple with description">
       <div class="w-96">
         <ul class="flex min-h-[2rem] gap-4">
@@ -170,7 +153,6 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
           description="Select people to assign to this task."
           multiple
           class="mt-2"
-          @update:modelValue="logEvent('autocomplete update', $event)"
         />
       </div>
     </Variant>
