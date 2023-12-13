@@ -5,8 +5,8 @@ import { twMerge } from 'tailwind-merge';
 import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
-import IconMinus from '~icons/feather/minus';
-import IconPlus from '~icons/feather/plus';
+import IconMinus from '~icons/lucide/minus';
+import IconPlus from '~icons/lucide/plus';
 
 export interface DInputNumberProps {
   modelValue?: number | string;

@@ -5,8 +5,8 @@ import { twMerge } from 'tailwind-merge';
 import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
-import IconEye from '~icons/feather/eye';
-import IconEyeOff from '~icons/feather/eye-off';
+import IconEye from '~icons/lucide/eye';
+import IconEyeOff from '~icons/lucide/eye-off';
 
 export interface DInputProps {
   modelValue?: string;

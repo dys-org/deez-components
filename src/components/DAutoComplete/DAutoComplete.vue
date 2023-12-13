@@ -12,9 +12,9 @@ import {
 import { dom } from '../../utils';
 import { DInlineError } from '../DInlineError';
 
-import IconCheck from '~icons/feather/check';
-import IconChevronDown from '~icons/feather/chevron-down';
-import IconX from '~icons/feather/x';
+import IconCheck from '~icons/lucide/check';
+import IconChevronDown from '~icons/lucide/chevron-down';
+import IconX from '~icons/lucide/x';
 
 export interface DAutoCompleteOption {
   id: number | string;

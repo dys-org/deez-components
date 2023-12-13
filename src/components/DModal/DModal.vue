@@ -3,8 +3,8 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 
 import { DButton } from '../DButton';
 
-import IconAlertTriangle from '~icons/feather/alert-triangle';
-import IconCheckCircle from '~icons/feather/check-circle';
+import IconAlertTriangle from '~icons/lucide/alert-triangle';
+import IconCheckCircle from '~icons/lucide/check-circle';
 
 export interface DModalProps {
   open: boolean;

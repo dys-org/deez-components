@@ -4,8 +4,8 @@ import { logEvent } from 'histoire/client';
 
 import DButton from './DButton.vue';
 
-import IconCheckCircle from '~icons/feather/check-circle';
-import IconChevronRight from '~icons/feather/chevron-right';
+import IconCheckCircle from '~icons/lucide/check-circle';
+import IconChevronRight from '~icons/lucide/chevron-right';
 
 const bool = ref(true);
 </script>

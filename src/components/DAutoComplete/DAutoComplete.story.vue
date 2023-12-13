@@ -6,10 +6,10 @@ import { DBadge } from '../DBadge';
 
 import DAutoComplete, { type DAutoCompleteOption } from './DAutoComplete.vue';
 
-import IconAperture from '~icons/feather/aperture';
-import IconPaperclip from '~icons/feather/paperclip';
-import IconSearch from '~icons/feather/search';
-import IconZap from '~icons/feather/zap';
+import IconAperture from '~icons/lucide/aperture';
+import IconPaperclip from '~icons/lucide/paperclip';
+import IconSearch from '~icons/lucide/search';
+import IconZap from '~icons/lucide/zap';
 
 const basic = [
   { id: 1, label: 'David Youngquist Soards', description: 'Software Engineer' },

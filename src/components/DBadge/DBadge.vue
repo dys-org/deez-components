@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 import type { VueClass } from '../../types';
 
-import IconX from '~icons/feather/x';
+import IconX from '~icons/lucide/x';
 
 export interface DBadgeProps {
   color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';

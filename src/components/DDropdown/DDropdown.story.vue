@@ -3,7 +3,7 @@ import { createMemoryHistory, createRouter } from 'vue-router';
 
 import DDropdown from './DDropdown.vue';
 
-import IconDollarSign from '~icons/feather/dollar-sign';
+import IconDollarSign from '~icons/lucide/dollar-sign';
 
 //@ts-expect-error
 //eslint-disable-next-line @typescript-eslint/no-unused-vars

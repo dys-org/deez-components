@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconAlertCircle from '~icons/feather/alert-circle';
+import IconAlertCircle from '~icons/lucide/alert-circle';
 
 export interface DInlineErrorProps {
   message: string;

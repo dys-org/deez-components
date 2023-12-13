@@ -5,8 +5,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 
 import DLink from '../DLink/DLink.vue';
 
-import IconChevronDown from '~icons/feather/chevron-down';
-import IconMoreHorizontal from '~icons/feather/more-horizontal';
+import IconChevronDown from '~icons/lucide/chevron-down';
+import IconMoreHorizontal from '~icons/lucide/more-horizontal';
 
 export interface DropOption {
   label?: string;

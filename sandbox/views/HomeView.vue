@@ -6,7 +6,7 @@ import { DCheckbox } from '../../src/components/DCheckbox';
 import { DDropdown } from '../../src/components/DDropdown';
 import { DToggle } from '../../src/components/DToggle';
 
-import IconDollarSign from '~icons/feather/dollar-sign';
+import IconDollarSign from '~icons/lucide/dollar-sign';
 
 const options = [
   {
