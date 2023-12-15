@@ -58,7 +58,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), { minimal: false, alig
     >
       <MenuItems
         :class="[
-          'absolute z-10 mt-2 w-56 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800',
+          'absolute z-10 mt-2 w-56 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-white dark:ring-opacity-10',
           props.aligned === 'left' ? 'left-0 origin-top-left' : 'right-0 origin-top-right',
         ]"
       >
