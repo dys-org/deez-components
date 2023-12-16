@@ -18,7 +18,7 @@ export default defineConfig({
       dark: filePath('./src/assets/img/deez-logo-dark.svg'),
     },
     // logoHref: 'https://acme.com',
-    favicon: 'favicon.svg',
+    favicon: 'favicon.ico',
     colors: {
       gray: defaultColors.gray,
 
