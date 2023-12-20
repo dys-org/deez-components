@@ -59,7 +59,7 @@ const input = computed({
         :name="($attrs.name as string) || props.id"
         :class="
           twMerge(
-            'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset dark:bg-white/5  dark:placeholder:text-white/30 sm:text-sm sm:leading-6',
+            'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset sm:text-sm  sm:leading-6 dark:bg-white/5 dark:placeholder:text-white/30',
             isError
               ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-600 dark:ring-gray-600 dark:focus:ring-primary-500',

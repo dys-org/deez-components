@@ -63,13 +63,13 @@ function closeDialog() {
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all dark:bg-gray-800 sm:my-8 sm:w-full sm:max-w-lg"
+              class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg dark:bg-gray-800"
             >
               <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start sm:gap-4">
                   <div
                     v-if="!hideIcon"
-                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10"
+                    class="mx-auto flex size-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:size-10"
                     :class="
                       isDanger
                         ? 'bg-danger-100 dark:bg-danger-400/10'
@@ -77,7 +77,7 @@ function closeDialog() {
                     "
                   >
                     <span
-                      class="h-6 w-6"
+                      class="size-6"
                       :class="
                         isDanger
                           ? '-mt-1 text-danger-600 dark:text-danger-400'
@@ -105,7 +105,7 @@ function closeDialog() {
                 </div>
               </div>
               <div
-                class="flex flex-col gap-3 bg-gray-50 px-4 py-3 dark:bg-white/5 sm:flex-row-reverse sm:px-6"
+                class="flex flex-col gap-3 bg-gray-50 px-4 py-3 sm:flex-row-reverse sm:px-6 dark:bg-white/5"
               >
                 <DButton
                   variant="primary"

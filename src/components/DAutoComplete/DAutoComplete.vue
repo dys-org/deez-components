@@ -100,7 +100,7 @@ function handleDisplayValue(opt: unknown) {
       <ComboboxInput
         ref="inputRef"
         :class="[
-          'w-full truncate rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
+          'w-full truncate rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35]',
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
@@ -117,14 +117,14 @@ function handleDisplayValue(opt: unknown) {
         class="absolute inset-0 flex cursor-default items-center px-2 focus:outline-none"
       >
         <IconChevronDown
-          class="ml-auto h-5 w-5 text-gray-400 dark:text-gray-500"
+          class="ml-auto size-5 text-gray-400 dark:text-gray-500"
           aria-hidden="true"
         />
       </ComboboxButton>
 
       <ComboboxOptions
         v-if="filtered.length > 0"
-        class="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-white dark:ring-opacity-10 sm:text-sm"
+        class="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-gray-800 dark:ring-white dark:ring-opacity-10"
       >
         <ComboboxOption
           v-for="opt in filtered"
@@ -144,13 +144,13 @@ function handleDisplayValue(opt: unknown) {
                 v-if="opt.left?.imgURL"
                 :src="opt.left.imgURL"
                 alt=""
-                class="mr-3 h-6 w-6 flex-shrink-0 rounded-full"
+                class="mr-3 size-6 flex-shrink-0 rounded-full"
               />
               <component
                 :is="opt.left.icon"
                 v-else-if="opt.left?.icon"
                 :class="[
-                  'mr-3 h-3.5 w-3.5 ',
+                  'mr-3 size-3.5 ',
                   active ? 'text-white' : 'text-gray-400 dark:text-gray-500',
                 ]"
                 aria-hidden="true"
@@ -176,7 +176,7 @@ function handleDisplayValue(opt: unknown) {
                 active ? 'text-white' : 'text-primary-600 dark:text-primary-400',
               ]"
             >
-              <IconCheck class="h-5 w-5" aria-hidden="true" />
+              <IconCheck class="size-5" aria-hidden="true" />
             </span>
           </li>
         </ComboboxOption>
@@ -190,7 +190,7 @@ function handleDisplayValue(opt: unknown) {
           class="rounded-full p-0.5 text-lg text-primary-600 transition-colors hover:bg-black/5 hover:text-primary-700 dark:text-primary-500 dark:hover:bg-white/5 dark:hover:text-primary-400"
           @click="onClear()"
         >
-          <IconX class="h-4 w-4" aria-hidden="true" />
+          <IconX class="size-4" aria-hidden="true" />
         </button>
       </div>
     </div>

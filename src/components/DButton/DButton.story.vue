@@ -76,7 +76,7 @@ const bool = ref(true);
         @click="bool = !bool"
       >
         <span class="sr-only">Check</span>
-        <IconCheckCircle aria-hidden="true" class="h-4 w-4" />
+        <IconCheckCircle aria-hidden="true" class="size-4" />
       </DButton>
     </Variant>
   </Story>

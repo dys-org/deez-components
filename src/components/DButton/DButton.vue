@@ -83,7 +83,7 @@ function onClick(e: MouseEvent) {
     :aria-disabled="isLoading || undefined"
     @click="onClick"
   >
-    <span v-if="$slots.iconStart || isLoading" class="-ml-0.5 h-5 w-5 text-current">
+    <span v-if="$slots.iconStart || isLoading" class="-ml-0.5 size-5 text-current">
       <svg
         v-if="isLoading"
         aria-label="Loading"
@@ -110,7 +110,7 @@ function onClick(e: MouseEvent) {
       <slot v-else name="iconStart" />
     </span>
     <slot>Default Text</slot>
-    <span v-if="$slots.iconEnd" class="-mr-0.5 h-5 w-5 text-current">
+    <span v-if="$slots.iconEnd" class="-mr-0.5 size-5 text-current">
       <slot name="iconEnd" />
     </span>
   </button>

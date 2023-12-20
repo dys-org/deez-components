@@ -13,10 +13,10 @@ const hasNotif = computed(() => props.notifications > 0);
 
 <template>
   <span class="relative inline-block">
-    <img v-if="props.image" class="h-10 w-10 rounded-full" :src="props.image" alt="" />
+    <img v-if="props.image" class="size-10 rounded-full" :src="props.image" alt="" />
     <svg
       v-else
-      class="h-10 w-10 rounded-full bg-gray-100 text-gray-300 dark:bg-gray-800 dark:text-gray-600"
+      class="size-10 rounded-full bg-gray-100 text-gray-300 dark:bg-gray-800 dark:text-gray-600"
       fill="currentColor"
       viewBox="0 0 24 24"
     >
@@ -26,7 +26,7 @@ const hasNotif = computed(() => props.notifications > 0);
     </svg>
     <span
       v-if="hasNotif"
-      class="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-400 ring-2 ring-white"
+      class="absolute bottom-0 right-0 block size-2.5 rounded-full bg-green-400 ring-2 ring-white"
     />
   </span>
 </template>

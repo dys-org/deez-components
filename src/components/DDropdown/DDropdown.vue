@@ -37,14 +37,14 @@ const props = withDefaults(defineProps<DDropdownProps>(), { minimal: false, alig
         class="flex items-center rounded-full bg-black/5 p-0.5 text-gray-400 transition-colors hover:bg-black/10 hover:text-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary-500 dark:bg-white/5 dark:hover:bg-white/10 dark:hover:text-gray-200"
       >
         <span class="sr-only">{{ props.label }}</span>
-        <IconMoreHorizontal class="h-5 w-5" aria-hidden="true" />
+        <IconMoreHorizontal class="size-5" aria-hidden="true" />
       </MenuButton>
       <!-- button with text -->
       <MenuButton
         v-else
         class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-white/10 dark:ring-transparent dark:hover:bg-white/[.15]"
       >
-        {{ props.label }} <IconChevronDown class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+        {{ props.label }} <IconChevronDown class="-mr-1 size-5 text-gray-400" aria-hidden="true" />
       </MenuButton>
     </div>
 
@@ -78,7 +78,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), { minimal: false, alig
                 <component
                   :is="opt.icon"
                   v-if="opt.icon"
-                  class="mr-2 h-3.5 w-3.5 text-gray-400"
+                  class="mr-2 size-3.5 text-gray-400"
                   aria-hidden="true"
                 />
                 {{ opt.label }}
@@ -96,7 +96,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), { minimal: false, alig
                 <component
                   :is="opt.icon"
                   v-if="opt.icon"
-                  class="mr-2 h-3.5 w-3.5 text-gray-400"
+                  class="mr-2 size-3.5 text-gray-400"
                   aria-hidden="true"
                 />
                 {{ opt.label }}

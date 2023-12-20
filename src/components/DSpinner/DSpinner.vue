@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{ class?: VueClass }>(), { class: '' });
       aria-hidden="true"
       :class="
         twMerge(
-          'inline h-10 w-10 animate-spin fill-primary-600 text-gray-200 dark:text-gray-600',
+          'inline size-10 animate-spin fill-primary-600 text-gray-200 dark:text-gray-600',
           props.class as string,
         )
       "

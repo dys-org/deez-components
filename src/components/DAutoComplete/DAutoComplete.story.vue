@@ -132,7 +132,7 @@ watch(
           hide-label
           placeholder="Search"
         >
-          <template #icon> <IconSearch class="h-5 w-5" aria-hidden="true" /></template>
+          <template #icon> <IconSearch class="size-5" aria-hidden="true" /></template>
         </DAutoComplete>
         <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
       </div>

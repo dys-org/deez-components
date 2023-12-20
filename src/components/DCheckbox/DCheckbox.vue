@@ -41,7 +41,7 @@ const checked = computed({
         :name="props.name"
         type="checkbox"
         :value="props.value"
-        class="h-4 w-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500 dark:border-white/30 dark:bg-white/5 dark:ring-offset-gray-800 dark:checked:border-current dark:checked:bg-current"
+        class="size-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500 dark:border-white/30 dark:bg-white/5 dark:ring-offset-gray-800 dark:checked:border-current dark:checked:bg-current"
       />
     </div>
     <label

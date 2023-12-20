@@ -53,7 +53,7 @@ const picked = computed({
       v-model="picked"
       :name="($attrs.name as string) || props.id"
       :class="[
-        'block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6',
+        'block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 sm:text-sm sm:leading-6 dark:bg-white/5',
         isError
           ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
           : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',

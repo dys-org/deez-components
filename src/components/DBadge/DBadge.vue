@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { twMerge } from 'tailwind-merge';
 
 import type { VueClass } from '../../types';
@@ -19,14 +20,14 @@ const props = withDefaults(defineProps<DBadgeProps>(), {
   class: '',
 });
 
-const isGray = props.color === 'gray';
-const isRed = props.color === 'red';
-const isYellow = props.color === 'yellow';
-const isGreen = props.color === 'green';
-const isBlue = props.color === 'blue';
-const isIndigo = props.color === 'indigo';
-const isPurple = props.color === 'purple';
-const isPink = props.color === 'pink';
+const isGray = computed(() => props.color === 'gray');
+const isRed = computed(() => props.color === 'red');
+const isYellow = computed(() => props.color === 'yellow');
+const isGreen = computed(() => props.color === 'green');
+const isBlue = computed(() => props.color === 'blue');
+const isIndigo = computed(() => props.color === 'indigo');
+const isPurple = computed(() => props.color === 'purple');
+const isPink = computed(() => props.color === 'pink');
 </script>
 
 <template>
@@ -60,7 +61,7 @@ const isPink = props.color === 'pink';
       v-if="props.removeable"
       type="button"
       :class="[
-        'group relative -mr-1 h-3.5 w-3.5 rounded-sm',
+        'group relative -mr-1 size-3.5 rounded-sm',
         isGray && 'hover:bg-gray-500/20',
         isRed && 'hover:bg-red-600/20',
         isYellow && 'hover:bg-yellow-600/20',
@@ -74,7 +75,7 @@ const isPink = props.color === 'pink';
       <span class="sr-only">Remove</span>
       <IconX
         :class="[
-          'h-3.5 w-3.5',
+          'size-3.5',
           isGray && 'stroke-gray-600/50 group-hover:stroke-gray-600/75',
           isRed && 'stroke-red-600/50 group-hover:stroke-red-600/75',
           isYellow && 'stroke-yellow-700/50 group-hover:stroke-yellow-700/75',
