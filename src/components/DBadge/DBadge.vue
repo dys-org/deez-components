@@ -34,7 +34,7 @@ const isPink = computed(() => props.color === 'pink');
   <span
     :class="
       twMerge(
-        'inline-flex items-center gap-x-0.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ',
+        'inline-flex items-center gap-x-0.5 rounded-full px-2 py-1 text-xs font-medium ring-1 ring-inset ',
         isGray &&
           'dark: bg-gray-50 text-gray-600 ring-gray-500/10 dark:bg-gray-400/10 dark:text-gray-400 dark:ring-gray-400/20',
         isRed &&
@@ -61,7 +61,7 @@ const isPink = computed(() => props.color === 'pink');
       v-if="props.removeable"
       type="button"
       :class="[
-        'group relative -mr-1 size-3.5 rounded-sm',
+        'group relative -mr-1 size-3.5 rounded-full',
         isGray && 'hover:bg-gray-500/20',
         isRed && 'hover:bg-red-600/20',
         isYellow && 'hover:bg-yellow-600/20',
