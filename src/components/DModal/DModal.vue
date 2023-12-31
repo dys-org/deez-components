@@ -34,7 +34,7 @@ function closeDialog() {
 
 <template>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-50 text-gray-900 dark:text-white" @close="closeDialog">
+    <Dialog as="div" class="relative z-50 text-black dark:text-white" @close="closeDialog">
       <TransitionChild
         as="template"
         enter="ease-out duration-300"

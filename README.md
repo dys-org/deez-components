@@ -27,6 +27,15 @@ content: [
 Your "brand" colors for `primary` and `danger` also need to be set in the `tailwind.config.*`
 The following maps them to the default tailwind blue and red colors.
 
+Instead of using different grays for text colors. This library uses opacities of 60/40/30.
+So set your default white and black colors to a dark-gray and off-white to make all text colors based off of those values. Or keep the default black and white for maximum contrast.
+
+Set your base text colors on the `<html>` element in your `index.html` file.
+
+```
+<html class="text-black dark:text-white">
+```
+
 ```js
 const colors = require('tailwindcss/colors');
 ...
@@ -34,6 +43,7 @@ theme: {
   extend: {
     ...
     colors: {
+      black: colors.gray['900'],
       primary: colors.blue,
       danger: colors.red,
     },

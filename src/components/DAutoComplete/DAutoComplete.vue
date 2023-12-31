@@ -94,7 +94,7 @@ function handleDisplayValue(opt: unknown) {
       <DInlineError v-if="isError" :message="props.errorMessage" />
     </ComboboxLabel>
     <div class="relative mt-2">
-      <div class="absolute inset-y-0 left-2 flex items-center text-gray-400 dark:text-gray-500">
+      <div class="absolute inset-y-0 left-2 flex items-center text-black/60 dark:text-white/60">
         <slot name="icon"></slot>
       </div>
       <ComboboxInput
@@ -117,7 +117,7 @@ function handleDisplayValue(opt: unknown) {
         class="absolute inset-0 flex cursor-default items-center px-2 focus:outline-none"
       >
         <IconChevronDown
-          class="ml-auto size-5 text-gray-400 dark:text-gray-500"
+          class="ml-auto size-5 text-black/60 dark:text-white/60"
           aria-hidden="true"
         />
       </ComboboxButton>
@@ -151,7 +151,7 @@ function handleDisplayValue(opt: unknown) {
                 v-else-if="opt.left?.icon"
                 :class="[
                   'mr-3 size-3.5 ',
-                  active ? 'text-white' : 'text-gray-400 dark:text-gray-500',
+                  active ? 'text-white' : 'text-black/60 dark:text-white/60',
                 ]"
                 aria-hidden="true"
               />
