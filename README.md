@@ -28,12 +28,12 @@ Your "brand" colors for `primary` and `danger` also need to be set in the `tailw
 The following maps them to the default tailwind blue and red colors.
 
 Instead of using different grays for text colors. This library uses opacities of 60/40/30.
-So set your default white and black colors to a dark-gray and off-white to make all text colors based off of those values. Or keep the default black and white for maximum contrast.
+So set your default black color to a dark-gray to make all text colors based off of it in light mode. Or keep the default black for maximum contrast. I prefer to keep white set to `#fff`.
 
 Set your base text colors on the `<html>` element in your `index.html` file.
 
 ```
-<html class="text-black dark:text-white">
+<html class="text-black dark:text-gray-50">
 ```
 
 ```js
