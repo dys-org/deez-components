@@ -13,4 +13,5 @@ export * from './DRange';
 export * from './DSelect';
 export * from './DSpinner';
 export * from './DTextarea';
+export * from './DToast';
 export * from './DToggle';

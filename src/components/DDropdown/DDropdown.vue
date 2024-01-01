@@ -3,7 +3,7 @@ import type { Component } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 
-import DLink from '../DLink/DLink.vue';
+import { DLink } from '../DLink';
 
 import IconChevronDown from '~icons/lucide/chevron-down';
 import IconMoreHorizontal from '~icons/lucide/more-horizontal';

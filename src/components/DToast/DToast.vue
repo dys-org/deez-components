@@ -6,19 +6,23 @@ import IconCheckCircle from '~icons/lucide/check-circle';
 import IconX from '~icons/lucide/x';
 
 export interface DToastProps {
-  show: boolean;
+  id: string;
   title: string;
   description?: string;
-  danger?: boolean;
+  variant?: 'success' | 'error'; // | "info" | "warning";
 }
 
 const props = withDefaults(defineProps<DToastProps>(), {
-  show: false,
+  variant: 'success',
 });
 
 const emit = defineEmits<{
-  'update:show': [value: boolean];
+  dismiss: [id: string];
 }>();
+
+// static computed
+const isSuccess = props.variant === 'success';
+const isError = props.variant === 'error';
 </script>
 
 <template>
@@ -31,22 +35,22 @@ const emit = defineEmits<{
       leave-active-class="transition ease-in duration-100"
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
+      appear
     >
       <div
-        v-if="props.show"
         class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-800 dark:ring-white dark:ring-opacity-10"
       >
         <div class="p-4">
           <div class="flex items-start">
             <div class="flex-shrink-0">
-              <IconAlertTriangle
-                v-if="props.danger"
-                class="h-6 w-6 text-danger-500 dark:text-danger-400"
+              <IconCheckCircle
+                v-if="isSuccess"
+                class="h-6 w-6 text-green-500 dark:text-green-400"
                 aria-hidden="true"
               />
-              <IconCheckCircle
-                v-else
-                class="h-6 w-6 text-green-500 dark:text-green-400"
+              <IconAlertTriangle
+                v-else-if="isError"
+                class="h-6 w-6 text-danger-500 dark:text-danger-400"
                 aria-hidden="true"
               />
             </div>
@@ -59,7 +63,7 @@ const emit = defineEmits<{
             <div class="ml-4 flex flex-shrink-0">
               <DButton
                 class="p-0 text-black/60 shadow-none ring-0 hover:text-black dark:bg-transparent dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-white"
-                @click="emit('update:show', false)"
+                @click="emit('dismiss', props.id)"
               >
                 <span class="sr-only">Close</span>
                 <IconX class="h-5 w-5" aria-hidden="true" />

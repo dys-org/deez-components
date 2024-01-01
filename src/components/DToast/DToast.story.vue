@@ -1,44 +1,40 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
 // import { logEvent } from 'histoire/client';
+
+import { useToast } from '../../composables/useToast';
 import { DButton } from '../DButton';
 
-import DToast from './DToast.vue';
+import DToastList from './DToastList.vue';
 
-const show = ref(false);
+const { add, remove, notifications } = useToast();
 </script>
 
 <template>
   <Story :layout="{ type: 'single', iframe: true }">
     <Variant title="Success">
-      <DButton @click="show = true">Show Toast</DButton>
-      <div
-        aria-live="assertive"
-        class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
+      <DButton
+        class="mb-4 block"
+        @click="
+          add({
+            title: 'Succesful Operation!',
+            description: 'You updated your user profile.',
+          })
+        "
       >
-        <!-- Toast component goes here -->
-        <DToast
-          v-model:show="show"
-          title="Succesful Operation!"
-          description="You updated your user profile."
-        />
-      </div>
-    </Variant>
-    <Variant title="Error">
-      <DButton @click="show = true">Show Toast</DButton>
-      <div
-        aria-live="assertive"
-        class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
+        Success
+      </DButton>
+      <DButton
+        @click="
+          add({
+            title: 'An error occurred!',
+            description: 'Table Users not found.',
+            variant: 'error',
+          })
+        "
       >
-        <!-- Toast component goes here -->
-        <DToast
-          v-model:show="show"
-          title="An error occured"
-          danger
-          description="Table users does not exist."
-        />
-      </div>
+        Error
+      </DButton>
+      <DToastList :notifications="notifications" @dismiss="remove" />
     </Variant>
   </Story>
 </template>
