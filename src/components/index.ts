@@ -3,6 +3,7 @@ export * from './DAvatar';
 export * from './DBadge';
 export * from './DButton';
 export * from './DCheckbox';
+export * from './DCollapse';
 export * from './DDropdown';
 export * from './DInput';
 export * from './DInputNumber';
