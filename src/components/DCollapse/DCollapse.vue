@@ -11,13 +11,19 @@ export interface DCollapseProps {
   arrowStyle?: 'start' | 'end' | 'none';
   buttonClasses?: string;
   class?: VueClass;
+  defaultOpen?: boolean;
 }
 
 const props = withDefaults(defineProps<DCollapseProps>(), {
   arrowStyle: 'start',
   buttonClasses: '',
   class: '',
+  defaultOpen: false,
 });
+
+const emit = defineEmits<{
+  'update:defaultOpen': [open: boolean];
+}>();
 </script>
 
 <template>
@@ -27,6 +33,7 @@ const props = withDefaults(defineProps<DCollapseProps>(), {
     :class="
       twMerge('border-b-[1.5px] border-black/10 dark:border-white/[0.15]', props.class as string)
     "
+    :default-open="props.defaultOpen"
   >
     <DisclosureButton
       :class="
@@ -36,6 +43,7 @@ const props = withDefaults(defineProps<DCollapseProps>(), {
           props.buttonClasses,
         )
       "
+      @click="emit('update:defaultOpen', !open)"
     >
       <span
         v-if="props.arrowStyle !== 'none'"

@@ -18,7 +18,8 @@ import DCollapse from './DCollapse.vue';
           </p>
         </div>
       </DCollapse>
-      <DCollapse button-text="Things" arrow-style="end">
+      <!-- use v-model:defaultOpen to persist expanded state -->
+      <DCollapse button-text="Default Open Arrow End" arrow-style="end" :default-open="true">
         <div class="flex flex-col gap-8 px-4 pb-6 pt-3">
           <p class="text-sm">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi debitis excepturi
@@ -27,7 +28,7 @@ import DCollapse from './DCollapse.vue';
           </p>
         </div>
       </DCollapse>
-      <DCollapse button-text="Other Stuff" arrow-style="none">
+      <DCollapse button-text="Arrow None" arrow-style="none">
         <div class="flex flex-col gap-8 bg-gray-100 px-4 pb-6 pt-3 dark:bg-gray-800">
           <p class="text-sm">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.
