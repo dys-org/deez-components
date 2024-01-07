@@ -13,7 +13,7 @@ function hasWrapper() {
 </script>
 
 <template>
-  <div :class="{ 'p-2 text-black dark:text-gray-50': hasWrapper() }">
+  <div :class="{ 'p-2 font-sans text-black dark:text-gray-50': hasWrapper() }">
     <slot />
   </div>
 </template>
