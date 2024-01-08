@@ -23,7 +23,9 @@ const props = withDefaults(defineProps<DSelectProps>(), {
   errorMessage: 'Invalid input',
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DSelectProps['modelValue']];
+}>();
 
 const isError = computed(() => props.status === 'error');
 

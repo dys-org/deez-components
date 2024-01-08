@@ -26,7 +26,9 @@ const props = withDefaults(defineProps<DTextareaProps>(), {
   class: '',
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DTextareaProps['modelValue']];
+}>();
 
 const isError = computed(() => props.status === 'error');
 

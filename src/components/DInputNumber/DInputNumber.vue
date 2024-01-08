@@ -28,7 +28,9 @@ const props = withDefaults(defineProps<DInputNumberProps>(), {
   class: '',
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DInputNumberProps['modelValue']];
+}>();
 
 const inputEl = ref<HTMLInputElement | null>(null);
 

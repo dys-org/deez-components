@@ -30,7 +30,9 @@ const props = withDefaults(defineProps<DInputProps>(), {
   class: '',
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DInputProps['modelValue']];
+}>();
 
 const showPassword = ref(false);
 

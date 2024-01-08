@@ -27,7 +27,9 @@ const props = withDefaults(defineProps<DRangeProps>(), {
   hideLabel: false,
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DRangeProps['modelValue']];
+}>();
 
 const progressStyle = computed(() => {
   const { modelValue, min, max } = props;

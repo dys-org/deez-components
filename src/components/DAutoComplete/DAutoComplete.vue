@@ -46,7 +46,9 @@ const props = withDefaults(defineProps<DAutoCompleteProps>(), {
   multiple: false,
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DAutoCompleteProps['modelValue']];
+}>();
 
 const query = ref('');
 

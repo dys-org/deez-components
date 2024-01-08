@@ -19,7 +19,9 @@ const props = withDefaults(defineProps<DCheckboxProps>(), {
   hideLabel: false,
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DCheckboxProps['modelValue']];
+}>();
 
 const checked = computed({
   get() {

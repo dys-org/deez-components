@@ -13,7 +13,9 @@ export interface DRadioGroupProps {
 
 const props = withDefaults(defineProps<DRadioGroupProps>(), { modelValue: '' });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DRadioGroupProps['modelValue']];
+}>();
 
 const describedBy = props.description ? `${props.name}Description` : undefined;
 

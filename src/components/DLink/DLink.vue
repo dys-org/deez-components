@@ -8,7 +8,7 @@ export type { RouterLinkProps as DLinkProps };
 
 const props = defineProps<RouterLinkProps>();
 
-const emit = defineEmits(['click']);
+const emit = defineEmits<{ click: [] }>();
 
 const isExternal = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http');

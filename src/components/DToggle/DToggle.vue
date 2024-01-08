@@ -16,7 +16,9 @@ const props = withDefaults(defineProps<DToggleProps>(), {
   labelSide: 'right',
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  'update:modelValue': [value: DToggleProps['modelValue']];
+}>();
 
 const enabled = computed({
   get() {

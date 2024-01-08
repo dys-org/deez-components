@@ -22,7 +22,10 @@ const props = withDefaults(defineProps<DModalProps>(), {
   danger: false,
 });
 
-const emit = defineEmits(['update:open', 'confirm']);
+const emit = defineEmits<{
+  'update:open': [value: DModalProps['open']];
+  confirm: [];
+}>();
 
 // static computed values
 const isDanger = props.danger === true;
