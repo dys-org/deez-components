@@ -9,14 +9,14 @@ import IconChevronRight from '~icons/lucide/chevron-right';
 export interface DCollapseProps {
   buttonText: string;
   arrowStyle?: 'start' | 'end' | 'none';
-  buttonClasses?: string;
+  buttonClass?: VueClass;
   class?: VueClass;
   defaultOpen?: boolean;
 }
 
 const props = withDefaults(defineProps<DCollapseProps>(), {
   arrowStyle: 'start',
-  buttonClasses: '',
+  buttonClass: '',
   class: '',
   defaultOpen: false,
 });
@@ -40,7 +40,7 @@ const emit = defineEmits<{
         twMerge(
           'flex w-full items-center gap-2 rounded-sm p-3 text-left text-xs font-semibold uppercase transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:hover:bg-white/5',
           props.arrowStyle === 'end' && 'justify-between',
-          props.buttonClasses,
+          props.buttonClass as string,
         )
       "
       @click="emit('update:defaultOpen', !open)"

@@ -2,7 +2,9 @@
 import type { Component } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+import { twMerge } from 'tailwind-merge';
 
+import type { VueClass } from '../../types';
 import { DLink } from '../DLink';
 
 import IconChevronDown from '~icons/lucide/chevron-down';
@@ -24,9 +26,14 @@ export interface DDropdownProps {
   minimal?: boolean;
   options: DropOption[];
   aligned?: 'right' | 'left';
+  buttonClass?: VueClass;
 }
 
-const props = withDefaults(defineProps<DDropdownProps>(), { minimal: false, aligned: 'right' });
+const props = withDefaults(defineProps<DDropdownProps>(), {
+  minimal: false,
+  aligned: 'right',
+  buttonClass: '',
+});
 </script>
 <template>
   <Menu as="div" class="relative inline-block text-left">
@@ -34,7 +41,12 @@ const props = withDefaults(defineProps<DDropdownProps>(), { minimal: false, alig
       <!-- minimal dots button -->
       <MenuButton
         v-if="props.minimal"
-        class="flex items-center rounded-full bg-black/5 p-0.5 text-gray-400 transition-colors hover:bg-black/10 hover:text-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary-500 dark:bg-white/5 dark:hover:bg-white/10 dark:hover:text-gray-200"
+        :class="
+          twMerge(
+            'flex items-center rounded-full bg-black/5 p-0.5 text-gray-400 transition-colors hover:bg-black/10 hover:text-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary-500 dark:bg-white/5 dark:hover:bg-white/10 dark:hover:text-gray-200',
+            props.buttonClass as string,
+          )
+        "
       >
         <span class="sr-only">{{ props.label }}</span>
         <IconMoreHorizontal class="size-5" aria-hidden="true" />
