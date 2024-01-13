@@ -27,9 +27,10 @@ const isExternal = computed(() => {
   >
     <slot />
   </a>
-  <RouterLink v-else v-slot="{ href, navigate }" v-bind="props" custom>
+  <RouterLink v-else v-slot="{ href, navigate, isActive }" v-bind="props" custom>
     <a
       v-bind="$attrs"
+      :class="isActive ? activeClass : ''"
       :href="href"
       @click.prevent="
         navigate();
