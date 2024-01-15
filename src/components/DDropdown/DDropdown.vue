@@ -19,6 +19,7 @@ export interface DropOption {
   children?: DropOption[];
   divider?: boolean;
   disabled?: boolean;
+  danger?: boolean;
 }
 
 export interface DDropdownProps {
@@ -27,6 +28,7 @@ export interface DDropdownProps {
   options: DropOption[];
   aligned?: 'right' | 'left';
   buttonClass?: VueClass;
+  menuClass?: VueClass;
 }
 
 const props = withDefaults(defineProps<DDropdownProps>(), {
@@ -36,7 +38,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
 });
 </script>
 <template>
-  <Menu as="div" class="relative inline-block text-left">
+  <Menu as="div" :class="twMerge('relative inline-block text-left')">
     <div>
       <!-- minimal dots button -->
       <MenuButton
@@ -54,7 +56,12 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
       <!-- button with text -->
       <MenuButton
         v-else
-        class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-white/10 dark:ring-transparent dark:hover:bg-white/[.15]"
+        :class="
+          twMerge(
+            'inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-white/10 dark:ring-transparent dark:hover:bg-white/[.15]',
+            props.buttonClass as string,
+          )
+        "
       >
         {{ props.label }} <IconChevronDown class="-mr-1 size-5 text-gray-400" aria-hidden="true" />
       </MenuButton>
@@ -69,28 +76,36 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
       leave-to-class="transform opacity-0 scale-95"
     >
       <MenuItems
-        :class="[
-          'absolute z-10 mt-2 w-56 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-white dark:ring-opacity-10',
-          props.aligned === 'left' ? 'left-0 origin-top-left' : 'right-0 origin-top-right',
-        ]"
+        :class="
+          twMerge(
+            'absolute z-10 mt-2 min-w-40 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-white dark:ring-opacity-10',
+            props.aligned === 'left' ? 'left-0 origin-top-left' : 'right-0 origin-top-right',
+            props.menuClass as string,
+          )
+        "
       >
         <div class="p-1">
           <template v-for="opt in options" :key="opt.id">
             <hr v-if="opt.divider" class="m-1 border-gray-200 dark:border-gray-700" />
-            <MenuItem v-else v-slot="{ active }" :disabled="opt.disabled">
+            <MenuItem
+              v-else
+              v-slot="{ active }"
+              :disabled="opt.disabled"
+              :class="[
+                'inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm ring-2',
+                opt.danger && 'text-danger-600 dark:text-danger-500',
+                opt.disabled && 'cursor-not-allowed opacity-40',
+              ]"
+            >
               <DLink
                 v-if="opt.to"
-                :class="[
-                  'inline-flex w-full items-center px-4 py-2 text-left text-sm',
-                  active && 'rounded-md bg-primary-600 text-white dark:bg-primary-600',
-                  opt.disabled && 'cursor-not-allowed opacity-40',
-                ]"
                 :to="opt.to"
+                :class="active ? 'ring-primary-500' : 'ring-transparent'"
               >
                 <component
                   :is="opt.icon"
                   v-if="opt.icon"
-                  class="mr-2 size-3.5 text-gray-400"
+                  :class="['mr-2 size-4', opt.danger ? 'text-current' : 'text-gray-400']"
                   aria-hidden="true"
                 />
                 {{ opt.label }}
@@ -98,17 +113,13 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
               <button
                 v-else
                 type="button"
-                :class="[
-                  'inline-flex w-full items-center px-4 py-2 text-left text-sm',
-                  active && 'rounded-md bg-primary-600 text-white dark:bg-primary-600',
-                  opt.disabled && 'cursor-not-allowed opacity-40',
-                ]"
+                :class="active ? 'ring-primary-500' : 'ring-transparent'"
                 @click="opt.fn"
               >
                 <component
                   :is="opt.icon"
                   v-if="opt.icon"
-                  class="mr-2 size-3.5 text-gray-400"
+                  :class="['mr-2 size-4', opt.danger ? 'text-current' : 'text-gray-400']"
                   aria-hidden="true"
                 />
                 {{ opt.label }}

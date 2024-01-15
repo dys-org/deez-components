@@ -58,6 +58,7 @@ const options = [
     label: 'Sign Out',
     key: 'sign_out',
     icon: IconDollarSign,
+    danger: true,
     fn: () => {
       console.log('sign out');
     },
