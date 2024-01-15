@@ -5,7 +5,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { twMerge } from 'tailwind-merge';
 
 import type { VueClass } from '../../types';
-import { DLink } from '../DLink';
+
+import SubMenuItem from './SubMenuItem.vue';
 
 import IconChevronDown from '~icons/lucide/chevron-down';
 import IconMoreHorizontal from '~icons/lucide/more-horizontal';
@@ -92,16 +93,12 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
               v-slot="{ active }"
               :disabled="opt.disabled"
               :class="[
-                'inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm ring-2',
+                'inline-flex w-full items-center rounded-md px-3 py-2 text-left text-sm ring-2 ring-inset',
                 opt.danger && 'text-danger-600 dark:text-danger-500',
                 opt.disabled && 'cursor-not-allowed opacity-40',
               ]"
             >
-              <DLink
-                v-if="opt.to"
-                :to="opt.to"
-                :class="active ? 'ring-primary-500' : 'ring-transparent'"
-              >
+              <SubMenuItem :opt="opt" :active="active">
                 <component
                   :is="opt.icon"
                   v-if="opt.icon"
@@ -109,21 +106,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
                   aria-hidden="true"
                 />
                 {{ opt.label }}
-              </DLink>
-              <button
-                v-else
-                type="button"
-                :class="active ? 'ring-primary-500' : 'ring-transparent'"
-                @click="opt.fn"
-              >
-                <component
-                  :is="opt.icon"
-                  v-if="opt.icon"
-                  :class="['mr-2 size-4', opt.danger ? 'text-current' : 'text-gray-400']"
-                  aria-hidden="true"
-                />
-                {{ opt.label }}
-              </button>
+              </SubMenuItem>
             </MenuItem>
           </template>
         </div>
