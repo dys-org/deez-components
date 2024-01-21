@@ -3,16 +3,18 @@
 This library uses Vue 3, Tailwind CSS, Headless UI, and Unplugin Icons.
 TypeScript types are exported for all component props.
 
+I make a lot of breaking changes to this library. I try to increment the minor version when I do, but I would **NOT** use these components in a production app until this hits 1.x, if that ever happens.
+
 ## Project Setup
 
 ```sh
 pnpm add deez-components
 ```
 
-Make sure all `peerDependencies` are installed. If you are using `pnpm` >=8, they'll probably install automatically.
+Make sure all `peerDependencies` are installed. If you are using `pnpm` >=8, they should install automatically.
 
 ```sh
-pnpm add @headlessui/vue @tailwindcss/forms tailwindcss tailwind-merge vue vue-router tailwind-merge
+pnpm add @headlessui/vue @tailwindcss/forms tailwindcss tailwind-merge vue vue-router
 ```
 
 The utility classes are not bundled with the package. After installing add the following to the content list of your `tailwind.config.*`, otherwise the necessary CSS will not be generated.
@@ -35,6 +37,8 @@ Set your base text colors on the `<html>` element in your `index.html` file.
 ```
 <html class="text-black dark:text-gray-50">
 ```
+
+`<html>` works better than `<body>` because some components use portals, which render outside of the `<body>` element.
 
 ```js
 const colors = require('tailwindcss/colors');

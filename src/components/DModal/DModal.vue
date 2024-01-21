@@ -13,6 +13,7 @@ export interface DModalProps {
   confirmText?: string;
   danger?: boolean;
   hideIcon?: boolean;
+  confirmFormAttr?: string;
 }
 
 const props = withDefaults(defineProps<DModalProps>(), {
@@ -24,20 +25,21 @@ const props = withDefaults(defineProps<DModalProps>(), {
 
 const emit = defineEmits<{
   'update:open': [value: DModalProps['open']];
-  confirm: [];
+  confirm: [e: MouseEvent];
+  cancel: [e: MouseEvent];
 }>();
 
 // static computed values
 const isDanger = props.danger === true;
-
-function closeDialog() {
-  emit('update:open', false);
-}
 </script>
 
 <template>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-50 text-black dark:text-white" @close="closeDialog">
+    <Dialog
+      as="div"
+      class="relative z-50 text-black dark:text-white"
+      @close="emit('update:open', false)"
+    >
       <TransitionChild
         as="template"
         enter="ease-out duration-300"
@@ -66,7 +68,7 @@ function closeDialog() {
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg dark:bg-gray-800"
+              class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all dark:bg-gray-800 sm:my-8 sm:w-full sm:max-w-lg"
             >
               <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start sm:gap-4">
@@ -108,17 +110,27 @@ function closeDialog() {
                 </div>
               </div>
               <div
-                class="flex flex-col gap-3 bg-gray-50 px-4 py-3 sm:flex-row-reverse sm:px-6 dark:bg-white/5"
+                class="flex flex-col gap-3 bg-gray-50 px-4 py-3 dark:bg-white/5 sm:flex-row-reverse sm:px-6"
               >
                 <DButton
                   variant="primary"
                   :danger="isDanger"
                   :use-focus-visible="false"
-                  @click="emit('confirm')"
+                  :type="confirmFormAttr ? 'submit' : 'button'"
+                  :form="confirmFormAttr"
+                  @click="emit('confirm', $event)"
                 >
                   {{ props.confirmText }}
                 </DButton>
-                <DButton :use-focus-visible="false" @click="closeDialog">Cancel</DButton>
+                <DButton
+                  :use-focus-visible="false"
+                  @click="
+                    emit('cancel', $event);
+                    emit('update:open', false);
+                  "
+                >
+                  Cancel
+                </DButton>
               </div>
             </DialogPanel>
           </TransitionChild>
