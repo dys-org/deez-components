@@ -6,7 +6,9 @@ defineOptions({ inheritAttrs: false });
 
 export type { RouterLinkProps as DLinkProps };
 
-const props = defineProps<RouterLinkProps>();
+const props = withDefaults(defineProps<RouterLinkProps & { inactiveClass?: string }>(), {
+  inactiveClass: '',
+});
 
 const emit = defineEmits<{ click: [] }>();
 
@@ -30,7 +32,7 @@ const isExternal = computed(() => {
   <RouterLink v-else v-slot="{ href, navigate, isActive }" v-bind="props" custom>
     <a
       v-bind="$attrs"
-      :class="isActive ? activeClass : ''"
+      :class="isActive ? props.activeClass : props.inactiveClass"
       :href="href"
       @click.prevent="
         navigate();
