@@ -1,6 +1,23 @@
+<p align="center">
+  <a href="https://deez-components.pages.dev" target="_blank">
+    <picture>
+      <img alt="deez components" src="./src/assets/img/deez-components-square.png" width="350" height="350" style="max-width: 100%;">
+    </picture>
+  </a>
+</p>
+
+<p align="center">
+  If I had components under my chin would those be chin components?
+</p>
+<p align="center">
+    <a href="https://www.npmjs.com/package/deez-components"><img src="https://img.shields.io/npm/dt/deez-components.svg" alt="Total Downloads"></a>
+    <a href="https://github.com/dys-org/deez-components/releases"><img src="https://img.shields.io/npm/v/deez-components.svg" alt="Latest Release"></a>
+    <a href="https://github.com/dys-org/deez-components/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/deez-components.svg" alt="License"></a>
+</p>
+
 # deez-components
 
-This library uses Vue 3, Tailwind CSS, Headless UI, and Unplugin Icons.
+This UI library uses Vue 3, Tailwind CSS, Headless UI, and Unplugin Icons.
 TypeScript types are exported for all component props.
 
 I make a lot of breaking changes to this library. I try to increment the minor version when I do, but I would **NOT** use these components in a production app until this hits 1.x, if that ever happens.
@@ -34,8 +51,8 @@ So set your default black color to a dark-gray to make all text colors based off
 
 Set your base text colors on the `<html>` element in your `index.html` file.
 
-```
-<html class="text-black dark:text-gray-50">
+```html
+<html class="text-black dark:text-gray-50"></html>
 ```
 
 `<html>` works better than `<body>` because some components use portals, which render outside of the `<body>` element.
