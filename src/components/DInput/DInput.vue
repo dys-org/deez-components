@@ -59,8 +59,7 @@ const input = computed({
     :status="props.status"
     :error-message="props.errorMessage"
   >
-    <div :class="['relative flex', !props.hideLabel && 'mt-2']">
-      <slot name="before" />
+    <div :class="['relative', !props.hideLabel && 'mt-2']">
       <input
         v-bind="$attrs"
         :id="props.id"
@@ -69,7 +68,7 @@ const input = computed({
         :type="isPassword ? (showPassword ? 'text' : props.type) : props.type"
         :class="
           twMerge([
-            'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 sm:text-sm sm:leading-6 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35]',
+            'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
             isError
               ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
@@ -87,7 +86,6 @@ const input = computed({
           <IconEye v-else class="size-5" aria-hidden="true" />
         </button>
       </div>
-      <slot name="after" />
     </div>
   </DFormGroup>
 </template>
