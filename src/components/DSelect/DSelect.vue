@@ -6,7 +6,6 @@ import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DSelectProps {
-  modelValue?: string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -19,27 +18,15 @@ export interface DSelectProps {
 
 defineOptions({ inheritAttrs: false });
 
+const model = defineModel<string>({ default: '' });
+
 const props = withDefaults(defineProps<DSelectProps>(), {
-  modelValue: '',
   hideLabel: false,
   labelLeft: false,
   errorMessage: 'Invalid input',
 });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: DSelectProps['modelValue']];
-}>();
-
 const isError = computed(() => props.status === 'error');
-
-const picked = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
-});
 </script>
 
 <template>
@@ -55,7 +42,7 @@ const picked = computed({
     <select
       v-bind="$attrs"
       :id="props.id"
-      v-model="picked"
+      v-model="model"
       :name="($attrs.name as string) || props.id"
       :class="
         twMerge(

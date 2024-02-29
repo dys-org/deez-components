@@ -9,7 +9,6 @@ import IconEye from '~icons/lucide/eye';
 import IconEyeOff from '~icons/lucide/eye-off';
 
 export interface DInputProps {
-  modelValue?: string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -22,32 +21,20 @@ export interface DInputProps {
 
 defineOptions({ inheritAttrs: false });
 
+const model = defineModel<string>({ default: '' });
+
 const props = withDefaults(defineProps<DInputProps>(), {
-  modelValue: '',
   type: 'text',
   hideLabel: false,
   errorMessage: 'This field is invalid.',
   class: '',
 });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: DInputProps['modelValue']];
-}>();
-
 const showPassword = ref(false);
 
 const isPassword = props.type === 'password';
 
 const isError = computed(() => props.status === 'error');
-
-const input = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
-});
 </script>
 
 <template>
@@ -63,7 +50,7 @@ const input = computed({
       <input
         v-bind="$attrs"
         :id="props.id"
-        v-model.trim="input"
+        v-model.trim="model"
         :name="($attrs.name as string) || props.id"
         :type="isPassword ? (showPassword ? 'text' : props.type) : props.type"
         :class="

@@ -4,7 +4,6 @@ import { computed } from 'vue';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DRangeProps {
-  modelValue?: number;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -19,34 +18,22 @@ export interface DRangeProps {
 
 defineOptions({ inheritAttrs: false });
 
+const model = defineModel<number>({ default: 0 });
+
 const props = withDefaults(defineProps<DRangeProps>(), {
-  modelValue: 0,
   min: 0,
   max: 100,
   step: 1,
   hideLabel: false,
 });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: DRangeProps['modelValue']];
-}>();
-
 const progressStyle = computed(() => {
-  const { modelValue, min, max } = props;
-  const clampedValue = Math.max(min, Math.min(modelValue, max));
+  const { min, max } = props;
+  const clampedValue = Math.max(min, Math.min(model.value, max));
   const relativeValue = (clampedValue - min) / (max - min);
   return {
     width: `${relativeValue * 100}%`,
   };
-});
-
-const rangeVal = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
 });
 </script>
 <template>
@@ -61,14 +48,14 @@ const rangeVal = computed({
     <template #label>
       <div class="flex justify-between font-medium">
         <span class="whitespace-nowrap">{{ props.label }}</span>
-        <span v-if="!hideValue" aria-hidden="true">{{ rangeVal }}</span>
+        <span v-if="!hideValue" aria-hidden="true">{{ model }}</span>
       </div>
     </template>
     <div :class="['relative flex h-2 w-full items-center', !props.hideLabel && 'mt-3']">
       <input
         v-bind="$attrs"
         :id="props.id"
-        v-model.number="rangeVal"
+        v-model.number="model"
         :name="($attrs.name as string) || props.id"
         type="range"
         :min="props.min"

@@ -6,7 +6,6 @@ import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DTextareaProps {
-  modelValue?: string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -19,27 +18,15 @@ export interface DTextareaProps {
 
 defineOptions({ inheritAttrs: false });
 
+const model = defineModel<string>({ default: '' });
+
 const props = withDefaults(defineProps<DTextareaProps>(), {
-  modelValue: '',
   hideLabel: false,
   errorMessage: 'This field is invalid.',
   class: '',
 });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: DTextareaProps['modelValue']];
-}>();
-
 const isError = computed(() => props.status === 'error');
-
-const input = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
-});
 </script>
 
 <template>
@@ -55,7 +42,7 @@ const input = computed({
       <textarea
         v-bind="$attrs"
         :id="props.id"
-        v-model="input"
+        v-model="model"
         :rows="props.rows"
         :name="($attrs.name as string) || props.id"
         :class="

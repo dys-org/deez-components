@@ -9,7 +9,6 @@ import IconMinus from '~icons/lucide/minus';
 import IconPlus from '~icons/lucide/plus';
 
 export interface DInputNumberProps {
-  modelValue?: number | string;
   id: string;
   label: string;
   hideLabel?: boolean;
@@ -21,29 +20,17 @@ export interface DInputNumberProps {
 
 defineOptions({ inheritAttrs: false });
 
+const model = defineModel<number | string>({ default: '' });
+
 const props = withDefaults(defineProps<DInputNumberProps>(), {
-  modelValue: '',
   hideLabel: false,
   errorMessage: 'Invalid input',
   class: '',
 });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: DInputNumberProps['modelValue']];
-}>();
-
 const inputEl = ref<HTMLInputElement | null>(null);
 
 const isError = computed(() => props.status === 'error');
-
-const input = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
-});
 </script>
 
 <template>
@@ -60,12 +47,12 @@ const input = computed({
         v-bind="$attrs"
         :id="props.id"
         ref="inputEl"
-        v-model="input"
+        v-model="model"
         type="number"
         :name="($attrs.name as string) || props.id"
         :class="
           twMerge(
-            'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset [-moz-appearance:_textfield] placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 sm:text-sm sm:leading-6 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
+            'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset [-moz-appearance:_textfield] placeholder:text-black/40 focus:ring-2 focus:ring-inset disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-black/50 disabled:ring-gray-200 dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
             isError
               ? 'pr-10 text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
@@ -84,7 +71,7 @@ const input = computed({
           class="p-0.5 hover:bg-gray-50 dark:hover:bg-white/5"
           @click="
             inputEl?.stepDown(1);
-            emit('update:modelValue', parseFloat(inputEl?.value as string));
+            model = parseFloat(inputEl?.value as string);
           "
         >
           <IconMinus class="size-4" aria-hidden="true" />
@@ -95,7 +82,7 @@ const input = computed({
           class="p-0.5 text-lg hover:bg-gray-50 dark:hover:bg-white/5"
           @click="
             inputEl?.stepUp(1);
-            emit('update:modelValue', parseFloat(inputEl?.value as string));
+            model = parseFloat(inputEl?.value as string);
           "
         >
           <IconPlus class="size-4" aria-hidden="true" />

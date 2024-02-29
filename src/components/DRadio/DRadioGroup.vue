@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 export interface DRadioGroupProps {
-  modelValue?: string;
   name: string;
   options: { id: string; label: string; value: string }[];
   legend: string;
@@ -11,22 +8,11 @@ export interface DRadioGroupProps {
   hideLegend?: boolean;
 }
 
-const props = withDefaults(defineProps<DRadioGroupProps>(), { modelValue: '' });
+const model = defineModel<string>({ default: '' });
 
-const emit = defineEmits<{
-  'update:modelValue': [value: DRadioGroupProps['modelValue']];
-}>();
+const props = defineProps<DRadioGroupProps>();
 
 const describedBy = props.description ? `${props.name}Description` : undefined;
-
-const checked = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
-});
 </script>
 
 <template>
@@ -44,7 +30,7 @@ const checked = computed({
       <div v-for="opt in props.options" :key="opt.id" class="flex items-center">
         <input
           :id="opt.id"
-          v-model="checked"
+          v-model="model"
           :value="opt.value"
           :name="props.name"
           type="radio"

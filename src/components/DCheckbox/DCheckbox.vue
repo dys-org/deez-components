@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 export interface DCheckboxProps {
-  modelValue?: boolean | string[];
   name: string;
   id: string;
   value?: string;
@@ -13,23 +10,11 @@ export interface DCheckboxProps {
 
 defineOptions({ inheritAttrs: false });
 
+const model = defineModel<boolean | string[]>({ default: false });
+
 const props = withDefaults(defineProps<DCheckboxProps>(), {
-  modelValue: false,
   value: 'on',
   hideLabel: false,
-});
-
-const emit = defineEmits<{
-  'update:modelValue': [value: DCheckboxProps['modelValue']];
-}>();
-
-const checked = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
 });
 </script>
 
@@ -39,7 +24,7 @@ const checked = computed({
       <input
         v-bind="$attrs"
         :id="props.id"
-        v-model="checked"
+        v-model="model"
         :name="props.name"
         type="checkbox"
         :value="props.value"

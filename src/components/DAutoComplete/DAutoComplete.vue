@@ -27,7 +27,6 @@ export interface DAutoCompleteOption {
 }
 
 export interface DAutoCompleteProps {
-  modelValue?: DAutoCompleteOption | DAutoCompleteOption[] | null;
   name: string;
   label: string;
   hideLabel?: boolean;
@@ -39,30 +38,20 @@ export interface DAutoCompleteProps {
   multiple?: boolean;
 }
 
+const model = defineModel<DAutoCompleteOption | DAutoCompleteOption[] | null>({ default: null });
+
 const props = withDefaults(defineProps<DAutoCompleteProps>(), {
-  modelValue: null,
   hideLabel: false,
   errorMessage: 'Invalid input',
   multiple: false,
 });
-
-const emit = defineEmits<{
-  'update:modelValue': [value: DAutoCompleteProps['modelValue']];
-}>();
 
 const query = ref('');
 
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const isError = computed(() => props.status === 'error');
-const selectedValue = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(val) {
-    emit('update:modelValue', val);
-  },
-});
+
 const filtered = computed(() =>
   query.value === ''
     ? props.options
@@ -75,7 +64,7 @@ const filtered = computed(() =>
 );
 
 function onClear() {
-  emit('update:modelValue', null);
+  model.value = null;
   dom(inputRef)?.focus();
 }
 
@@ -87,7 +76,7 @@ function handleDisplayValue(opt: unknown) {
 }
 </script>
 <template>
-  <Combobox v-model="selectedValue" as="div" :name="props.name" :multiple="props.multiple">
+  <Combobox v-model="model" as="div" :name="props.name" :multiple="props.multiple">
     <ComboboxLabel class="block text-sm leading-6" :class="{ 'sr-only': hideLabel }">
       <span class="font-medium">{{ props.label }}</span>
       <span v-if="props.description" class="block text-black/60 dark:text-white/60">
@@ -106,7 +95,7 @@ function handleDisplayValue(opt: unknown) {
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
-          selectedValue && !props.multiple ? 'pr-14' : 'pr-9',
+          model && !props.multiple ? 'pr-14' : 'pr-9',
           $slots.icon ? 'pl-9' : 'pl-3',
         ]"
         :display-value="handleDisplayValue"
@@ -186,7 +175,7 @@ function handleDisplayValue(opt: unknown) {
       <!-- Clear Button -->
       <div class="absolute inset-y-0 right-8 flex items-center">
         <button
-          v-if="!props.multiple && selectedValue"
+          v-if="!props.multiple && model"
           type="button"
           aria-label="Clear"
           class="rounded-full p-0.5 text-lg text-primary-600 transition-colors hover:bg-black/5 hover:text-primary-700 dark:text-primary-500 dark:hover:bg-white/5 dark:hover:text-primary-400"
