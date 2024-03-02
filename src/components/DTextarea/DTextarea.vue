@@ -39,6 +39,7 @@ const isError = computed(() => props.status === 'error');
     :error-message="props.errorMessage"
   >
     <div :class="['relative', !props.hideLabel && 'mt-2']">
+      <slot name="before" />
       <textarea
         v-bind="$attrs"
         :id="props.id"
@@ -55,6 +56,7 @@ const isError = computed(() => props.status === 'error');
           )
         "
       />
+      <slot name="after" />
     </div>
   </DFormGroup>
 </template>

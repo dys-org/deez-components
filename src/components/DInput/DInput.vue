@@ -47,6 +47,7 @@ const isError = computed(() => props.status === 'error');
     :error-message="props.errorMessage"
   >
     <div :class="['relative', !props.hideLabel && 'mt-2']">
+      <slot name="before" />
       <input
         v-bind="$attrs"
         :id="props.id"
@@ -73,6 +74,7 @@ const isError = computed(() => props.status === 'error');
           <IconEye v-else class="size-5" aria-hidden="true" />
         </button>
       </div>
+      <slot name="after" />
     </div>
   </DFormGroup>
 </template>
