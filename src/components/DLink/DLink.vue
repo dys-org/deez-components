@@ -15,9 +15,6 @@ const props = withDefaults(defineProps<RouterLinkProps & { class?: VueClass }>()
 
 const emit = defineEmits<{ click: [] }>();
 
-const inactiveClass =
-  'inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 hover:underline focus:underline dark:text-primary-500 dark:hover:text-primary-400';
-
 const isExternal = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http');
 });
@@ -31,7 +28,7 @@ const isExternal = computed(() => {
     :href="(props.to as string)"
     target="_blank"
     rel="noopener noreferrer"
-    :class="twMerge(inactiveClass, props.class as string)"
+    :class="twMerge('inline-flex items-center gap-1', props.class as string)"
     @click="emit('click')"
   >
     <slot />
@@ -39,7 +36,13 @@ const isExternal = computed(() => {
   <RouterLink v-else v-slot="{ href, navigate, isActive }" v-bind="props" custom>
     <a
       v-bind="$attrs"
-      :class="twMerge(inactiveClass, props.class as string, isActive && props.activeClass)"
+      :class="
+        twMerge(
+          'inline-flex items-center gap-1',
+          props.class as string,
+          isActive && props.activeClass,
+        )
+      "
       :href="href"
       @click.prevent="
         navigate();
