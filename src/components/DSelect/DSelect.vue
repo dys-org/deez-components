@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends string | Record<string, any>">
 import { computed } from 'vue';
 import { twMerge } from 'tailwind-merge';
 
@@ -18,7 +18,7 @@ export interface DSelectProps {
 
 defineOptions({ inheritAttrs: false });
 
-const model = defineModel<string>({ default: '' });
+const model = defineModel<T>();
 
 const props = withDefaults(defineProps<DSelectProps>(), {
   hideLabel: false,
