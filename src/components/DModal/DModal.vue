@@ -96,7 +96,7 @@ const isDanger = props.danger === true;
                     </span>
                   </div>
                   <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                    <DialogTitle as="h3" class="text-base font-semibold leading-6">
+                    <DialogTitle class="text-base font-semibold leading-6">
                       {{ props.title }}
                     </DialogTitle>
                     <div class="mt-2">
