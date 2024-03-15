@@ -1,7 +1,7 @@
 /* eslint-env node */
-/** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', './{src,sandbox}/**/*.{vue,js,ts}'],
   darkMode: 'class',
