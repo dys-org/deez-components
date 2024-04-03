@@ -1,7 +1,8 @@
 /* eslint-env node */
-/** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors');
+const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', './{src,sandbox}/**/*.{vue,js,ts}'],
   darkMode: 'class',
@@ -14,7 +15,13 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    iconsPlugin({
+      // Select the icon collections you want to use
+      collections: getIconCollections(['lucide']),
+    }),
+  ],
 };
 
 // https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js

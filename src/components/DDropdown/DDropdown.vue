@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Component } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { twMerge } from 'tailwind-merge';
@@ -8,15 +7,12 @@ import type { VueClass } from '../../types';
 
 import SubMenuItem from './SubMenuItem.vue';
 
-import IconChevronDown from '~icons/lucide/chevron-down';
-import IconMoreHorizontal from '~icons/lucide/more-horizontal';
-
 export interface DropOption {
   label?: string;
   key: string | number;
   to?: RouteLocationRaw;
   fn?: () => void;
-  icon?: string | Component;
+  icon?: string;
   children?: DropOption[];
   divider?: boolean;
   disabled?: boolean;
@@ -51,7 +47,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
       "
     >
       <span class="sr-only">{{ props.label }}</span>
-      <IconMoreHorizontal class="size-5" aria-hidden="true" />
+      <span class="i-lucide-more-horizontal size-5" aria-hidden="true"></span>
     </MenuButton>
     <!-- button with text -->
     <MenuButton
@@ -65,7 +61,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
     >
       <slot>
         {{ props.label }}
-        <IconChevronDown class="-mr-1 size-5 text-gray-400" aria-hidden="true" />
+        <span class="i-lucide-chevron-down -mr-1 size-5 text-gray-400" aria-hidden="true"></span>
       </slot>
     </MenuButton>
 
@@ -98,12 +94,11 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
               ]"
             >
               <SubMenuItem :opt="opt" :active="active">
-                <component
-                  :is="opt.icon"
+                <span
                   v-if="opt.icon"
-                  :class="['mr-2 size-4', opt.danger ? 'text-current' : 'text-gray-400']"
+                  :class="[opt.icon, 'mr-2 size-4', opt.danger ? 'text-current' : 'text-gray-400']"
                   aria-hidden="true"
-                />
+                ></span>
                 {{ opt.label }}
               </SubMenuItem>
             </MenuItem>

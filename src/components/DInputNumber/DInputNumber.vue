@@ -5,9 +5,6 @@ import { twMerge } from 'tailwind-merge';
 import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
-import IconMinus from '~icons/lucide/minus';
-import IconPlus from '~icons/lucide/plus';
-
 export interface DInputNumberProps {
   id: string;
   label: string;
@@ -74,18 +71,18 @@ const isError = computed(() => props.status === 'error');
             model = parseFloat(inputEl?.value as string);
           "
         >
-          <IconMinus class="size-4" aria-hidden="true" />
+          <span class="i-lucide-minus block" aria-hidden="true"></span>
         </button>
         <button
           type="button"
           aria-label="Increment value"
-          class="p-0.5 text-lg hover:bg-gray-50 dark:hover:bg-white/5"
+          class="p-0.5 hover:bg-gray-50 dark:hover:bg-white/5"
           @click="
             inputEl?.stepUp(1);
             model = parseFloat(inputEl?.value as string);
           "
         >
-          <IconPlus class="size-4" aria-hidden="true" />
+          <span class="i-lucide-plus block" aria-hidden="true"></span>
         </button>
       </div>
     </div>

@@ -3,9 +3,6 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 
 import { DButton } from '../DButton';
 
-import IconAlertTriangle from '~icons/lucide/alert-triangle';
-import IconCheckCircle from '~icons/lucide/check-circle';
-
 export interface DModalProps {
   open: boolean;
   title?: string;
@@ -14,6 +11,7 @@ export interface DModalProps {
   danger?: boolean;
   hideIcon?: boolean;
   confirmFormAttr?: string;
+  icon?: string;
 }
 
 const props = withDefaults(defineProps<DModalProps>(), {
@@ -82,17 +80,18 @@ const isDanger = props.danger === true;
                     "
                   >
                     <span
-                      class="size-6"
-                      :class="
+                      :class="[
+                        // prettier-ignore
+                        props.icon ? props.icon :
+                          isDanger ? 'i-lucide-alert-triangle -mt-1' :
+                          'i-lucide-check-circle',
+                        'size-6',
                         isDanger
-                          ? '-mt-1 text-danger-600 dark:text-danger-400'
-                          : 'text-primary-600  dark:text-primary-400'
-                      "
+                          ? 'text-danger-600 dark:text-danger-400'
+                          : 'text-primary-600  dark:text-primary-400',
+                      ]"
+                      aria-hidden="true"
                     >
-                      <slot name="icon">
-                        <IconAlertTriangle v-if="isDanger" aria-hidden="true" />
-                        <IconCheckCircle v-else aria-hidden="true" />
-                      </slot>
                     </span>
                   </div>
                   <div class="mt-3 text-center sm:mt-0 sm:text-left">

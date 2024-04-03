@@ -1,14 +1,13 @@
 import { fileURLToPath, URL } from 'node:url';
 
 import vue from '@vitejs/plugin-vue';
-import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 
 import { peerDependencies } from './package.json';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), Icons({ scale: 0 })],
+  plugins: [vue()],
   build: {
     lib: {
       // file that contains our components exported

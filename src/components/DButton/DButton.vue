@@ -12,6 +12,8 @@ export interface DButtonProps {
   size?: 'sm' | 'lg';
   useFocusVisible?: boolean;
   class?: VueClass;
+  iconStart?: string;
+  iconEnd?: string;
 }
 
 const props = withDefaults(defineProps<DButtonProps>(), {
@@ -83,35 +85,40 @@ function onClick(e: MouseEvent) {
     :aria-disabled="isLoading || undefined"
     @click="onClick"
   >
-    <span v-if="$slots.iconStart || isLoading" class="-ml-0.5 size-5 text-current">
-      <svg
-        v-if="isLoading"
-        aria-label="Loading"
-        role="status"
-        class="animate-spin"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <circle
-          class="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          stroke-width="4"
-        ></circle>
-        <path
-          class="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        ></path>
-      </svg>
-      <slot v-else name="iconStart" />
-    </span>
+    <svg
+      v-if="isLoading"
+      aria-label="Loading"
+      role="status"
+      class="-ml-0.5 size-5 animate-spin text-current"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      ></circle>
+      <path
+        class="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      ></path>
+    </svg>
+    <span
+      v-else-if="props.iconStart"
+      :class="[props.iconStart, '-ml-0.5 block size-5']"
+      aria-hidden="true"
+    ></span>
     <slot>Default Text</slot>
-    <span v-if="$slots.iconEnd" class="-mr-0.5 size-5 text-current">
-      <slot name="iconEnd" />
-    </span>
+
+    <span
+      v-if="props.iconEnd"
+      :class="[props.iconEnd, '-mr-0.5 block size-5']"
+      aria-hidden="true"
+    ></span>
   </button>
 </template>

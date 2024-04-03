@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import DButton from '../DButton/DButton.vue';
+import DInput from '../DInput/DInput.vue';
+
 import DCollapse from './DCollapse.vue';
 </script>
 
@@ -16,6 +19,8 @@ import DCollapse from './DCollapse.vue';
             laboriosam dolorem aspernatur sint ipsam quaerat, id porro illo vitae perspiciatis ullam
             saepe mollitia hic numquam deserunt tempore impedit!
           </p>
+          <DButton>Button</DButton>
+          <DInput id="input" label="Input" />
         </div>
       </DCollapse>
       <!-- use v-model:defaultOpen to persist expanded state -->

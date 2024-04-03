@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@egoist/tailwindcss-icons':
+    specifier: ^1.7.4
+    version: 1.7.4(tailwindcss@3.4.1)
   '@headlessui/vue':
     specifier: ^1.7.19
     version: 1.7.19(vue@3.4.21)
@@ -89,9 +92,6 @@ devDependencies:
   typescript:
     specifier: ~5.3.3
     version: 5.3.3
-  unplugin-icons:
-    specifier: ^0.18.5
-    version: 0.18.5
   vite:
     specifier: ^4.5.2
     version: 4.5.2(@types/node@20.11.25)
@@ -130,12 +130,6 @@ packages:
     dependencies:
       execa: 5.1.1
       find-up: 5.0.0
-    dev: true
-
-  /@antfu/install-pkg@0.3.1:
-    resolution: {integrity: sha512-A3zWY9VeTPnxlMiZtsGHw2lSd3ghwvL8s9RiGOtqvDxhhFfZ781ynsGBa/iUnDJ5zBrmTFQrJDud3TGgRISaxw==}
-    dependencies:
-      execa: 8.0.1
     dev: true
 
   /@antfu/utils@0.7.7:
@@ -230,6 +224,17 @@ packages:
       '@codemirror/state': 6.4.1
       style-mod: 4.1.2
       w3c-keyname: 2.2.8
+    dev: true
+
+  /@egoist/tailwindcss-icons@1.7.4(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-883qx0sqeNb8km7os0w8K6UYue88dbgTWwyEUwW74Bgz0H7t+m7PMIIEvSQ4JqHwA823Qd5ciz+NoTBWKaMYfg==}
+    peerDependencies:
+      tailwindcss: '*'
+    dependencies:
+      '@iconify/utils': 2.1.22
+      tailwindcss: 3.4.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@esbuild/aix-ppc64@0.19.12:
@@ -4961,47 +4966,6 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin-icons@0.18.5:
-    resolution: {integrity: sha512-KVNAohXbZ7tVcG1C3p6QaC7wU9Qrj7etv4XvsMMJAxr5LccQZ+Iuv5LOIv/7GtqXaGN1BuFCqRO1ErsHEgEXdQ==}
-    peerDependencies:
-      '@svgr/core': '>=7.0.0'
-      '@svgx/core': ^1.0.1
-      '@vue/compiler-sfc': ^3.0.2 || ^2.7.0
-      vue-template-compiler: ^2.6.12
-      vue-template-es2015-compiler: ^1.9.0
-    peerDependenciesMeta:
-      '@svgr/core':
-        optional: true
-      '@svgx/core':
-        optional: true
-      '@vue/compiler-sfc':
-        optional: true
-      vue-template-compiler:
-        optional: true
-      vue-template-es2015-compiler:
-        optional: true
-    dependencies:
-      '@antfu/install-pkg': 0.3.1
-      '@antfu/utils': 0.7.7
-      '@iconify/utils': 2.1.22
-      debug: 4.3.4
-      kolorist: 1.8.0
-      local-pkg: 0.5.0
-      unplugin: 1.9.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /unplugin@1.9.0:
-    resolution: {integrity: sha512-14PslvMY3gNbXnQtNIRB566Q057L5Fe7f5LDEamxVi0QQVxoz5hrveBwwZLcKyHtZ09ysmipxRRj5Lv+BGz2Iw==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      acorn: 8.11.3
-      chokidar: 3.6.0
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.6.1
-    dev: true
-
   /update-browserslist-db@1.0.13(browserslist@4.23.0):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
     hasBin: true
@@ -5313,15 +5277,6 @@ packages:
   /webidl-conversions@7.0.0:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
     engines: {node: '>=12'}
-    dev: true
-
-  /webpack-sources@3.2.3:
-    resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
-    engines: {node: '>=10.13.0'}
-    dev: true
-
-  /webpack-virtual-modules@0.6.1:
-    resolution: {integrity: sha512-poXpCylU7ExuvZK8z+On3kX+S8o/2dQ/SVYueKA0D4WEMXROXgY8Ez50/bQEUmvoSMMrWcrJqCHuhAbsiwg7Dg==}
     dev: true
 
   /whatwg-encoding@2.0.0:

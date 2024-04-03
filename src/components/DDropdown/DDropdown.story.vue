@@ -3,8 +3,6 @@ import { createMemoryHistory, createRouter } from 'vue-router';
 
 import DDropdown from './DDropdown.vue';
 
-import IconDollarSign from '~icons/lucide/dollar-sign';
-
 //@ts-expect-error
 //eslint-disable-next-line @typescript-eslint/no-unused-vars
 function setupApp({ app, story, variant }) {
@@ -29,7 +27,7 @@ const options = [
   {
     label: 'Settings',
     key: 'settings',
-    icon: IconDollarSign,
+    icon: 'i-lucide-cog',
     to: '/settings',
   },
   { divider: true, key: 'd1' },
@@ -57,7 +55,7 @@ const options = [
   {
     label: 'Sign Out',
     key: 'sign_out',
-    icon: IconDollarSign,
+    icon: 'i-lucide-dollar-sign',
     danger: true,
     fn: () => {
       console.log('sign out');

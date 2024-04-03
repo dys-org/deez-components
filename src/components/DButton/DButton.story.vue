@@ -4,9 +4,6 @@ import { logEvent } from 'histoire/client';
 
 import DButton from './DButton.vue';
 
-import IconCheckCircle from '~icons/lucide/check-circle';
-import IconChevronRight from '~icons/lucide/chevron-right';
-
 const bool = ref(true);
 </script>
 
@@ -21,8 +18,11 @@ const bool = ref(true);
     </Variant>
 
     <Variant title="Primary Icon Start">
-      <DButton variant="primary" @click="logEvent('Primary Icon Start', $event)">
-        <template #iconStart><IconCheckCircle aria-hidden="true" /></template>
+      <DButton
+        variant="primary"
+        icon-start="i-lucide-check-circle"
+        @click="logEvent('Primary Icon Start', $event)"
+      >
         Click Me
       </DButton>
     </Variant>
@@ -32,9 +32,12 @@ const bool = ref(true);
     </Variant>
 
     <Variant title="Default Danger Icon End">
-      <DButton danger @click="logEvent('Default Danger Icon End', $event)">
+      <DButton
+        danger
+        icon-end="i-lucide-chevron-right"
+        @click="logEvent('Default Danger Icon End', $event)"
+      >
         Click Me
-        <template #iconEnd><IconChevronRight aria-hidden="true" /></template>
       </DButton>
     </Variant>
 
@@ -76,7 +79,7 @@ const bool = ref(true);
         @click="bool = !bool"
       >
         <span class="sr-only">Check</span>
-        <IconCheckCircle aria-hidden="true" class="size-4" />
+        <span aria-hidden="true" class="i-lucide-check-circle size-4"></span>
       </DButton>
     </Variant>
   </Story>

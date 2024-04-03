@@ -17,7 +17,7 @@
 
 # deez-components
 
-This UI library uses Vue 3, Tailwind CSS, Headless UI, and Unplugin Icons.
+This UI library uses Vue 3, Tailwind CSS, Headless UI, and Iconify Icons.
 TypeScript types are exported for all component props.
 
 I make a lot of breaking changes to this library. I try to increment the minor version when I do, but I would **NOT** use these components in a production app until this hits 1.x, if that ever happens.

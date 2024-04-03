@@ -4,14 +4,13 @@ import { twMerge } from 'tailwind-merge';
 
 import type { VueClass } from '../../types';
 
-import IconChevronRight from '~icons/lucide/chevron-right';
-
 export interface DCollapseProps {
   buttonText: string;
   arrowStyle?: 'start' | 'end' | 'none';
   buttonClass?: VueClass;
   class?: VueClass;
   defaultOpen?: boolean;
+  icon?: string;
 }
 
 const props = withDefaults(defineProps<DCollapseProps>(), {
@@ -19,6 +18,7 @@ const props = withDefaults(defineProps<DCollapseProps>(), {
   buttonClass: '',
   class: '',
   defaultOpen: false,
+  icon: 'i-lucide-chevron-right',
 });
 
 const emit = defineEmits<{
@@ -53,20 +53,25 @@ const emit = defineEmits<{
             : 'text-black/60 transition dark:text-white/60',
           'size-4 shrink-0 transition-[transform_color]',
           props.arrowStyle === 'end' && 'order-last justify-between',
+          props.icon,
         ]"
       >
-        <slot name="icon">
-          <IconChevronRight />
-        </slot>
       </span>
       {{ props.buttonText }}
     </DisclosureButton>
 
     <div
       class="grid overflow-hidden transition-[opacity_grid-rows] duration-300 ease-in-out"
-      :class="open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
+      :class="open ? 'visible grid-rows-[1fr] opacity-100' : 'invisible grid-rows-[0fr] opacity-0'"
     >
-      <DisclosurePanel as="div" class="overflow-hidden" :static="true">
+      <DisclosurePanel
+        as="div"
+        :class="[
+          'visible overflow-hidden transition-[visibility] ease-linear',
+          !open && 'invisible delay-300',
+        ]"
+        :static="true"
+      >
         <slot />
       </DisclosurePanel>
     </div>

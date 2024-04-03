@@ -6,11 +6,6 @@ import { DBadge } from '../DBadge';
 
 import DAutoComplete, { type DAutoCompleteOption } from './DAutoComplete.vue';
 
-import IconAperture from '~icons/lucide/aperture';
-import IconPaperclip from '~icons/lucide/paperclip';
-import IconSearch from '~icons/lucide/search';
-import IconZap from '~icons/lucide/zap';
-
 const basic = [
   { id: 1, label: 'David Youngquist Soards', description: 'Software Engineer' },
   { id: 2, label: 'Gretel Durruty Soards', description: 'OR Nurse' },
@@ -46,9 +41,9 @@ const people = [
   },
 ];
 const things = [
-  { id: 'pa', label: 'Paperclip', left: { icon: IconPaperclip } },
-  { id: 'za', label: 'Zap', left: { icon: IconZap } },
-  { id: 'ap', label: 'Aperture', left: { icon: IconAperture } },
+  { id: 'pa', label: 'Paperclip', left: { icon: 'i-lucide-paperclip' } },
+  { id: 'za', label: 'Zap', left: { icon: 'i-lucide-zap' } },
+  { id: 'ap', label: 'Aperture', left: { icon: 'i-lucide-aperture' } },
 ];
 
 const selected = ref<DAutoCompleteOption | null>(null);
@@ -56,7 +51,7 @@ const selectedList = ref<DAutoCompleteOption[]>([]);
 
 watch(
   () => selected.value,
-  (newValue, oldValue) => {
+  (newValue) => {
     logEvent('autocomplete update', newValue);
   },
 );
@@ -131,8 +126,8 @@ watch(
           :options="people"
           hide-label
           placeholder="Search"
+          icon-start="i-lucide-search"
         >
-          <template #icon> <IconSearch class="size-5" aria-hidden="true" /></template>
         </DAutoComplete>
         <p class="mt-8 font-mono">Label Value: {{ selected?.label }}</p>
       </div>
