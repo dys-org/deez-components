@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import IconAlertCircle from '~icons/lucide/alert-circle';
-
 export interface DInlineErrorProps {
   message: string;
 }
@@ -11,9 +9,9 @@ const props = withDefaults(defineProps<DInlineErrorProps>(), {
 </script>
 
 <template>
-  <span class="flex items-center gap-1 text-danger-600 dark:text-danger-500">
+  <span class="flex items-center gap-1.5 text-danger-600 dark:text-danger-500">
     <slot>
-      <IconAlertCircle class="size-4 text-danger-500" aria-hidden="true" />
+      <span class="i-lucide-alert-circle size-4 text-danger-500" aria-hidden="true"></span>
       {{ props.message }}
     </slot>
   </span>

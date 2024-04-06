@@ -17,7 +17,7 @@
 
 # deez-components
 
-This UI library uses Vue 3, Tailwind CSS, Headless UI, and Unplugin Icons.
+This UI library uses Vue 3, Tailwind CSS, Headless UI, and Iconify Icons.
 TypeScript types are exported for all component props.
 
 I make a lot of breaking changes to this library. I try to increment the minor version when I do, but I would **NOT** use these components in a production app until this hits 1.x, if that ever happens.
@@ -31,7 +31,11 @@ pnpm add deez-components
 Make sure all `peerDependencies` are installed. If you are using `pnpm` >=8, they should install automatically.
 
 ```sh
-pnpm add @headlessui/vue @tailwindcss/forms tailwindcss tailwind-merge vue vue-router
+pnpm add @headlessui/vue vue vue-router
+```
+
+```sh
+pnpm add @iconify/json @tailwindcss/forms @egoist/tailwindcss-icons tailwindcss tailwind-merge -D
 ```
 
 The utility classes are not bundled with the package. After installing add the following to the content list of your `tailwind.config.*`, otherwise the necessary CSS will not be generated.

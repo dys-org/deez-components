@@ -4,8 +4,6 @@ import { twMerge } from 'tailwind-merge';
 
 import type { VueClass } from '../../types';
 
-import IconX from '~icons/lucide/x';
-
 export interface DBadgeProps {
   color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
   size?: 'small' | 'default';
@@ -73,9 +71,9 @@ const isPink = computed(() => props.color === 'pink');
       ]"
     >
       <span class="sr-only">Remove</span>
-      <IconX
+      <span
         :class="[
-          'size-3.5',
+          'i-lucide-x size-3.5',
           isGray && 'stroke-gray-600/50 group-hover:stroke-gray-600/75',
           isRed && 'stroke-red-600/50 group-hover:stroke-red-600/75',
           isYellow && 'stroke-yellow-700/50 group-hover:stroke-yellow-700/75',
@@ -85,7 +83,7 @@ const isPink = computed(() => props.color === 'pink');
           isPurple && 'stroke-violet-600/50 group-hover:stroke-violet-600/75',
           isPink && 'stroke-pink-700/50 group-hover:stroke-pink-700/75',
         ]"
-      />
+      ></span>
     </button>
   </span>
 </template>

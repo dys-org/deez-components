@@ -5,9 +5,6 @@ import { twMerge } from 'tailwind-merge';
 import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';
 
-import IconEye from '~icons/lucide/eye';
-import IconEyeOff from '~icons/lucide/eye-off';
-
 export interface DInputProps {
   id: string;
   label: string;
@@ -70,8 +67,8 @@ const isError = computed(() => props.status === 'error');
       <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
         <!-- show/hide password -->
         <button v-if="isPassword" type="button" class="px-1" @click="showPassword = !showPassword">
-          <IconEyeOff v-if="showPassword" class="size-5" aria-hidden="true" />
-          <IconEye v-else class="size-5" aria-hidden="true" />
+          <span v-if="showPassword" class="i-lucide-eye-off block size-5" aria-hidden="true"></span>
+          <span v-else class="i-lucide-eye block size-5" aria-hidden="true"></span>
         </button>
       </div>
       <slot name="after" />

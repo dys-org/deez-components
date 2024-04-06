@@ -6,8 +6,6 @@ import { DCheckbox } from '../../src/components/DCheckbox';
 import { DDropdown } from '../../src/components/DDropdown';
 import { DToggle } from '../../src/components/DToggle';
 
-import IconDollarSign from '~icons/lucide/dollar-sign';
-
 const options = [
   {
     label: 'About',
@@ -41,7 +39,7 @@ const options = [
   {
     label: 'Sign Out',
     key: 'sign_out',
-    icon: IconDollarSign,
+    icon: '<span class="i-mdi-home"></span>',
     fn: () => {
       console.log('sign out');
     },

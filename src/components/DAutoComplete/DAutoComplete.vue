@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Component, computed, ref } from 'vue';
+import { computed, ref } from 'vue';
 import {
   Combobox,
   ComboboxButton,
@@ -12,17 +12,13 @@ import {
 import { dom } from '../../utils';
 import { DInlineError } from '../DInlineError';
 
-import IconCheck from '~icons/lucide/check';
-import IconChevronDown from '~icons/lucide/chevron-down';
-import IconX from '~icons/lucide/x';
-
 export interface DAutoCompleteOption {
   id: number | string;
   label: string;
   description?: string;
   left?: {
     imgURL?: string;
-    icon?: string | Component;
+    icon?: string;
   };
 }
 
@@ -36,6 +32,7 @@ export interface DAutoCompleteProps {
   options: DAutoCompleteOption[];
   placeholder?: string;
   multiple?: boolean;
+  iconStart?: string;
 }
 
 const model = defineModel<DAutoCompleteOption | DAutoCompleteOption[] | null>({ default: null });
@@ -86,7 +83,7 @@ function handleDisplayValue(opt: unknown) {
     </ComboboxLabel>
     <div class="relative mt-2">
       <div class="absolute inset-y-0 left-2 flex items-center text-black/60 dark:text-white/60">
-        <slot name="icon"></slot>
+        <span :class="[props.iconStart, 'size-5']" aria-hidden="true"></span>
       </div>
       <ComboboxInput
         ref="inputRef"
@@ -96,7 +93,7 @@ function handleDisplayValue(opt: unknown) {
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
           model && !props.multiple ? 'pr-14' : 'pr-9',
-          $slots.icon ? 'pl-9' : 'pl-3',
+          props.iconStart ? 'pl-9' : 'pl-3',
         ]"
         :display-value="handleDisplayValue"
         :placeholder="placeholder"
@@ -107,10 +104,10 @@ function handleDisplayValue(opt: unknown) {
       <ComboboxButton
         class="absolute inset-0 flex cursor-default items-center px-2 focus:outline-none"
       >
-        <IconChevronDown
-          class="ml-auto size-5 text-black/60 dark:text-white/60"
+        <span
+          class="i-lucide-chevron-down ml-auto size-5 text-black/60 dark:text-white/60"
           aria-hidden="true"
-        />
+        ></span>
       </ComboboxButton>
 
       <ComboboxOptions
@@ -137,15 +134,15 @@ function handleDisplayValue(opt: unknown) {
                 alt=""
                 class="mr-3 size-6 flex-shrink-0 rounded-full"
               />
-              <component
-                :is="opt.left.icon"
+              <span
                 v-else-if="opt.left?.icon"
                 :class="[
-                  'mr-3 size-3.5 ',
+                  'mr-3 size-3.5',
+                  opt.left.icon,
                   active ? 'text-white' : 'text-black/60 dark:text-white/60',
                 ]"
                 aria-hidden="true"
-              />
+              ></span>
               <span :class="['truncate', selected && 'font-semibold']">
                 {{ opt.label }}
               </span>
@@ -167,7 +164,7 @@ function handleDisplayValue(opt: unknown) {
                 active ? 'text-white' : 'text-primary-600 dark:text-primary-400',
               ]"
             >
-              <IconCheck class="size-5" aria-hidden="true" />
+              <span class="i-lucide-check size-5" aria-hidden="true"></span>
             </span>
           </li>
         </ComboboxOption>
@@ -181,7 +178,7 @@ function handleDisplayValue(opt: unknown) {
           class="rounded-full p-0.5 text-lg text-primary-600 transition-colors hover:bg-black/5 hover:text-primary-700 dark:text-primary-500 dark:hover:bg-white/5 dark:hover:text-primary-400"
           @click="onClear()"
         >
-          <IconX class="size-4" aria-hidden="true" />
+          <span class="i-lucide-x block size-4" aria-hidden="true"></span>
         </button>
       </div>
     </div>

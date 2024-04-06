@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import DButton from '../DButton/DButton.vue';
 
-import IconAlertTriangle from '~icons/lucide/alert-triangle';
-import IconCheckCircle from '~icons/lucide/check-circle';
-import IconX from '~icons/lucide/x';
-
 export interface DToastProps {
   id: string;
   title: string;
@@ -43,16 +39,16 @@ const isError = props.variant === 'error';
         <div class="p-4">
           <div class="flex items-start">
             <div class="flex-shrink-0">
-              <IconCheckCircle
+              <span
                 v-if="isSuccess"
-                class="h-6 w-6 text-green-500 dark:text-green-400"
+                class="i-lucide-check-circle size-6 text-green-500 dark:text-green-400"
                 aria-hidden="true"
-              />
-              <IconAlertTriangle
+              ></span>
+              <span
                 v-else-if="isError"
-                class="h-6 w-6 text-danger-500 dark:text-danger-400"
+                class="i-lucide-alert-triangle size-6 text-danger-500 dark:text-danger-400"
                 aria-hidden="true"
-              />
+              ></span>
             </div>
             <div class="ml-3 w-0 flex-1 pt-0.5">
               <p class="text-sm font-medium">{{ props.title }}</p>
@@ -66,7 +62,7 @@ const isError = props.variant === 'error';
                 @click="emit('dismiss', props.id)"
               >
                 <span class="sr-only">Close</span>
-                <IconX class="h-5 w-5" aria-hidden="true" />
+                <span class="i-lucide-x block size-5" aria-hidden="true"></span>
               </DButton>
             </div>
           </div>
