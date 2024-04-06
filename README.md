@@ -35,7 +35,7 @@ pnpm add @headlessui/vue vue vue-router
 ```
 
 ```sh
-pnpm add @iconify/json @tailwindcss/forms @egoist/tailwindcss-icons tailwindcss tailwind-merge -D
+pnpm add -D @iconify/json @tailwindcss/forms @egoist/tailwindcss-icons tailwindcss tailwind-merge
 ```
 
 The utility classes are not bundled with the package. After installing add the following to the content list of your `tailwind.config.*`, otherwise the necessary CSS will not be generated.
