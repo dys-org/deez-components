@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { VueClass } from 'src/types';
+import { twMerge } from 'tailwind-merge';
+
 export interface DCheckboxProps {
   name: string;
   id: string;
@@ -6,9 +9,8 @@ export interface DCheckboxProps {
   label: string;
   hideLabel?: boolean;
   description?: string;
+  class?: VueClass;
 }
-
-defineOptions({ inheritAttrs: false });
 
 const model = defineModel<boolean | string[]>({ default: false });
 
@@ -19,10 +21,9 @@ const props = withDefaults(defineProps<DCheckboxProps>(), {
 </script>
 
 <template>
-  <div class="relative flex items-start">
+  <div :class="twMerge('relative flex items-start', props.class as string)">
     <div class="flex h-6 items-center">
       <input
-        v-bind="$attrs"
         :id="props.id"
         v-model="model"
         :name="props.name"
