@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { VueClass } from 'src/types';
 import { twMerge } from 'tailwind-merge';
+
+import type { VueClass } from '../../types';
 
 export interface DCheckboxProps {
   name: string;
