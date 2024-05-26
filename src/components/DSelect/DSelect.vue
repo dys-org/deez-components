@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends string | Record<string, any>">
-import { computed } from 'vue';
 import { twMerge } from 'tailwind-merge';
+import { computed } from 'vue';
 
 import type { VueClass } from '../../types';
 import { DFormGroup } from '../DFormGroup';

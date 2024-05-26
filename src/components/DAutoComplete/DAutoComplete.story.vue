@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 import { logEvent } from 'histoire/client';
+import { ref, watch } from 'vue';
 
 import { DBadge } from '../DBadge';
-
 import DAutoComplete, { type DAutoCompleteOption } from './DAutoComplete.vue';
 
 const basic = [

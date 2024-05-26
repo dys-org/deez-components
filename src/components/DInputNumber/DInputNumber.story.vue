@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { logEvent } from 'histoire/client';
+import { ref } from 'vue';
 
 import DInputNumber from './DInputNumber.vue';
 

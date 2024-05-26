@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { DLink } from '../DLink';
-
 import type { DropOption } from './DDropdown.vue';
 
 const props = defineProps<{ opt: DropOption; active: boolean }>();

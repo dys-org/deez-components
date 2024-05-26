@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 
 import DTextarea from './DTextarea.vue';
+
 const content1 = ref('');
 const content2 = ref('');
 const content3 = ref('');

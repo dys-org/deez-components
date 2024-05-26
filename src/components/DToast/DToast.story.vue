@@ -1,9 +1,7 @@
 <script setup lang="ts">
 // import { logEvent } from 'histoire/client';
-
 import { useToast } from '../../composables/useToast';
 import { DButton } from '../DButton';
-
 import DToastList from './DToastList.vue';
 
 const { add, remove, notifications } = useToast();

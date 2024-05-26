@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { RouteLocationRaw } from 'vue-router';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { twMerge } from 'tailwind-merge';
+import type { RouteLocationRaw } from 'vue-router';
 
 import type { VueClass } from '../../types';
-
 import SubMenuItem from './SubMenuItem.vue';
 
 export interface DropOption {

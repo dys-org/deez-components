@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { logEvent } from 'histoire/client';
+import { ref } from 'vue';
 
 import { DButton } from '../DButton';
-
 import DModal from './DModal.vue';
 
 const isOpen = ref(false);

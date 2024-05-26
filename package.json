@@ -58,6 +58,7 @@
     "@iconify/json": "^2.2.213",
     "@rushstack/eslint-patch": "^1.10.3",
     "@tailwindcss/forms": "^0.5.7",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.12.12",

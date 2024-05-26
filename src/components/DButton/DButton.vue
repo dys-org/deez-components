@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type ButtonHTMLAttributes, computed } from 'vue';
 import { twMerge } from 'tailwind-merge';
+import { type ButtonHTMLAttributes, computed } from 'vue';
 
 import type { VueClass } from '../../types';
 

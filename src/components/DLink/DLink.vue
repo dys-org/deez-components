@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { twMerge } from 'tailwind-merge';
 import { computed } from 'vue';
 import { RouterLink, type RouterLinkProps } from 'vue-router';
-import { twMerge } from 'tailwind-merge';
 
 import type { VueClass } from '../../types';
 
