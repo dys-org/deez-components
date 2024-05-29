@@ -73,7 +73,7 @@ function handleDisplayValue(opt: unknown) {
 }
 </script>
 <template>
-  <Combobox v-model="model" as="div" :name="props.name" :multiple="props.multiple">
+  <Combobox v-model="model" as="div" :name="props.name" :multiple="props.multiple" by="id">
     <ComboboxLabel class="block text-sm leading-6" :class="{ 'sr-only': hideLabel }">
       <span class="font-medium">{{ props.label }}</span>
       <span v-if="props.description" class="block text-black/60 dark:text-white/60">
