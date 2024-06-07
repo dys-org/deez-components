@@ -12,6 +12,9 @@ export interface DInputNumberProps {
   description?: string;
   status?: 'error';
   errorMessage?: string;
+  min?: number;
+  max?: number;
+  step?: number;
   class?: VueClass;
 }
 
@@ -46,6 +49,9 @@ const isError = computed(() => props.status === 'error');
         ref="inputEl"
         v-model="model"
         type="number"
+        :min="props.min"
+        :max="props.max"
+        :step="props.step"
         :name="($attrs.name as string) || props.id"
         :class="
           twMerge(

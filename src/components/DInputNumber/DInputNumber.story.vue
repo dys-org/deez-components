@@ -18,9 +18,6 @@ const num3 = ref(0);
           v-model="num1"
           label="Pick a number"
           description="Any even number 0 - 10"
-          min="0"
-          max="10"
-          step="2"
           @update:modelValue="logEvent('num1 updated', $event)"
         />
       </div>
@@ -33,8 +30,8 @@ const num3 = ref(0);
           v-model="num2"
           label="Pick a number"
           description="Any odd number 0 - 9"
-          min="0"
-          max="10"
+          :min="0"
+          :max="10"
           status="error"
           @update:modelValue="logEvent('num 2 updated', $event)"
         />
@@ -48,9 +45,9 @@ const num3 = ref(0);
           v-model="num3"
           label="Pick a number"
           description="Any even number 0 - 10"
-          min="0"
-          max="10"
-          step="2"
+          :min="0"
+          :max="10"
+          :step="2"
           status="error"
           hide-label
           @update:modelValue="logEvent('num3 updated', $event)"
