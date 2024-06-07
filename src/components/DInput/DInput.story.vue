@@ -8,6 +8,7 @@ const val2 = ref('');
 const val3 = ref('');
 const val4 = ref('');
 const val5 = ref('');
+const val6 = ref('');
 const lastName = ref('Soards');
 </script>
 
@@ -87,6 +88,17 @@ const lastName = ref('Soards');
           type="password"
         />
         <p class="mt-4 font-mono">Value: {{ val5 }}</p>
+      </div>
+    </Variant>
+    <Variant title="Date Time">
+      <div class="w-96">
+        <DInput
+          id="datetime"
+          v-model="val6"
+          label="Choose the date and time"
+          type="datetime-local"
+        />
+        <p class="mt-4 font-mono">UTC Value: {{ new Date(val6).toISOString() }}</p>
       </div>
     </Variant>
   </Story>

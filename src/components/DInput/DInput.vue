@@ -10,7 +10,7 @@ export interface DInputProps {
   label: string;
   hideLabel?: boolean;
   description?: string;
-  type?: 'text' | 'email' | 'url' | 'password' | 'tel';
+  type?: 'text' | 'email' | 'url' | 'password' | 'tel' | 'date' | 'time' | 'datetime-local';
   status?: 'error';
   errorMessage?: string;
   class?: VueClass;
