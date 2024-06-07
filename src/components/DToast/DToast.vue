@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { twMerge } from 'tailwind-merge';
 import { onMounted, onUnmounted } from 'vue';
 
+import type { VueClass } from '../../types';
 import DButton from '../DButton/DButton.vue';
 
 export interface DToastProps {
@@ -9,6 +11,7 @@ export interface DToastProps {
   description?: string;
   variant?: 'success' | 'error'; // | "info" | "warning";
   duration?: number;
+  class?: VueClass;
 }
 
 let timeoutId: number;
@@ -40,7 +43,12 @@ if (props.duration) {
 
 <template>
   <div
-    class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-800 dark:ring-white dark:ring-opacity-10"
+    :class="
+      twMerge(
+        'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-800 dark:ring-white dark:ring-opacity-10',
+        props.class as string,
+      )
+    "
   >
     <div class="p-4">
       <div :class="['flex gap-3', props.description ? 'items-start' : 'items-center']">
