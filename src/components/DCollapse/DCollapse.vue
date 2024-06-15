@@ -3,13 +3,15 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { twMerge } from 'tailwind-merge';
 
 import type { VueClass } from '../../types';
+import TransitionHeight from './TransitionHeight.vue';
+
+const defaultOpen = defineModel<boolean>('defaultOpen', { default: false });
 
 export interface DCollapseProps {
   buttonText: string;
   arrowStyle?: 'start' | 'end' | 'none';
   buttonClass?: VueClass;
   class?: VueClass;
-  defaultOpen?: boolean;
   icon?: string;
 }
 
@@ -17,13 +19,8 @@ const props = withDefaults(defineProps<DCollapseProps>(), {
   arrowStyle: 'start',
   buttonClass: '',
   class: '',
-  defaultOpen: false,
   icon: 'i-lucide-chevron-right',
 });
-
-const emit = defineEmits<{
-  'update:defaultOpen': [open: boolean];
-}>();
 </script>
 
 <template>
@@ -33,7 +30,7 @@ const emit = defineEmits<{
     :class="
       twMerge('border-b-[1.5px] border-black/10 dark:border-white/[0.15]', props.class as string)
     "
-    :default-open="props.defaultOpen"
+    :default-open="defaultOpen"
   >
     <DisclosureButton
       :class="
@@ -43,7 +40,7 @@ const emit = defineEmits<{
           props.buttonClass as string,
         )
       "
-      @click="emit('update:defaultOpen', !open)"
+      @click="defaultOpen = !open"
     >
       <span
         v-if="props.arrowStyle !== 'none'"
@@ -60,20 +57,10 @@ const emit = defineEmits<{
       {{ props.buttonText }}
     </DisclosureButton>
 
-    <div
-      class="grid overflow-hidden transition-[opacity_grid-rows] duration-300 ease-in-out"
-      :class="open ? 'visible grid-rows-[1fr] opacity-100' : 'invisible grid-rows-[0fr] opacity-0'"
-    >
-      <DisclosurePanel
-        as="div"
-        :class="[
-          'visible overflow-hidden transition-[visibility] ease-linear',
-          !open && 'invisible delay-300',
-        ]"
-        :static="true"
-      >
+    <TransitionHeight :open>
+      <DisclosurePanel static>
         <slot />
       </DisclosurePanel>
-    </div>
+    </TransitionHeight>
   </Disclosure>
 </template>
