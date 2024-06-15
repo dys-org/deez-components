@@ -80,7 +80,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
         "
       >
         <div class="p-1">
-          <template v-for="opt in options" :key="opt.id">
+          <template v-for="opt in options" :key="opt.key">
             <hr v-if="opt.divider" class="m-1 border-gray-200 dark:border-gray-700" />
             <MenuItem
               v-else
