@@ -7,25 +7,29 @@ settings:
 importers:
 
   .:
-    devDependencies:
+    dependencies:
       '@egoist/tailwindcss-icons':
         specifier: ^1.8.1
         version: 1.8.1(tailwindcss@3.4.4)
       '@headlessui/vue':
         specifier: ~1.7.22
         version: 1.7.22(vue@3.4.29(typescript@5.4.5))
-      '@histoire/plugin-vue':
-        specifier: ^0.17.17
-        version: 0.17.17(histoire@0.17.17(@types/node@20.14.2)(vite@4.5.3(@types/node@20.14.2)))(vite@4.5.3(@types/node@20.14.2))(vue@3.4.29(typescript@5.4.5))
-      '@iconify/json':
-        specifier: ^2.2.219
-        version: 2.2.219
-      '@rushstack/eslint-patch':
-        specifier: ^1.10.3
-        version: 1.10.3
+      '@iconify-json/lucide':
+        specifier: ^1.1.192
+        version: 1.1.192
       '@tailwindcss/forms':
         specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.4)
+      tailwind-merge:
+        specifier: ^2.3.0
+        version: 2.3.0
+    devDependencies:
+      '@histoire/plugin-vue':
+        specifier: ^0.17.17
+        version: 0.17.17(histoire@0.17.17(@types/node@20.14.2)(vite@4.5.3(@types/node@20.14.2)))(vite@4.5.3(@types/node@20.14.2))(vue@3.4.29(typescript@5.4.5))
+      '@rushstack/eslint-patch':
+        specifier: ^1.10.3
+        version: 1.10.3
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(@vue/compiler-sfc@3.4.29)(prettier@3.3.2)
@@ -89,9 +93,6 @@ importers:
       simple-git-hooks:
         specifier: ^2.11.1
         version: 2.11.1
-      tailwind-merge:
-        specifier: ^2.3.0
-        version: 2.3.0
       tailwindcss:
         specifier: ^3.4.4
         version: 3.4.4
@@ -548,8 +549,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.219':
-    resolution: {integrity: sha512-q8asqbM61woVZ9rJGm/gvW46i5vdeHrq4TqZQ/5wF5ypk4pAZU9+4qVa5NQE2MZngYkMPeO68PDGGl7WaEV8jQ==}
+  '@iconify-json/lucide@1.1.192':
+    resolution: {integrity: sha512-ulKR9JoaAT1pvsutNQe6jN4F3+9SNrXNp369LfZJUb8F368abgwiQapuNkN9UjVtU5dfn7g2uvuWisOYPMESdQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3490,10 +3491,9 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.219':
+  '@iconify-json/lucide@1.1.192':
     dependencies:
       '@iconify/types': 2.0.0
-      pathe: 1.1.2
 
   '@iconify/types@2.0.0': {}
 

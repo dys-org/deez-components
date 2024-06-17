@@ -39,7 +39,7 @@ const options = [
   {
     label: 'Sign Out',
     key: 'sign_out',
-    icon: '<span class="i-mdi-home"></span>',
+    icon: '<span class="i-lucide-home"></span>',
     fn: () => {
       console.log('sign out');
     },
