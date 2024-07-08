@@ -104,7 +104,7 @@ function handleDisplayValue(opt: unknown) {
         :display-value="handleDisplayValue"
         :placeholder="placeholder"
         :aria-invalid="isError"
-        :aria-errormessage="isError && props.hideLabel ? `${props.name}ErrorMessage` : undefined"
+        :aria-describedby="isError && props.hideLabel ? `${props.name}ErrorMessage` : undefined"
         @change="query = $event.target.value"
       />
       <ComboboxButton

@@ -63,7 +63,7 @@ const isError = computed(() => props.status === 'error');
           )
         "
         :aria-invalid="isError"
-        :aria-errormessage="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
+        :aria-describedby="isError && props.hideLabel ? `${id}ErrorMessage` : undefined"
       />
 
       <div class="absolute inset-y-0 right-0 flex items-center pr-2">
