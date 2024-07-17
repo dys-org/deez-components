@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import type { HTMLAttributes } from 'vue';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 
-const props = withDefaults(defineProps<{ class?: VueClass }>(), { class: '' });
+const props = withDefaults(defineProps<{ class?: HTMLAttributes['class'] }>(), { class: '' });
 </script>
 
 <template>
@@ -11,9 +11,9 @@ const props = withDefaults(defineProps<{ class?: VueClass }>(), { class: '' });
     <svg
       aria-hidden="true"
       :class="
-        twMerge(
+        cn(
           'inline size-10 animate-spin fill-primary-600 text-gray-200 dark:text-gray-600',
-          props.class as string,
+          props.class,
         )
       "
       viewBox="0 0 100 101"

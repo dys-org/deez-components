@@ -2,6 +2,8 @@
   "include": ["src/**/*"],
   "exclude": ["**/*.spec.ts", "**/__tests__/**/*", "**/*.story.vue"],
   "compilerOptions": {
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "target": "ES2020",
+    "moduleResolution": "Bundler"
   }
 }

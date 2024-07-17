@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
-import { computed } from 'vue';
+import { type HTMLAttributes, computed } from 'vue';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DRangeProps {
@@ -16,7 +15,7 @@ export interface DRangeProps {
   max?: number;
   step?: number;
   hideValue?: boolean;
-  class?: VueClass;
+  class?: HTMLAttributes['class'];
 }
 
 defineOptions({ inheritAttrs: false });
@@ -65,9 +64,9 @@ const progressStyle = computed(() => {
         :max="props.max"
         :step="props.step"
         :class="
-          twMerge(
+          cn(
             'h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-950/10 text-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-white/[.15] dark:text-primary-400 dark:focus-visible:ring-primary-400 dark:focus-visible:ring-offset-gray-900 [&::-moz-range-thumb]:relative [&::-moz-range-thumb]:z-[1] [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-current [&::-webkit-slider-thumb]:relative [&::-webkit-slider-thumb]:z-[1] [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:ring-2 [&::-webkit-slider-thumb]:ring-current [&::-webkit-slider-thumb]:dark:bg-gray-900',
-            props.class as string,
+            props.class,
           )
         "
       />

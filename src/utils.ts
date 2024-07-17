@@ -1,3 +1,5 @@
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import type { ComponentPublicInstance, Ref } from 'vue';
 
 export function dom<T extends Element | ComponentPublicInstance>(
@@ -7,4 +9,8 @@ export function dom<T extends Element | ComponentPublicInstance>(
   if (ref.value == null) return null;
 
   return (ref.value as { $el?: T }).$el ?? ref.value;
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }

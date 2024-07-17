@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import type { HTMLAttributes } from 'vue';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 
 export interface DAvatarProps {
   image?: string;
   alt?: string;
   notifications?: number;
   notificationType?: 'primary' | 'danger';
-  class?: VueClass;
+  class?: HTMLAttributes['class'];
 }
 
 const props = withDefaults(defineProps<DAvatarProps>(), {
@@ -22,16 +22,16 @@ const props = withDefaults(defineProps<DAvatarProps>(), {
   <span class="relative inline-block">
     <img
       v-if="props.image"
-      :class="twMerge('size-8 rounded-full', props.class as string)"
+      :class="cn('size-8 rounded-full', props.class)"
       :src="props.image"
       :alt="props.alt"
     />
     <svg
       v-else
       :class="
-        twMerge(
+        cn(
           'size-8 rounded-full bg-gray-100 text-gray-300 dark:bg-gray-800 dark:text-gray-600',
-          props.class as string,
+          props.class,
         )
       "
       fill="currentColor"

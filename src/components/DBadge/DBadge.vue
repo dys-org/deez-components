@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
-import { computed } from 'vue';
+import { type HTMLAttributes, computed } from 'vue';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 
 export interface DBadgeProps {
   color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
   size?: 'small' | 'default';
   removeable?: boolean;
-  class?: VueClass;
+  class?: HTMLAttributes['class'];
 }
 
 const props = withDefaults(defineProps<DBadgeProps>(), {
@@ -31,8 +30,8 @@ const isPink = computed(() => props.color === 'pink');
 <template>
   <span
     :class="
-      twMerge(
-        'inline-flex items-center gap-x-0.5 rounded-full px-2 py-1 text-xs font-medium ring-1 ring-inset ',
+      cn(
+        'inline-flex items-center gap-x-0.5 rounded-full px-2 py-1 text-xs font-medium ring-1 ring-inset',
         isGray &&
           'dark: bg-gray-50 text-gray-600 ring-gray-500/10 dark:bg-gray-400/10 dark:text-gray-400 dark:ring-gray-400/20',
         isRed &&
@@ -49,7 +48,7 @@ const isPink = computed(() => props.color === 'pink');
           'bg-purple-50 text-purple-700 ring-purple-700/10 dark:bg-purple-400/10 dark:text-purple-400 dark:ring-purple-400/30',
         isPink &&
           'bg-pink-50 text-pink-700 ring-pink-700/10 dark:bg-pink-400/10 dark:text-pink-400 dark:ring-pink-400/20',
-        props.class as string,
+        props.class,
       )
     "
   >

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
 import { type ButtonHTMLAttributes, computed } from 'vue';
 
 import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 
 export interface DButtonProps {
+  as?: string;
   variant?: 'default' | 'primary' | 'link';
   danger?: boolean;
   loading?: boolean;
@@ -17,6 +18,7 @@ export interface DButtonProps {
 }
 
 const props = withDefaults(defineProps<DButtonProps>(), {
+  as: 'button',
   variant: 'default',
   danger: false,
   loading: false,
@@ -50,10 +52,11 @@ function onClick(e: MouseEvent) {
 </script>
 
 <template>
-  <button
-    :type="props.type"
+  <component
+    :is="props.as"
+    :type="props.as === 'button' ? props.type : undefined"
     :class="
-      twMerge(
+      cn(
         'inline-flex items-center gap-x-2 rounded px-3 py-1.5 text-sm font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60',
         useFocusVisible
           ? 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500'
@@ -79,7 +82,7 @@ function onClick(e: MouseEvent) {
           isDanger &&
           'text-danger-600 hover:text-danger-700 dark:text-danger-500 dark:hover:text-danger-400',
 
-        props.class as string,
+        props.class,
       )
     "
     :aria-disabled="isLoading || undefined"
@@ -120,5 +123,5 @@ function onClick(e: MouseEvent) {
       :class="[props.iconEnd, '-mr-0.5 block size-5']"
       aria-hidden="true"
     ></span>
-  </button>
+  </component>
 </template>

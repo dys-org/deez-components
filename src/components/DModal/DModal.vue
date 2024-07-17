@@ -88,7 +88,7 @@ const isDanger = props.danger === true;
                         'size-6',
                         isDanger
                           ? 'text-danger-600 dark:text-danger-400'
-                          : 'text-primary-600  dark:text-primary-400',
+                          : 'text-primary-600 dark:text-primary-400',
                       ]"
                       aria-hidden="true"
                     >

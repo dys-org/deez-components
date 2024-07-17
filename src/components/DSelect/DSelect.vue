@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends string | Record<string, any>">
-import { twMerge } from 'tailwind-merge';
-import { computed } from 'vue';
+import { type HTMLAttributes, computed } from 'vue';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 import { DFormGroup } from '../DFormGroup';
 
 export interface DSelectProps {
@@ -13,7 +12,7 @@ export interface DSelectProps {
   labelLeft?: boolean;
   status?: 'error';
   errorMessage?: string;
-  class?: VueClass;
+  class?: HTMLAttributes['class'];
 }
 
 defineOptions({ inheritAttrs: false });
@@ -45,13 +44,13 @@ const isError = computed(() => props.status === 'error');
       v-model="model"
       :name="($attrs.name as string) || props.id"
       :class="
-        twMerge(
+        cn(
           'block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6',
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
             : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
           !props.labelLeft && !props.hideLabel && 'mt-2',
-          props.class as string,
+          props.class,
         )
       "
       :aria-invalid="isError"

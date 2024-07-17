@@ -7,11 +7,9 @@ import {
   ComboboxOption,
   ComboboxOptions,
 } from '@headlessui/vue';
-import { twMerge } from 'tailwind-merge';
-import { computed, ref } from 'vue';
+import { type HTMLAttributes, computed, ref } from 'vue';
 
-import type { VueClass } from '../../types';
-import { dom } from '../../utils';
+import { cn, dom } from '../../utils';
 import { DInlineError } from '../DInlineError';
 
 export interface DAutoCompleteOption {
@@ -35,7 +33,7 @@ export interface DAutoCompleteProps {
   placeholder?: string;
   multiple?: boolean;
   iconStart?: string;
-  class?: VueClass;
+  class?: HTMLAttributes['class'];
 }
 
 const model = defineModel<DAutoCompleteOption | DAutoCompleteOption[] | null>({ default: null });
@@ -91,14 +89,14 @@ function handleDisplayValue(opt: unknown) {
       <ComboboxInput
         ref="inputRef"
         :class="
-          twMerge(
+          cn(
             'w-full truncate rounded-md border-0 bg-white py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset dark:bg-white/5 dark:placeholder:text-white/30 dark:disabled:bg-black/10 dark:disabled:text-white/[.35] sm:text-sm sm:leading-6',
             isError
               ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'
               : 'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-500',
             model && !props.multiple ? 'pr-14' : 'pr-9',
             props.iconStart ? 'pl-9' : 'pl-3',
-            props.class as string,
+            props.class,
           )
         "
         :display-value="handleDisplayValue"
@@ -129,7 +127,7 @@ function handleDisplayValue(opt: unknown) {
         >
           <li
             :class="[
-              'relative cursor-default select-none py-2 pl-3 pr-9 ',
+              'relative cursor-default select-none py-2 pl-3 pr-9',
               active && 'bg-primary-600 text-white',
             ]"
           >

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
-import { onMounted, onUnmounted } from 'vue';
+import { type HTMLAttributes, onMounted, onUnmounted } from 'vue';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 import DButton from '../DButton/DButton.vue';
 
 export interface DToastProps {
@@ -11,13 +10,14 @@ export interface DToastProps {
   description?: string;
   variant?: 'success' | 'error'; // | "info" | "warning";
   duration?: number;
-  class?: VueClass;
+  class?: HTMLAttributes['class'];
 }
 
 let timeoutId: number;
 
 const props = withDefaults(defineProps<DToastProps>(), {
   variant: 'success',
+  class: '',
 });
 
 const emit = defineEmits<{
@@ -44,9 +44,9 @@ if (props.duration) {
 <template>
   <div
     :class="
-      twMerge(
+      cn(
         'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-800 dark:ring-white dark:ring-opacity-10',
-        props.class as string,
+        props.class,
       )
     "
   >

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import { twMerge } from 'tailwind-merge';
+import type { HTMLAttributes } from 'vue';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 import TransitionHeight from './TransitionHeight.vue';
 
 const defaultOpen = defineModel<boolean>('defaultOpen', { default: false });
@@ -10,8 +10,8 @@ const defaultOpen = defineModel<boolean>('defaultOpen', { default: false });
 export interface DCollapseProps {
   buttonText: string;
   arrowStyle?: 'start' | 'end' | 'none';
-  buttonClass?: VueClass;
-  class?: VueClass;
+  buttonClass?: HTMLAttributes['class'];
+  class?: HTMLAttributes['class'];
   icon?: string;
 }
 
@@ -27,17 +27,15 @@ const props = withDefaults(defineProps<DCollapseProps>(), {
   <Disclosure
     v-slot="{ open }"
     as="div"
-    :class="
-      twMerge('border-b-[1.5px] border-black/10 dark:border-white/[0.15]', props.class as string)
-    "
+    :class="cn('border-b-[1.5px] border-black/10 dark:border-white/[0.15]', props.class)"
     :default-open="defaultOpen"
   >
     <DisclosureButton
       :class="
-        twMerge(
+        cn(
           'flex w-full items-center gap-2 rounded-sm p-3 text-left text-xs font-semibold uppercase transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:hover:bg-white/5',
           props.arrowStyle === 'end' && 'justify-between',
-          props.buttonClass as string,
+          props.buttonClass,
         )
       "
       @click="defaultOpen = !open"

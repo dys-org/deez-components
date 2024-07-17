@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
-import { computed } from 'vue';
+import { type HTMLAttributes, computed } from 'vue';
 import { RouterLink, type RouterLinkProps } from 'vue-router';
 
-import type { VueClass } from '../../types';
+import { cn } from '../../utils';
 
 defineOptions({ inheritAttrs: false });
 
 export type { RouterLinkProps as DLinkProps };
 
-const props = withDefaults(defineProps<RouterLinkProps & { class?: VueClass }>(), {
+const props = withDefaults(defineProps<RouterLinkProps & { class?: HTMLAttributes['class'] }>(), {
   class: '',
 });
 
@@ -28,7 +27,7 @@ const isExternal = computed(() => {
     :href="(props.to as string)"
     target="_blank"
     rel="noopener noreferrer"
-    :class="twMerge('inline-flex items-center gap-1', props.class as string)"
+    :class="cn('inline-flex items-center gap-1', props.class)"
     @click="emit('click')"
   >
     <slot />
@@ -36,13 +35,7 @@ const isExternal = computed(() => {
   <RouterLink v-else v-slot="{ href, navigate, isActive }" v-bind="props" custom>
     <a
       v-bind="$attrs"
-      :class="
-        twMerge(
-          'inline-flex items-center gap-1',
-          props.class as string,
-          isActive && props.activeClass,
-        )
-      "
+      :class="cn('inline-flex items-center gap-1', props.class, isActive && props.activeClass)"
       :href="href"
       @click.prevent="
         navigate();
