@@ -16,6 +16,7 @@ export interface DInputProps {
 }
 
 defineOptions({ inheritAttrs: false });
+defineExpose({ focus });
 
 const model = defineModel<string>({ default: '' });
 
@@ -27,10 +28,15 @@ const props = withDefaults(defineProps<DInputProps>(), {
 });
 
 const showPassword = ref(false);
+const inputEl = ref<HTMLInputElement | null>(null);
 
-const isPassword = props.type === 'password';
+const isPassword = computed(() => props.type === 'password');
 
 const isError = computed(() => props.status === 'error');
+
+function focus() {
+  inputEl.value?.focus();
+}
 </script>
 
 <template>
@@ -47,6 +53,7 @@ const isError = computed(() => props.status === 'error');
       <input
         v-bind="$attrs"
         :id="props.id"
+        ref="inputEl"
         v-model.trim="model"
         :name="($attrs.name as string) || props.id"
         :type="isPassword ? (showPassword ? 'text' : props.type) : props.type"
