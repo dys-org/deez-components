@@ -9,6 +9,7 @@ module.exports = {
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier/skip-formatting',
   ],
+  plugins: ['import'],
   parserOptions: {
     ecmaVersion: 'latest',
   },
@@ -16,6 +17,7 @@ module.exports = {
     'vue/no-undef-components': ['error', { ignorePatterns: ['Story', 'Variant', 'RouterLink'] }],
     'vue/require-default-prop': 'off',
     'vue/v-on-event-hyphenation': 'off',
+    'import/no-cycle': ['error', { ignoreExternal: true }],
   },
   overrides: [
     {
