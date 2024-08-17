@@ -20,6 +20,7 @@ module.exports = {
     iconsPlugin({
       // Select the icon collections you want to use
       collections: getIconCollections(['lucide']),
+      extraProperties: { display: 'block', verticalAlign: 'middle' },
     }),
   ],
 };

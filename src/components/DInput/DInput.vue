@@ -73,8 +73,8 @@ function focus() {
       <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
         <!-- show/hide password -->
         <button v-if="isPassword" type="button" class="px-1" @click="showPassword = !showPassword">
-          <span v-if="showPassword" class="i-lucide-eye-off block size-5" aria-hidden="true"></span>
-          <span v-else class="i-lucide-eye block size-5" aria-hidden="true"></span>
+          <span v-if="showPassword" class="i-lucide-eye-off size-5" aria-hidden="true"></span>
+          <span v-else class="i-lucide-eye size-5" aria-hidden="true"></span>
         </button>
       </div>
       <slot name="after" />

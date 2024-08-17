@@ -73,7 +73,7 @@ if (props.duration) {
           @click="emit('dismiss', props.id)"
         >
           <span class="sr-only">Close</span>
-          <span class="i-lucide-x block size-5" aria-hidden="true"></span>
+          <span class="i-lucide-x size-5" aria-hidden="true"></span>
         </DButton>
       </div>
     </div>

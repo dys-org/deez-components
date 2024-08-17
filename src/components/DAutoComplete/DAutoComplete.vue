@@ -182,7 +182,7 @@ function handleDisplayValue(opt: unknown) {
           class="rounded-full p-0.5 text-lg text-primary-600 transition-colors hover:bg-black/5 hover:text-primary-700 dark:text-primary-500 dark:hover:bg-white/5 dark:hover:text-primary-400"
           @click="onClear()"
         >
-          <span class="i-lucide-x block size-4" aria-hidden="true"></span>
+          <span class="i-lucide-x size-4" aria-hidden="true"></span>
         </button>
       </div>
     </div>

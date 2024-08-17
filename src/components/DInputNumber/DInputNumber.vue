@@ -76,7 +76,7 @@ const isError = computed(() => props.status === 'error');
             model = parseFloat(inputEl?.value as string);
           "
         >
-          <span class="i-lucide-minus block" aria-hidden="true"></span>
+          <span class="i-lucide-minus" aria-hidden="true"></span>
         </button>
         <button
           type="button"
@@ -87,7 +87,7 @@ const isError = computed(() => props.status === 'error');
             model = parseFloat(inputEl?.value as string);
           "
         >
-          <span class="i-lucide-plus block" aria-hidden="true"></span>
+          <span class="i-lucide-plus" aria-hidden="true"></span>
         </button>
       </div>
     </div>

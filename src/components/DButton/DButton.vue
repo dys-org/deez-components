@@ -113,15 +113,11 @@ function onClick(e: MouseEvent) {
     </svg>
     <span
       v-else-if="props.iconStart"
-      :class="[props.iconStart, '-ml-0.5 block size-5']"
+      :class="[props.iconStart, '-ml-0.5 size-5']"
       aria-hidden="true"
     ></span>
     <slot>Default Text</slot>
 
-    <span
-      v-if="props.iconEnd"
-      :class="[props.iconEnd, '-mr-0.5 block size-5']"
-      aria-hidden="true"
-    ></span>
+    <span v-if="props.iconEnd" :class="[props.iconEnd, '-mr-0.5 size-5']" aria-hidden="true"></span>
   </component>
 </template>

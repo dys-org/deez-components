@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "vue.volar",
-    // disable @builtin typescript to enable volar takeover mode
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "bradlc.vscode-tailwindcss"
