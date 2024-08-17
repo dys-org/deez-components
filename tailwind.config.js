@@ -1,10 +1,10 @@
-/* eslint-env node */
-const colors = require('tailwindcss/colors');
-const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons');
-const animate = require('tailwindcss-animate');
+import { getIconCollections, iconsPlugin } from '@egoist/tailwindcss-icons';
+import forms from '@tailwindcss/forms';
+import animate from 'tailwindcss-animate';
+import colors from 'tailwindcss/colors';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ['./index.html', './{src,sandbox}/**/*.{vue,js,ts}'],
   darkMode: 'class',
   theme: {
@@ -31,9 +31,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/forms')({
-      strategy: 'class', // only generate classes
-    }),
+    forms({ strategy: 'class' }),
     iconsPlugin({
       // Select the icon collections you want to use
       collections: getIconCollections(['lucide']),
