@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue';
 
-import { cn } from '../../utils';
+import { cn } from '@/utils';
 
 export interface DCheckboxProps {
   name: string;
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<DCheckboxProps>(), {
         :name="props.name"
         type="checkbox"
         :value="props.value"
-        class="size-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500 dark:border-white/30 dark:bg-white/5 dark:ring-offset-gray-800 dark:checked:border-current dark:checked:bg-current"
+        class="form-checkbox size-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500 dark:border-white/30 dark:bg-white/5 dark:ring-offset-gray-800 dark:checked:border-current dark:checked:bg-current"
       />
     </div>
     <label

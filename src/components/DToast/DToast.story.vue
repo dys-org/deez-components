@@ -2,9 +2,10 @@
 // import { logEvent } from 'histoire/client';
 import { ref } from 'vue';
 
-import { useToast } from '../../composables/useToast';
+import { useToast } from '@/composables/useToast';
+
 import { DButton } from '../DButton';
-import DCheckbox from '../DCheckbox/DCheckbox.vue';
+import { DCheckbox } from '../DCheckbox';
 import DToastList from './DToastList.vue';
 
 const { add, remove, notifications } = useToast();

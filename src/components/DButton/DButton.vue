@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { type ButtonHTMLAttributes, computed } from 'vue';
+import { type ButtonHTMLAttributes, type HTMLAttributes, computed } from 'vue';
 
-import type { VueClass } from '../../types';
-import { cn } from '../../utils';
+import { cn } from '@/utils';
 
 export interface DButtonProps {
   as?: string;
@@ -12,7 +11,7 @@ export interface DButtonProps {
   type?: ButtonHTMLAttributes['type'];
   size?: 'sm' | 'lg';
   useFocusVisible?: boolean;
-  class?: VueClass;
+  class?: HTMLAttributes['class'];
   iconStart?: string;
   iconEnd?: string;
 }

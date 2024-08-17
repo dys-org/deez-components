@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { type HTMLAttributes, computed } from 'vue';
 
-import { cn } from '../../utils';
+import { cn } from '@/utils';
+
 import { DFormGroup } from '../DFormGroup';
 
 export interface DRangeProps {

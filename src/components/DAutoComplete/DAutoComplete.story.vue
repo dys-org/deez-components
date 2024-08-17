@@ -2,8 +2,8 @@
 import { logEvent } from 'histoire/client';
 import { ref, watch } from 'vue';
 
+import { DAutoComplete, type DAutoCompleteOption } from '.';
 import { DBadge } from '../DBadge';
-import DAutoComplete, { type DAutoCompleteOption } from './DAutoComplete.vue';
 
 const basic = [
   { id: 1, label: 'David Youngquist Soards', description: 'Software Engineer' },

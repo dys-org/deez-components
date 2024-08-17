@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { type HTMLAttributes, onMounted, onUnmounted } from 'vue';
 
-import { cn } from '../../utils';
-import DButton from '../DButton/DButton.vue';
+import { cn } from '@/utils';
+
+import { DButton } from '../DButton';
 
 export interface DToastProps {
   id: string;

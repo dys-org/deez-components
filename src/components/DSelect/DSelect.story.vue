@@ -27,6 +27,7 @@ const people2: Person[] = [
 const selectStr = ref('');
 
 const selectObj = ref<Person>();
+const selectArray = ref(['Wade Cooper', 'Arlene Mccoy']);
 </script>
 
 <template>
@@ -119,6 +120,35 @@ const selectObj = ref<Person>();
       >
         <option value="" disabled>Choose an option</option>
         <option v-for="person in people" :key="person.display" :value="person.value">
+          {{ person.display }}
+        </option>
+      </DSelect>
+    </Variant>
+
+    <Variant title="Multiple">
+      <DSelect
+        id="people"
+        v-model="selectArray"
+        label="Assign To"
+        multiple
+        @update:modelValue="logEvent('updated select', $event)"
+      >
+        <option value="" disabled>Choose an option</option>
+        <option v-for="person in people" :key="person.display">
+          {{ person.display }}
+        </option>
+      </DSelect>
+    </Variant>
+    <Variant title="Size 5">
+      <DSelect
+        id="people"
+        v-model="selectStr"
+        label="Assign To"
+        :size="5"
+        @update:modelValue="logEvent('updated select', $event)"
+      >
+        <option :value="undefined" disabled>Choose an option</option>
+        <option v-for="person in people" :key="person.display">
           {{ person.display }}
         </option>
       </DSelect>

@@ -2,7 +2,8 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import type { HTMLAttributes } from 'vue';
 
-import { cn } from '../../utils';
+import { cn } from '@/utils';
+
 import TransitionHeight from './TransitionHeight.vue';
 
 const defaultOpen = defineModel<boolean>('defaultOpen', { default: false });

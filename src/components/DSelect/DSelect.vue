@@ -1,7 +1,8 @@
 <script setup lang="ts" generic="T extends string | Record<string, any>">
 import { type HTMLAttributes, computed } from 'vue';
 
-import { cn } from '../../utils';
+import { cn } from '@/utils';
+
 import { DFormGroup } from '../DFormGroup';
 
 export interface DSelectProps {
@@ -13,6 +14,8 @@ export interface DSelectProps {
   status?: 'error';
   errorMessage?: string;
   class?: HTMLAttributes['class'];
+  size?: number;
+  multiple?: boolean;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -23,6 +26,7 @@ const props = withDefaults(defineProps<DSelectProps>(), {
   hideLabel: false,
   labelLeft: false,
   errorMessage: 'Invalid input',
+  multiple: false,
 });
 
 const isError = computed(() => props.status === 'error');
@@ -43,8 +47,11 @@ const isError = computed(() => props.status === 'error');
       :id="props.id"
       v-model="model"
       :name="($attrs.name as string) || props.id"
+      :multiple="props.multiple"
+      :size="props.size"
       :class="
         cn(
+          (props.size && props.size > 1) || props.multiple ? 'form-multiselect' : 'form-select',
           'block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset focus:ring-2 dark:bg-white/5 sm:text-sm sm:leading-6',
           isError
             ? 'text-danger-600 ring-danger-500 focus:ring-danger-500 dark:text-danger-500'

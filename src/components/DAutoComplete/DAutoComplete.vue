@@ -9,7 +9,8 @@ import {
 } from '@headlessui/vue';
 import { type HTMLAttributes, computed, ref } from 'vue';
 
-import { cn, dom } from '../../utils';
+import { cn, dom } from '@/utils';
+
 import { DInlineError } from '../DInlineError';
 
 export interface DAutoCompleteOption {

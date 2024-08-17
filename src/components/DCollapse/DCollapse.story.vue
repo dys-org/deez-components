@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import DButton from '../DButton/DButton.vue';
-import DInput from '../DInput/DInput.vue';
+import { DButton } from '../DButton';
+import { DInput } from '../DInput';
 import DCollapse from './DCollapse.vue';
 </script>
 

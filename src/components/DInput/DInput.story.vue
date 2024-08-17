@@ -98,7 +98,7 @@ const lastName = ref('Soards');
           label="Choose the date and time"
           type="datetime-local"
         />
-        <p class="mt-4 font-mono">UTC Value: {{ new Date(val6).toISOString() }}</p>
+        <p v-if="val6" class="mt-4 font-mono">UTC Value: {{ new Date(val6).toISOString() }}</p>
       </div>
     </Variant>
   </Story>

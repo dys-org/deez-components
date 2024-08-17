@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-import type { DToastProps } from '../components/DToast';
+import type { DToastProps } from '@/components/DToast';
 
 export function useToast() {
   const notifications = ref<DToastProps[]>([]);

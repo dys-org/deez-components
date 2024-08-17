@@ -3,7 +3,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import type { HTMLAttributes } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 
-import { cn } from '../../utils';
+import { cn } from '@/utils';
+
 import SubMenuItem from './SubMenuItem.vue';
 
 export interface DropOption {

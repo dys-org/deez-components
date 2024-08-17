@@ -2,7 +2,7 @@
 import { type HTMLAttributes, computed } from 'vue';
 import { RouterLink, type RouterLinkProps } from 'vue-router';
 
-import { cn } from '../../utils';
+import { cn } from '@/utils';
 
 defineOptions({ inheritAttrs: false });
 
