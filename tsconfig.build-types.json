@@ -3,6 +3,7 @@
   "exclude": ["**/*.spec.ts", "**/__tests__/**/*", "**/*.story.vue"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": ["web-bluetooth"],
     "target": "ES2020",
     "moduleResolution": "Bundler",
     "baseUrl": ".",
