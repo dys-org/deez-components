@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import autoprefixer from 'autoprefixer';
 import tailwind from 'tailwindcss';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 import { peerDependencies } from './package.json';
 
@@ -14,7 +15,7 @@ export default defineConfig({
       plugins: [tailwind(), autoprefixer()],
     },
   },
-  plugins: [vue()],
+  plugins: [vue(), dts({ tsconfigPath: './tsconfig.build-types.json', outDir: './dist/types' })],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
