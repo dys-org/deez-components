@@ -13,7 +13,6 @@ import {
 import { DButton } from '../DButton';
 
 export interface DDialogProps {
-  open: boolean;
   title?: string;
   description?: string;
   confirmText?: string;
@@ -32,8 +31,9 @@ const props = withDefaults(defineProps<DDialogProps>(), {
   modal: true,
 });
 
+const open = defineModel<boolean>('open', { required: true });
+
 const emit = defineEmits<{
-  'update:open': [value: DDialogProps['open']];
   confirm: [e: MouseEvent];
   cancel: [e: MouseEvent];
 }>();
@@ -43,7 +43,7 @@ const isDanger = props.danger === true;
 </script>
 
 <template>
-  <DialogRoot :open="open" :modal="modal" @update:open="emit('update:open', $event)">
+  <DialogRoot :open="open" :modal="modal" @update:open="open = $event">
     <DialogTrigger as-child>
       <slot name="trigger">
         <DButton>Open Dialog</DButton>
