@@ -4,6 +4,7 @@ export * from './DBadge';
 export * from './DButton';
 export * from './DCheckbox';
 export * from './DCollapse';
+export * from './DDialog';
 export * from './DDropdown';
 export * from './DInput';
 export * from './DInputNumber';
