@@ -70,12 +70,12 @@ const options = [
   <Story :setup-app="setupApp" :layout="{ type: 'single', iframe: true }">
     <Variant title="Minimal button">
       <div class="flex justify-center">
-        <DDropdown :options="options" minimal label="Open Options" />
+        <DDropdown :options="options" minimal label="Open Options" menu-class="w-32" />
       </div>
     </Variant>
     <Variant title="Button with text">
       <div class="flex justify-center">
-        <DDropdown :options="options" label="Options" />
+        <DDropdown :options="options" label="Options" menu-class="w-48" />
       </div>
     </Variant>
   </Story>
