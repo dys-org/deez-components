@@ -99,7 +99,7 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
               ]"
             >
               <component
-                :is="opt.to ? 'DLink' : 'button'"
+                :is="opt.to ? DLink : 'button'"
                 :to="opt.to"
                 :type="opt.to ? undefined : 'button'"
                 @click="opt.fn"
