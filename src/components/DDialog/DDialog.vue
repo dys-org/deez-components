@@ -45,9 +45,7 @@ const isDanger = props.danger === true;
 <template>
   <DialogRoot :open="open" :modal="modal" @update:open="open = $event">
     <DialogTrigger as-child>
-      <slot name="trigger">
-        <DButton>Open Dialog</DButton>
-      </slot>
+      <slot name="trigger" />
     </DialogTrigger>
     <DialogPortal>
       <DialogOverlay
