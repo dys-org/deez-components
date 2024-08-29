@@ -30,14 +30,14 @@ export interface DDropdownProps {
   label: string;
   minimal?: boolean;
   options: DropOption[];
-  aligned?: 'right' | 'left';
+  align?: 'start' | 'end' | 'center';
   buttonClass?: HTMLAttributes['class'];
   menuClass?: HTMLAttributes['class'];
 }
 
 const props = withDefaults(defineProps<DDropdownProps>(), {
   minimal: false,
-  aligned: 'right',
+  align: 'center',
   buttonClass: '',
   menuClass: '',
 });
@@ -74,10 +74,10 @@ const props = withDefaults(defineProps<DDropdownProps>(), {
 
     <DropdownMenuPortal>
       <DropdownMenuContent
+        :align="props.align"
         :class="
           cn(
             'z-50 mt-2 min-w-40 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-white dark:ring-opacity-10',
-            props.aligned === 'left' ? 'left-0 origin-top-left' : 'right-0 origin-top-right',
             props.menuClass,
           )
         "
