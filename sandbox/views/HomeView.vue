@@ -4,6 +4,7 @@ import { ref, watch } from 'vue';
 import { DButton } from '../../src/components/DButton';
 import { DCheckbox } from '../../src/components/DCheckbox';
 import { DDropdown } from '../../src/components/DDropdown';
+import { DLink } from '../../src/components/DLink';
 import { DToggle } from '../../src/components/DToggle';
 
 const options = [
@@ -82,8 +83,15 @@ watch(darkMode, (val) => {
         <h2 class="mb-4 text-xl font-bold">Toggle</h2>
         <DToggle v-model="darkMode" label="Dark Mode" />
       </div>
+      <div class="border-b p-8">
+        <h2 class="mb-4 text-xl font-bold">Link</h2>
+        <DLink
+          to="https://www.google.com"
+          class="font-semibold text-primary-500 hover:text-primary-600 hover:underline"
+          @click="console.log('CLICK')"
+          >Google</DLink
+        >
+      </div>
     </main>
   </div>
 </template>
-
-<style scoped></style>

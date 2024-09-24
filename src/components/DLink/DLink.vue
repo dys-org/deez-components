@@ -37,7 +37,7 @@ const isExternal = computed(() => {
       v-bind="$attrs"
       :class="cn('inline-flex items-center gap-1', props.class, isActive && props.activeClass)"
       :href="href"
-      @click.prevent="
+      @click="
         navigate();
         emit('click');
       "
