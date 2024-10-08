@@ -87,9 +87,9 @@
     "vue-tsc": "^2.1.6"
   },
   "peerDependencies": {
-    "tailwindcss": "^3.4.10",
-    "vue": "~3.4.38",
-    "vue-router": "^4.4.3"
+    "tailwindcss": "^3.4.13",
+    "vue": "~3.5.11",
+    "vue-router": "^4.4.5"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm dlx lint-staged"
