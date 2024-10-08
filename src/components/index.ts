@@ -9,7 +9,6 @@ export * from './DDropdown';
 export * from './DInput';
 export * from './DInputNumber';
 export * from './DLink';
-export * from './DModal';
 export * from './DRadio';
 export * from './DRange';
 export * from './DSelect';
