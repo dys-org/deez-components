@@ -56,7 +56,7 @@ function onClick(e: MouseEvent) {
     :type="props.as === 'button' ? props.type : undefined"
     :class="
       cn(
-        'inline-flex items-center gap-x-2 rounded px-3 py-1.5 text-sm font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60',
+        'inline-flex items-center justify-center gap-x-2 rounded px-3 py-1.5 text-sm font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60',
         useFocusVisible
           ? 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500'
           : 'focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-primary-500',
