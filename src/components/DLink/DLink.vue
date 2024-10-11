@@ -12,8 +12,6 @@ const props = withDefaults(defineProps<RouterLinkProps & { class?: HTMLAttribute
   class: '',
 });
 
-const emit = defineEmits<{ click: [] }>();
-
 const isExternal = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http');
 });
@@ -26,9 +24,7 @@ const isExternal = computed(() => {
     v-bind="$attrs"
     :href="(props.to as string)"
     target="_blank"
-    rel="noopener noreferrer"
     :class="cn('inline-flex items-center gap-1', props.class)"
-    @click="emit('click')"
   >
     <slot />
   </a>
@@ -37,10 +33,7 @@ const isExternal = computed(() => {
       v-bind="$attrs"
       :class="cn('inline-flex items-center gap-1', props.class, isActive && props.activeClass)"
       :href="href"
-      @click="
-        navigate();
-        emit('click');
-      "
+      @click="navigate"
     >
       <slot />
     </a>
